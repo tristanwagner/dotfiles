@@ -23,6 +23,8 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'roman/golden-ratio'
+Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
 
 " Tmux integration
 Plug 'benmills/vimux'
@@ -44,7 +46,6 @@ Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jparise/vim-graphql'
-Plug 'zerowidth/vim-copy-as-rtf'
 Plug 'leafgarland/typescript-vim'
 
 " Syntax errors

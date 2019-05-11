@@ -6,12 +6,14 @@
 " Not to be confused with the contents of ~/.vim/plugin/* which are
 " configuration options for each plugin and automatically loaded by Vim.
 source ~/.vim/plugin/plugins.vim
-
 " Leader Mappings
 map <Space> <leader>
 map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
+
+" Nerdtree
+map <C-n> :NERDTreeToggle<CR>
 
 " CtrlP use FZF (faster!)
 nnoremap <C-p> :Files<Cr>
@@ -67,6 +69,8 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 " Colors & Formatting
 "-------------------------------------------------------------------------------
 
+let g:solarized_termcolors=256
+set t_Co=256
 colorscheme solarized
 set background=dark
 
@@ -74,20 +78,40 @@ set background=dark
 highlight Comment cterm=italic gui=italic
 
 " Easy tab navigation
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+nnoremap <S-Left> :tabprevious<CR>
+nnoremap <S-Right> :tabnext<CR>
+nnoremap <S-Up> :bp<CR>
+nnoremap <S-Down> :bp<CR>
 
+" redo
+nnoremap U :redo<CR>
+
+" yank and keep cursor at end of yank
+vmap y y']
+
+" Linter
+" Configure standardjs
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+let g:ale_fixers = {'javascript': ['standard']}
+
+" Lint & fix on save
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
 " Find/replace
-vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
+nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
 
 " Get off my lawn - helpful when learning Vim :)
-" nnoremap <Left> :echoe "Use h"<CR>
-" nnoremap <Right> :echoe "Use l"<CR>
-" nnoremap <Up> :echoe "Use k"<CR>
-" nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 "
 "-------------------------------------------------------------------------------
 " Neovim-specific configurations
