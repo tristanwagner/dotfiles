@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Addons
+Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'yegappan/mru'
 Plug 'alvan/vim-closetag'
@@ -46,7 +47,7 @@ Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jparise/vim-graphql'
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
 
 " Syntax errors
 Plug 'vim-syntastic/syntastic'

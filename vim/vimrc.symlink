@@ -12,15 +12,31 @@ map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
 
+" go to file in new tab
+nnoremap <Leader>o <C-W>gf<CR>
+"
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
 " CtrlP use FZF (faster!)
 nnoremap <C-p> :Files<Cr>
 
+" use ag instead of ack ?
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+cnoreabbrev ag Ack!
+cnoreabbrev aG Ack!
+cnoreabbrev Ag Ack!
+cnoreabbrev AG Ack!
+cnoreabbrev Ack Ack!
+nnoremap <Leader>f :tabnew<CR>:Ack!<Space>
+
 syntax on
 autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
 
+let g:ackprg = 'ag --vimgrep'
 
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
@@ -71,7 +87,8 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 
 let g:solarized_termcolors=256
 set t_Co=256
-colorscheme solarized
+colorscheme molokai
+" colorscheme solarized
 set background=dark
 
 " Showcase comments in italics
@@ -107,11 +124,12 @@ nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
 
+
 " Get off my lawn - helpful when learning Vim :)
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+"nnoremap <Left> :echoe "Use h"<CR>
+"nnoremap <Right> :echoe "Use l"<CR>
+"nnoremap <Up> :echoe "Use k"<CR>
+"nnoremap <Down> :echoe "Use j"<CR>
 "
 "-------------------------------------------------------------------------------
 " Neovim-specific configurations
@@ -129,3 +147,39 @@ if has('nvim')
   " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
   nmap <BS> :<C-u>TmuxNavigateLeft<CR>
 endif
+
+function MyTabLine()
+	  let s = ''
+	  for i in range(tabpagenr('$'))
+	    " select the highlighting
+	    if i + 1 == tabpagenr()
+	      let s .= '%#TabLineSel#'
+	    else
+	      let s .= '%#TabLine#'
+	    endif
+
+	    " set the tab page number (for mouse clicks)
+	    let s .= '%' . (i + 1) . 'T'
+
+	    " the label is made by MyTabLabel()
+	    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+	  endfor
+
+	  " after the last tab fill with TabLineFill and reset tab page nr
+	  let s .= '%#TabLineFill#%T'
+
+	  " right-align the label to close the current tab page
+	  if tabpagenr('$') > 1
+	    let s .= '%=%#TabLine#%999Xclose'
+	  endif
+
+	  return s
+endfunction
+
+function MyTabLabel(n)
+	  let buflist = tabpagebuflist(a:n)
+	  let winnr = tabpagewinnr(a:n)
+	  return buflist[winnr - 1] . ') ' . bufname(buflist[winnr - 1])
+endfunction
+
+:set tabline=%!MyTabLine()
