@@ -1,5 +1,4 @@
-" 
-" Vim settings for @mscoutermarsh
+" " Vim settings for @mscoutermarsh
 "
 
 " Settings in this file may depend on plugins, so let's install them first.
@@ -118,6 +117,9 @@ let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
+
+map <Leader>l :ALEFix<CR>
+
 " Find/replace
 nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
