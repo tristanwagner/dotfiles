@@ -20,6 +20,9 @@ map <C-n> :NERDTreeToggle<CR>
 " CtrlP use FZF (faster!)
 nnoremap <C-p> :Files<Cr>
 
+" prettify json
+nnoremap <Leader>p :%!python -m json.tool<CR>
+
 " use ag instead of ack ?
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
