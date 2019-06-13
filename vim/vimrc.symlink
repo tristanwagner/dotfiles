@@ -23,6 +23,8 @@ nnoremap <C-p> :Files<Cr>
 " prettify json
 nnoremap <Leader>p :%!python -m json.tool<CR>
 
+nnoremap <C-q> :q!<CR>
+
 " use ag instead of ack ?
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'

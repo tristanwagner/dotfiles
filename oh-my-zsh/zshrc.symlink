@@ -65,8 +65,6 @@ ZSH_THEME="agnosterzak"
 plugins=(git)
 plugins+=(zsh-nvm history-substring-search vi-mode)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -97,6 +95,7 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias vim='vim'
 alias vps='ssh root@vps473324.ovh.net'
 alias open='nautilus .'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

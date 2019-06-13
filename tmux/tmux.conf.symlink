@@ -41,10 +41,11 @@ set -g mouse on
 bind m split-window -h 'reattach-to-user-namespace tristan'
 
 # Act like vim in copy mode
-#set -g status-keys vi
-#setw -g mode-keys vi
-#bind-key -Tcopy-mode-vi 'v' send -X begin-selection
-#bind-key -Tcopy-mode-vi 'y' send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+# press ctrl-a then esc to be in normal mode, you can start select with v and copy with y
+set -g status-keys vi
+setw -g mode-keys vi
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "xclip -in -selection clipboard"
 
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
