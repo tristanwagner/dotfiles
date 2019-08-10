@@ -140,7 +140,14 @@ install_dotfiles () {
   done
 }
 
+install_pkgs () {
+  info 'installing packages'
+  dpkg --set-selections < package_list
+  apt-get -u dselect-upgrade
+}
+
 setup_gitconfig
+install_pkgs
 install_dotfiles
 
 # find the installers and run them iteratively
