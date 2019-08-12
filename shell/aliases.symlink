@@ -5,7 +5,7 @@ alias sp="osascript ~/.dotfiles/SpotifyControl/SpotifyControl prev"
 alias sb="osascript ~/.dotfiles/SpotifyControl/SpotifyControl start spotify:track:2goLsvvODILDzeeiT4dAoR"
 
 # Safe delete
-alias rm="trash"
+#alias rm="trash"
 
 # Unix
 alias tlf="tail -f"
@@ -53,3 +53,5 @@ alias rc="NO_RENDERER=true bin/rails c"
 alias vimrc="vim ~/.vimrc"
 alias vimplugins="vim ~/.dotfiles/vim/vim.symlink/plugin/plugins.vim"
 alias zshrc="vim ~/.zshrc"
+alias aliases="vim ~/.aliases"
+alias ip="curl ipinfo.io/ip"

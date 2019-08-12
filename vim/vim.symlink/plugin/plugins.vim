@@ -37,9 +37,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Syntax highlighting
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-markdown'
 Plug 'groenewege/vim-less'
@@ -63,6 +60,9 @@ Plug 'tpope/vim-fugitive'
 " Themes
 Plug 'altercation/vim-colors-solarized'
 Plug 'icymind/NeoSolarized'
+
+" Reasonml
+Plug 'reasonml-editor/vim-reason-plus'
 
 " Testing
 "Plug 'janko-m/vim-test'

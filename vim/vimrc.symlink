@@ -1,3 +1,5 @@
+" use vim like tail => open file and put this in it
+" :set autoread | au CursorHold * checktime | call feedkeys("lh")
 " " Vim settings for @mscoutermarsh
 "
 
@@ -40,7 +42,7 @@ nnoremap <Leader>f :tabnew<CR>:Ack!<Space>
 syntax on
 autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
 
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'ag --vimgrep --ignore-dir node_modules/'
 
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
@@ -49,7 +51,9 @@ set clipboard=unnamed                 " Clipboard support (OSX)
 set laststatus=2                      " Show status line on startup
 set splitright                        " Open new splits to the right
 set splitbelow                        " Open new splits to the bottom
-set lazyredraw                        " Reduce the redraw frequency
+"set lazyredraw                        " Reduce the redraw frequency, this one
+"fuck up the scroll
+set nolazyredraw                        " Reduce the redraw frequency
 set ttyfast                           " Send more characters in fast terminals
 set nowrap                            " Don't wrap long lines
 set listchars=extends:→               " Show arrow if line continues rightwards
@@ -102,7 +106,7 @@ highlight Comment cterm=italic gui=italic
 nnoremap <S-Left> :tabprevious<CR>
 nnoremap <S-Right> :tabnext<CR>
 nnoremap <S-Up> :bp<CR>
-nnoremap <S-Down> :bp<CR>
+nnoremap <S-Down> :bn<CR>
 
 " redo
 nnoremap U :redo<CR>

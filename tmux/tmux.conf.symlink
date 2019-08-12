@@ -99,7 +99,7 @@ bind C-r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
 #set-window-option -g automatic-rename on
 
 # Enable VI mode
-set-window-option -g mode-keys vi
+#set-window-option -g mode-keys vi
 
 # Set ability to capture on start and restore on exit window data when running an application
 setw -g alternate-screen on
