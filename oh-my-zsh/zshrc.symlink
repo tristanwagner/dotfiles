@@ -98,9 +98,42 @@ export EDITOR='vim'
 alias vim='vim'
 alias vps='ssh root@vps473324.ovh.net'
 alias open='nautilus .'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
+
+# send hexadecimal value in binary format over udp to remote adress and port
+#  usage :
+#  udp <hex> <host> <port>
+function udp () {
+  echo -n $1 | xxd -r -p | nc -u $2 $3
+}
+
+# send hexadecimal value in binary format over udp to remote adress and port
+#  usage :
+#  udp <hex> <host> <port>
+function tcp () {
+  echo -n  $1 | xxd -r -p | nc $2 $3
+}
+
+# funny conversion back and forth of a file
+#  hextoascii $(xxd -p install | tr -d '\n')
+function hextoascii () {
+  echo -n $1 | xxd -p -r
+}
+
+function asciitohex () {
+  echo -n $1 | xxd -p
+}
+
+function filter () {
+  echo -n $1 | tr -d $2
+}
+
+function replace () {
+  echo -n $1 | tr $2 $3
+}

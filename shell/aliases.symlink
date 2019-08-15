@@ -18,7 +18,6 @@ alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
 # because typing is hard
-alias bim="nvim"
 alias vim="vim"
 
 # fix for passing params to rake tasks
@@ -45,6 +44,13 @@ alias kbundle="bundle"
 # Rubygems
 alias gi="gem install"
 
+alias n="node"
+alias ni="npm install"
+alias nr="npm run"
+alias nrs="npm run start"
+alias nrb="npm run build"
+alias ncv="npm cache verify"
+
 # Rails
 alias rk="rake"
 alias rc="NO_RENDERER=true bin/rails c"
@@ -55,3 +61,10 @@ alias vimplugins="vim ~/.dotfiles/vim/vim.symlink/plugin/plugins.vim"
 alias zshrc="vim ~/.zshrc"
 alias aliases="vim ~/.aliases"
 alias ip="curl ipinfo.io/ip"
+
+#reload sound devices
+alias reloadsound="pulseaudio -k && sudo alsa force-reload"
+alias gstorecred="git config credential.helper store"
+
+#allow to patch staged files to unstage stuff
+alias grhp="git reset -p"
