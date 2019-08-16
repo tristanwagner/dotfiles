@@ -59,7 +59,9 @@ alias rc="NO_RENDERER=true bin/rails c"
 alias vimrc="vim ~/.vimrc"
 alias vimplugins="vim ~/.dotfiles/vim/vim.symlink/plugin/plugins.vim"
 alias zshrc="vim ~/.zshrc"
+alias szshrc="source ~/.zshrc"
 alias aliases="vim ~/.aliases"
+alias saliases="source ~/.aliases"
 alias ip="curl ipinfo.io/ip"
 
 #reload sound devices
@@ -68,3 +70,13 @@ alias gstorecred="git config credential.helper store"
 
 #allow to patch staged files to unstage stuff
 alias grhp="git reset -p"
+
+# vagrant
+alias vu="vagrant up"
+alias vh="vagrant halt"
+
+# execute permission only
+alias chx='chmod 755'
+
+# read permission only
+alias chr='chmod 644'

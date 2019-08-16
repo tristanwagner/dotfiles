@@ -150,22 +150,25 @@ function weather {
 
 # easy encryption
 function encrypt {
-  if [ $# -ne 1 ]; then
+  if [ $# -ne 3 ]; then
     echo "Usage: encrypt <e | d> <input-file> <output-file>"
     return
   fi
 
-  if [ "$1" == "e" ]; then
+  echo $@
+
+  if [ $1 '==' "e" ]; then
     echo "Encrypting $1..."
-    openssl enc -aes-256-cbc -salt -a -in $1 -out $2 || { echo "File not found"; return 1; }
+    openssl enc -aes-256-cbc -salt -a -in $2 -out $3 || { echo "File not found"; return 1; }
     echo "Successfully Encrypted"
-  elif [ "$1" == "d" ]; then
+  elif [ $1 '==' 'd' ]; then
       echo "Decrypting $1..."
-      openssl enc -aes-256-cbc -d -a -in $1 -out $2 || { echo "File not found"; return 1; }
+      openssl enc -aes-256-cbc -d -a -in $2 -out $3 || { echo "File not found"; return 1; }
       echo "Successfully Decrypted"
   fi
 }
 
+# display csv files
 function csv {
     if [ $# -ne 1 ]; then
     echo "Usage: csv <filename>"
@@ -266,5 +269,42 @@ function extract {
     else
         echo "$1 - file does not exist"
     fi
+  fi
+}
+
+# color man pages
+function man {
+  env LESS_TERMCAP_md=$'\033[1;34m' \
+    LESS_TERMCAP_us=$'\033[0;36m' \
+    LESS_TERMCAP_so=$'\033[1;31m' \
+    LESS_TERMCAP_mb=$'\033[0m' \
+    LESS_TERMCAP_me=$'\033[0m' \
+    LESS_TERMCAP_se=$'\033[0m' \
+    LESS_TERMCAP_ue=$'\033[0m' \
+    man "$@"
+}
+
+# Show how much memory is used by a command
+function mem() {
+  if [ $1 ]
+  then
+    echo "$1 mem usage:\n"
+
+    ps -eo "rss,cmd" | sed -e 's/^[ \t]*//' | cut -d ' ' -f -2 | grep "$1" | while read data
+  do
+    mem=$(echo $data | cut -d ' ' -f 1)
+    bin=$(echo $data | cut -d ' ' -f 2)
+    if [ $sum ]; then echo -n '+'; fi
+    echo "$(($mem/1024)) Mio ($bin)"
+    sum=$((sum+mem))
+  done
+
+  echo "\nTotal $1 mem usage: $((sum/1024)) Mio"
+  unset sum
 fi
+}
+
+# kills process running on specific port
+function killp () {
+  kill $(sudo lsof -t -i:$1)
 }
