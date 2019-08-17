@@ -146,14 +146,20 @@ install_pkgs () {
   apt-get -u dselect-upgrade
 }
 
+install_zsh_customs () {
+  rsync -a $DOTFILES_ROOT/oh-my-zsh/custom $DOTFILES_ROOT/oh-my-zsh/oh-my-zsh.symlink
+}
+
 setup_gitconfig
-install_pkgs
 install_dotfiles
 
 # find the installers and run them iteratively
 for installer in $(find . -name "*install.sh"); do
   sh -c "${installer}"
 done
+
+install_zsh_customs
+install_pkgs
 
 echo ''
 echo '  All installed!'

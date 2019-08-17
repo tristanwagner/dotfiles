@@ -2,6 +2,7 @@ accountsservice					install
 ack						install
 ack-grep					install
 acl						install
+acpi						install
 acpi-support					install
 acpid						install
 adb						install
