@@ -99,11 +99,13 @@ alias vim='vim'
 alias vps='ssh root@vps473324.ovh.net'
 alias open='nautilus .'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 source ~/.aliases
 
 # send hexadecimal value in binary format over udp to remote adress and port
@@ -340,7 +342,10 @@ function vg() {
 
   if [[ -n $files ]]
   then
-    vim $(replace $files '^@' ' ')
+    #version maison
+    #vim $(replace $files '^@' ' ')
+    #version sed
+    vim $(echo $files | sed -e 's/\^@/ /')
   fi
 }
 
@@ -371,6 +376,26 @@ function gbco() {
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# find history
+# and run select command(s)
+# you can specify a separator, for example fh ";" or fh "&&"
+function fh () {
+  local cmds
+  cmds=$(history | fzf --tac +s +m -e -m | sed "s/[^\d]* //")
+  if [ $1 ]
+  then
+    cmds=${cmds/$'\n'/ $1}
+    echo $cmds
+    eval $cmds
+  else
+    if [[ ! -z "$cmds" ]]
+    then
+      echo $cmds
+      eval $cmds
+    fi
+  fi
 }
 
 # browse mans

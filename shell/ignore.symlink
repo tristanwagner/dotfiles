@@ -1,0 +1,15 @@
+.git/*
+node_modules/*
+.local/*
+*.min.js
+*.min.css
+*.js.map
+/Android/*
+/.npm/*
+/.cocoapods/*
+/.cache/*
+/snap/*
+*.pem
+*.crt
+*.lock
+package-lock.json

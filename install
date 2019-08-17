@@ -158,8 +158,8 @@ for installer in $(find . -name "*install.sh"); do
   sh -c "${installer}"
 done
 
-install_zsh_customs
 install_pkgs
+install_zsh_customs
 
 echo ''
 echo '  All installed!'
