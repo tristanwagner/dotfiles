@@ -57,6 +57,8 @@ alias rc="NO_RENDERER=true bin/rails c"
 
 # Config Files
 alias vimrc="vim ~/.vimrc"
+#reload vimrc
+alias svimrc="vim +\"source ~/.vimrc\" +\":q\""
 alias vimplugins="vim ~/.dotfiles/vim/vim.symlink/plugin/plugins.vim"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
@@ -80,3 +82,6 @@ alias chx='chmod 755'
 
 # read permission only
 alias chr='chmod 644'
+
+alias meteo='weather'
+

@@ -308,3 +308,38 @@ fi
 function killp () {
   kill $(sudo lsof -t -i:$1)
 }
+
+# vf - fuzzy open with vim from anywhere
+# ex: vf word1 word2 ... (even part of a file name)
+# zsh autoload function
+# you can also multi select results by pressing tab/shift tab in fzf
+# it'll open the selected files in vim with files in buffers
+function vf() {
+  local files
+
+  files=(${(f)"$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf -x --read0 -0 -1 -m)"})
+
+  if [[ -n $files ]]
+  then
+     vim -- $files
+     print -l $files[1]
+  fi
+}
+
+# fuzzy grep open via ag with line number
+# you can also multi select results by pressing tab/shift tab in fzf
+# it'll open the selected files in vim with files in buffers
+# you need file:line plugin or it won't work
+# https://www.vim.org/scripts/script.php?script_id=2184
+function vg() {
+  local files
+
+  read -r -d "\n" files <<<"$(ag --nobreak --noheading $@ | fzf -0 -1 -m | awk -F: '{print $1 ":" $2}')"
+
+  echo $files
+
+  if [[ -n $files ]]
+  then
+    vim $(replace $files '^@' ' ')
+  fi
+}
