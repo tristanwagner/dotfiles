@@ -173,11 +173,13 @@ install_zsh_customs
 install_dotfiles
 
 # find the installers and run them iteratively
-for installer in $(find . -name "*install.sh"); do
-  sh -c "${installer}" || true
-done
+# not needed anymore i think
+#for installer in $(find . -name "*install.sh"); do
+#  sh -c "${installer}" || true
+#done
 
 install_fzf
+install_ranger
 default_to_zsh
 
 echo ''
