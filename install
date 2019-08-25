@@ -140,14 +140,24 @@ install_dotfiles () {
   done
 }
 
+default_to_zsh () {
+  #zsh should be installed w/ packages
+  chsh -s $(which zsh)
+}
+
 install_pkgs () {
   info 'installing packages'
-  dpkg --set-selections < package_list
-  apt-get -u dselect-upgrade
+  xargs sudo apt-get -y install < pkglist
 }
 
 install_zsh_customs () {
-  rsync -a $DOTFILES_ROOT/oh-my-zsh/custom $DOTFILES_ROOT/oh-my-zsh/oh-my-zsh.symlink
+  /usr/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || true
+  rsync -a $DOTFILES_ROOT/oh-my-zsh/custom/ ~/.oh-my-zsh/custom/
+}
+
+install_fzf () {
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
 }
 
 setup_gitconfig
@@ -155,11 +165,13 @@ install_dotfiles
 
 # find the installers and run them iteratively
 for installer in $(find . -name "*install.sh"); do
-  sh -c "${installer}"
+  sh -c "${installer}" || true
 done
 
-install_pkgs
+install_pkgs || true
 install_zsh_customs
+install_fzf
+default_to_zsh
 
 echo ''
 echo '  All installed!'
