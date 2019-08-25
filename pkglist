@@ -10,8 +10,11 @@ build-essential
 python
 python-pip
 python3-pip
+python3
 tmux
 silversearcher-ag
 zsh
 ttf-ancient-fonts
 fonts-powerline
+cmake
+python3-dev

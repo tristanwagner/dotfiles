@@ -70,4 +70,48 @@ Plug 'reasonml-editor/vim-reason-plus'
 " Gist
 Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 
+"marks
+Plug 'kshenoy/vim-signature'
+
+" session
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
+
+Plug 'rhysd/vim-clang-format'
+
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+" enhanced completion couldnt get it to work lol
+"Plug 'Valloric/YouCompleteMe'
+"make sure you have build-essential cmake python3-dev
+"need to compile it :
+"cd ~/.vim/plugged/YouCompleteMe
+"python3 install.py --clang-completer --ts-completer
+"
+"for c/c++:
+"follow instructions at https://github.com/ycm-core/YouCompleteMe
+"
+"download https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/clang+llvm-8.0.1-powerpc64le-linux-ubuntu-16.04.tar.xz
+"extract it in for example ~/ycm_temp
+"
+"cd ~
+"mkdir ycm_build
+"cd ycm_build
+"
+"cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/ycm_temp/llvm_root_dir . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
+"
+"cmake --build . --target ycm_core --config Release
+"
+"optional regex ++:
+"
+"cd ~
+"mkdir regex_build
+"cd regex_build
+"cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/cregex
+"cmake --build . --target _regex --config Release
+"
+"for js:
+"cd ~/.vim/plugged/YouCompleteMe
+""npm install -g --prefix third_party/tsserver typescript
+
 call plug#end()
