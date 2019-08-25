@@ -7,7 +7,9 @@ curl
 gcc
 g++
 build-essential
-python3
+python
+python-pip
+python3-pip
 tmux
 silversearcher-ag
 zsh

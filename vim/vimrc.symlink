@@ -1,12 +1,14 @@
 " use vim like tail => open file and put this in it
 " :set autoread | au CursorHold * checktime | call feedkeys("lh")
-" " Vim settings for @mscoutermarsh
+"
+" Vim settings for https://github.com/tristanwagner
 "
 
 " Settings in this file may depend on plugins, so let's install them first.
 " Not to be confused with the contents of ~/.vim/plugin/* which are
 " configuration options for each plugin and automatically loaded by Vim.
 source ~/.vim/plugin/plugins.vim
+
 " Leader Mappings
 map <Space> <leader>
 map <Leader>w :update<CR>

@@ -160,6 +160,13 @@ install_fzf () {
   ~/.fzf/install
 }
 
+install_ranger () {
+  git clone https://github.com/ranger/ranger ~/.ranger
+  cd ~/.ranger
+  sudo make install
+  cd $DOTFILES_ROOT
+}
+
 setup_gitconfig
 install_pkgs || true
 install_zsh_customs
