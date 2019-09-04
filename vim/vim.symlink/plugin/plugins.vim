@@ -6,13 +6,16 @@ Plug 'scrooloose/nerdtree'
 Plug 'yegappan/mru'
 Plug 'alvan/vim-closetag'
 Plug 'vim-scripts/vim-auto-save'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
+
+" surrounding ops, like putting ' arround a word, or html tag etc..
 Plug 'tpope/vim-surround'
+
 Plug 'tmhedberg/matchit'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
@@ -54,6 +57,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/goyo.vim'
 
 " Git support
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 "Plug 'tpope/vim-fugitive', { 'commit': '444ba9fda5d05aa14c7e8664fa4a66a59c62a550' }
 
@@ -98,7 +102,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 "mkdir ycm_build
 "cd ycm_build
 "
-"cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/ycm_temp/llvm_root_dir . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
+"cmake -G \"Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/ycm_temp/llvm_root_dir . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
 "
 "cmake --build . --target ycm_core --config Release
 "
@@ -107,7 +111,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 "cd ~
 "mkdir regex_build
 "cd regex_build
-"cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/cregex
+"cmake -G \"Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/cregex
 "cmake --build . --target _regex --config Release
 "
 "for js:

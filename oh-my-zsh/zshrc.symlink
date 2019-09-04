@@ -307,6 +307,7 @@ fi
 }
 
 # kills process running on specific port
+# TODO: handle if no process to kill
 function killp () {
   kill $(sudo lsof -t -i:$1)
 }

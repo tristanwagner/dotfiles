@@ -33,6 +33,9 @@ nnoremap Q :q<CR>
 " ragequit
 nnoremap <C-q> :q!<CR>
 
+" git status
+nnoremap <Leader>g :Git<CR>
+
 " use ag instead of ack ?
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -43,12 +46,12 @@ cnoreabbrev aG Ack!
 cnoreabbrev Ag Ack!
 cnoreabbrev AG Ack!
 cnoreabbrev Ack Ack!
-nnoremap <Leader>f :tabnew<CR>:Ack!<Space>
+nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
 
 syntax on
 autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
 
-let g:ackprg = 'ag --vimgrep --ignore-dir node_modules/'
+let g:ackprg = 'ag --vimgrep --hidden --path-to-ignore ~/.ignore'
 
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
@@ -125,11 +128,17 @@ vmap y y']
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \}
-let g:ale_fixers = {'javascript': ['standard']}
+let g:ale_fixers = {
+      \'javascript': ['standard'],
+      \}
+
+" very much needed, syntax checking for python is meh
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 " Lint & fix on save
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 
