@@ -209,3 +209,7 @@ function MyTabLabel(n)
 endfunction
 
 :set tabline=%!MyTabLine()
+
+
+" file type messages is for highlights when checking logs like in /var/log
+nnoremap <Leader>l :set filetype=messages<CR>

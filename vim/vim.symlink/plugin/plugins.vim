@@ -77,6 +77,9 @@ Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 "marks
 Plug 'kshenoy/vim-signature'
 
+"multi cursor
+Plug 'terryma/vim-multiple-cursors'
+
 " session
 Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
