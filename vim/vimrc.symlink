@@ -19,13 +19,16 @@ map <Leader>gs :Gstatus<CR>
 nnoremap <Leader>o <C-W>gf<CR>
 "
 " Nerdtree
-map <C-n> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeToggle<CR>
 
 " CtrlP use FZF (faster!)
 nnoremap <C-p> :Files<Cr>
 
 " prettify json
 nnoremap <Leader>p :%!python -m json.tool<CR>
+
+" prettify json
+nnoremap <Leader>l :! standard --fix<CR>
 
 " ex mode is useless
 nnoremap Q :q<CR>
@@ -147,9 +150,20 @@ map <Leader>l :ALEFix<CR>
 " Find/replace
 nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
+
+" ale config linter & fixer
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
 
+" airline conf
+" enable airline tabs
+let g:airline#extensions#tabline#enabled = 1
+
+" show only filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" powerline
+let g:airline_powerline_fonts = 1
 
 " Get off my lawn - helpful when learning Vim :)
 "nnoremap <Left> :echoe "Use h"<CR>
@@ -173,43 +187,6 @@ if has('nvim')
   " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
   nmap <BS> :<C-u>TmuxNavigateLeft<CR>
 endif
-
-function MyTabLine()
-	  let s = ''
-	  for i in range(tabpagenr('$'))
-	    " select the highlighting
-	    if i + 1 == tabpagenr()
-	      let s .= '%#TabLineSel#'
-	    else
-	      let s .= '%#TabLine#'
-	    endif
-
-	    " set the tab page number (for mouse clicks)
-	    let s .= '%' . (i + 1) . 'T'
-
-	    " the label is made by MyTabLabel()
-	    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-	  endfor
-
-	  " after the last tab fill with TabLineFill and reset tab page nr
-	  let s .= '%#TabLineFill#%T'
-
-	  " right-align the label to close the current tab page
-	  if tabpagenr('$') > 1
-	    let s .= '%=%#TabLine#%999Xclose'
-	  endif
-
-	  return s
-endfunction
-
-function MyTabLabel(n)
-	  let buflist = tabpagebuflist(a:n)
-	  let winnr = tabpagewinnr(a:n)
-	  return buflist[winnr - 1] . ') ' . bufname(buflist[winnr - 1])
-endfunction
-
-:set tabline=%!MyTabLine()
-
 
 " file type messages is for highlights when checking logs like in /var/log
 nnoremap <Leader>l :set filetype=messages<CR>
