@@ -407,3 +407,4 @@ function fman() {
 # load forgit
 source ~/.oh-my-zsh/custom/plugins/forgit.plugin.zsh
 
+export PATH=/home/tristan/.cargo/bin:$PATH

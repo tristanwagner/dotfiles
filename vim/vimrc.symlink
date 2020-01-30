@@ -9,6 +9,7 @@
 " configuration options for each plugin and automatically loaded by Vim.
 source ~/.vim/plugin/plugins.vim
 
+
 " Leader Mappings
 map <Space> <leader>
 map <Leader>w :update<CR>
@@ -27,7 +28,7 @@ nnoremap <C-p> :Files<Cr>
 " prettify json
 nnoremap <Leader>p :%!python -m json.tool<CR>
 
-" prettify json
+" js standard fix
 nnoremap <Leader>l :! standard --fix<CR>
 
 " ex mode is useless
@@ -56,6 +57,9 @@ autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
 
 let g:ackprg = 'ag --vimgrep --hidden --path-to-ignore ~/.ignore'
 
+" displays better title in gnome terminal tab :)
+set hidden                            " hidde buffers instead of closing them
+set title
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
@@ -77,8 +81,10 @@ set history=500
 set hlsearch                          " Highlight search results
 set ignorecase smartcase              " Search queries intelligently set case
 set incsearch                         " Show search results as you type
-set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
+set timeoutlen=1000 "ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show size of visual selection
+
+set pastetoggle=<F2>                  " Paste mode is cool if you paste a big chunk of text
 
 " Persistent undo
 set undodir=~/.vim/undo/
@@ -165,6 +171,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " powerline
 let g:airline_powerline_fonts = 1
 
+" show hidden files
+let NERDTreeShowHidden=1
+
 " Get off my lawn - helpful when learning Vim :)
 "nnoremap <Left> :echoe "Use h"<CR>
 "nnoremap <Right> :echoe "Use l"<CR>
@@ -188,5 +197,18 @@ if has('nvim')
   nmap <BS> :<C-u>TmuxNavigateLeft<CR>
 endif
 
+" Convert slashes to backslashes for Windows.
+if has('win32')
+  nmap ,cs :let @*=substitute(expand("%"), "/", "\\", "g")<CR>
+  nmap ,cl :let @*=substitute(expand("%:p"), "/", "\\", "g")<CR>
+
+  " This will copy the path in 8.3 short format, for DOS and Windows 9x
+  nmap ,c8 :let @*=substitute(expand("%:p:8"), "/", "\\", "g")<CR>
+else
+  nmap ,cs :let @+=expand("%:t")<CR>
+  nmap ,cps :let @+=expand("%")<CR>
+  nmap ,cpl :let @+=expand("%:p")<CR>
+endif
+
 " file type messages is for highlights when checking logs like in /var/log
-nnoremap <Leader>l :set filetype=messages<CR>
+nnoremap <Leader>m :set filetype=messages<CR>

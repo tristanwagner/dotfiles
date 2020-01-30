@@ -80,6 +80,9 @@ Plug 'kshenoy/vim-signature'
 "multi cursor
 Plug 'terryma/vim-multiple-cursors'
 
+" show next mappings
+"Plug 'liuchengxu/vim-which-key'
+
 " session
 Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
