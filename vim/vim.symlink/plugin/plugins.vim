@@ -36,6 +36,8 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " File system navigation
 Plug 'tpope/vim-eunuch'
+" Vim clap requires vim >  8.1
+"Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 

@@ -29,7 +29,8 @@ nnoremap <C-p> :Files<Cr>
 nnoremap <Leader>p :%!python -m json.tool<CR>
 
 " js standard fix
-nnoremap <Leader>l :! standard --fix<CR>
+" the automatic standard fixer only works with standard version 11.0.0 for me
+nnoremap <Leader>l :%! standard --fix<CR>
 
 " ex mode is useless
 nnoremap Q :q<CR>
@@ -59,6 +60,7 @@ let g:ackprg = 'ag --vimgrep --hidden --path-to-ignore ~/.ignore'
 
 " displays better title in gnome terminal tab :)
 set hidden                            " hidde buffers instead of closing them
+set smartindent
 set title
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
