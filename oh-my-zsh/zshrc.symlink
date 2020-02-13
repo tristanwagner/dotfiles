@@ -108,8 +108,12 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
+function vgst () {
+ vim $(git status --porcelain | awk '{print $2}')
+}
+
 # send hexadecimal value in binary format over udp to remote adress and port
-#  usage :
+# usage :
 #  udp <hex> <host> <port>
 function udp () {
   echo -n $1 | xxd -r -p | nc -u $2 $3

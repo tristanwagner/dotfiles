@@ -86,3 +86,4 @@ alias meteo='weather'
 alias ag='ag --hidden --path-to-ignore ~/.ignore'
 
 alias rm="rm -i"
+

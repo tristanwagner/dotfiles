@@ -9,6 +9,11 @@
 " configuration options for each plugin and automatically loaded by Vim.
 source ~/.vim/plugin/plugins.vim
 
+" check these 2 plugins
+"
+" https://github.com/carlitux/deoplete-ternjs
+"
+" https://github.com/skwp/greplace.vim
 
 " Leader Mappings
 map <Space> <leader>
