@@ -9,6 +9,12 @@
 " configuration options for each plugin and automatically loaded by Vim.
 source ~/.vim/plugin/plugins.vim
 
+" check these 2 plugins
+"
+" https://github.com/carlitux/deoplete-ternjs
+"
+" https://github.com/skwp/greplace.vim
+
 " Leader Mappings
 map <Space> <leader>
 map <Leader>w :update<CR>
@@ -19,7 +25,7 @@ map <Leader>gs :Gstatus<CR>
 nnoremap <Leader>o <C-W>gf<CR>
 "
 " Nerdtree
-map <C-n> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeToggle<CR>
 
 " CtrlP use FZF (faster!)
 nnoremap <C-p> :Files<Cr>
@@ -27,11 +33,18 @@ nnoremap <C-p> :Files<Cr>
 " prettify json
 nnoremap <Leader>p :%!python -m json.tool<CR>
 
+" js standard fix
+" the automatic standard fixer only works with standard version 11.0.0 for me
+nnoremap <Leader>l :%! standard --fix<CR>
+
 " ex mode is useless
 nnoremap Q :q<CR>
 
 " ragequit
 nnoremap <C-q> :q!<CR>
+
+" git status
+nnoremap <Leader>g :Git<CR>
 
 " use ag instead of ack ?
 if executable('ag')
@@ -43,13 +56,17 @@ cnoreabbrev aG Ack!
 cnoreabbrev Ag Ack!
 cnoreabbrev AG Ack!
 cnoreabbrev Ack Ack!
-nnoremap <Leader>f :tabnew<CR>:Ack!<Space>
+nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
 
 syntax on
 autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
 
-let g:ackprg = 'ag --vimgrep --ignore-dir node_modules/'
+let g:ackprg = 'ag --vimgrep --hidden --path-to-ignore ~/.ignore'
 
+" displays better title in gnome terminal tab :)
+set hidden                            " hidde buffers instead of closing them
+set smartindent
+set title
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
@@ -71,8 +88,10 @@ set history=500
 set hlsearch                          " Highlight search results
 set ignorecase smartcase              " Search queries intelligently set case
 set incsearch                         " Show search results as you type
-set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
+set timeoutlen=1000 "ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show size of visual selection
+
+set pastetoggle=<F2>                  " Paste mode is cool if you paste a big chunk of text
 
 " Persistent undo
 set undodir=~/.vim/undo/
@@ -125,11 +144,17 @@ vmap y y']
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \}
-let g:ale_fixers = {'javascript': ['standard']}
+let g:ale_fixers = {
+      \'javascript': ['standard'],
+      \}
+
+" very much needed, syntax checking for python is meh
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 " Lint & fix on save
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 
@@ -139,9 +164,22 @@ map <Leader>l :ALEFix<CR>
 nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
 
+" ale config linter & fixer
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
 
+" airline conf
+" enable airline tabs
+let g:airline#extensions#tabline#enabled = 1
+
+" show only filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" powerline
+let g:airline_powerline_fonts = 1
+
+" show hidden files
+let NERDTreeShowHidden=1
 
 " Get off my lawn - helpful when learning Vim :)
 "nnoremap <Left> :echoe "Use h"<CR>
@@ -203,3 +241,18 @@ endfunction
 :set tabline=%!MyTabLine()
 
 nmap <Leader>= <Plug>YSsurround<CR><C-}>
+" Convert slashes to backslashes for Windows.
+if has('win32')
+  nmap ,cs :let @*=substitute(expand("%"), "/", "\\", "g")<CR>
+  nmap ,cl :let @*=substitute(expand("%:p"), "/", "\\", "g")<CR>
+
+  " This will copy the path in 8.3 short format, for DOS and Windows 9x
+  nmap ,c8 :let @*=substitute(expand("%:p:8"), "/", "\\", "g")<CR>
+else
+  nmap ,cs :let @+=expand("%:t")<CR>
+  nmap ,cps :let @+=expand("%")<CR>
+  nmap ,cpl :let @+=expand("%:p")<CR>
+endif
+
+" file type messages is for highlights when checking logs like in /var/log
+nnoremap <Leader>m :set filetype=messages<CR>

@@ -10,3 +10,5 @@ tmp/**/*
 !tmp/cache/.keep
 zeus.json
 node_modules/
+node-report*.txt
+session/
