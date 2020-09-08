@@ -142,10 +142,10 @@ vmap y y']
 " Linter
 " Configure standardjs
 let g:ale_linters = {
-\   'javascript': ['standard'],
+\   'javascript': ['eslint'],
 \}
 let g:ale_fixers = {
-      \'javascript': ['standard'],
+      \'javascript': ['eslint'],
       \}
 
 " very much needed, syntax checking for python is meh
