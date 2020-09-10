@@ -7,6 +7,7 @@
 " Settings in this file may depend on plugins, so let's install them first.
 " Not to be confused with the contents of ~/.vim/plugin/* which are
 " configuration options for each plugin and automatically loaded by Vim.
+
 source ~/.vim/plugin/plugins.vim
 
 " check these 2 plugins
@@ -33,10 +34,6 @@ nnoremap <C-p> :Files<Cr>
 " prettify json
 nnoremap <Leader>p :%!python -m json.tool<CR>
 
-" js standard fix
-" the automatic standard fixer only works with standard version 11.0.0 for me
-nnoremap <Leader>l :%! standard --fix<CR>
-
 " ex mode is useless
 nnoremap Q :q<CR>
 
@@ -56,14 +53,20 @@ cnoreabbrev aG Ack!
 cnoreabbrev Ag Ack!
 cnoreabbrev AG Ack!
 cnoreabbrev Ack Ack!
+
+" fuzzy search
 nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
 
-syntax on
+syntax enable
+
 autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
 
 let g:ackprg = 'ag --vimgrep --hidden --path-to-ignore ~/.ignore'
 
 " displays better title in gnome terminal tab :)
+set mouse=a                           " enable mouse
+set list                              " enable invisible chars
+set nocompatible
 set hidden                            " hidde buffers instead of closing them
 set smartindent
 set title
@@ -139,8 +142,7 @@ nnoremap U :redo<CR>
 " yank and keep cursor at end of yank
 vmap y y']
 
-" Linter
-" Configure standardjs
+" ALE
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
@@ -151,9 +153,8 @@ let g:ale_fixers = {
 " very much needed, syntax checking for python is meh
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
-" Lint & fix on save
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
@@ -164,9 +165,9 @@ map <Leader>l :ALEFix<CR>
 nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
 
-" ale config linter & fixer
-let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save = 0  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
+let g:auto_save_events= ["InsertLeave", "TextChanged", "FocusLost"]
 
 " airline conf
 " enable airline tabs
@@ -204,43 +205,8 @@ if has('nvim')
   nmap <BS> :<C-u>TmuxNavigateLeft<CR>
 endif
 
-function MyTabLine()
-	  let s = ''
-	  for i in range(tabpagenr('$'))
-	    " select the highlighting
-	    if i + 1 == tabpagenr()
-	      let s .= '%#TabLineSel#'
-	    else
-	      let s .= '%#TabLine#'
-	    endif
-
-	    " set the tab page number (for mouse clicks)
-	    let s .= '%' . (i + 1) . 'T'
-
-	    " the label is made by MyTabLabel()
-	    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-	  endfor
-
-	  " after the last tab fill with TabLineFill and reset tab page nr
-	  let s .= '%#TabLineFill#%T'
-
-	  " right-align the label to close the current tab page
-	  if tabpagenr('$') > 1
-	    let s .= '%=%#TabLine#%999Xclose'
-	  endif
-
-	  return s
-endfunction
-
-function MyTabLabel(n)
-	  let buflist = tabpagebuflist(a:n)
-	  let winnr = tabpagewinnr(a:n)
-	  return buflist[winnr - 1] . ') ' . bufname(buflist[winnr - 1])
-endfunction
-
-:set tabline=%!MyTabLine()
-
 nmap <Leader>= <Plug>YSsurround<CR><C-}>
+
 "
 " Convert slashes to backslashes for Windows.
 if has('win32')
@@ -257,3 +223,14 @@ endif
 
 " file type messages is for highlights when checking logs like in /var/log
 nnoremap <Leader>m :set filetype=messages<CR>
+
+" Execute a macro over a visual range
+" would be the equivalent to
+" select visual range and type
+" :'<,'>normal @<macro letter>
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
