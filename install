@@ -168,7 +168,7 @@ install_ranger () {
   cd $DOTFILES_ROOT
 }
 
-setup_gitconfig
+#setup_gitconfig
 install_pkgs || true
 install_zsh_customs
 install_dotfiles

@@ -8,6 +8,7 @@ Plug 'alvan/vim-closetag'
 Plug 'vim-scripts/vim-auto-save'
 "Plug 'airblade/vim-gitgutter'
 Plug 'ervandew/supertab'
+" should try deoplete
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-bundler'

@@ -121,6 +121,11 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 " Colors & Formatting
 "-------------------------------------------------------------------------------
 
+" CPP compile & run
+
+autocmd filetype cpp nnoremap <F8> :w <bar> !g++ -std=c++14 -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
+autocmd filetype cpp nnoremap <F9> :w <bar> !"./%:r"<CR>
+
 let g:solarized_termcolors=256
 set t_Co=256
 colorscheme molokai
@@ -195,14 +200,14 @@ let NERDTreeShowHidden=1
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set termguicolors
-  colorscheme NeoSolarized
+  "colorscheme NeoSolarized
   set background=dark
 
   " Fix vim-tmux-navigator <C-h> https://git.io/viGRU
-  nmap <BS> <C-W>h
+  "nmap <BS> <C-W>h
 
   " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
-  nmap <BS> :<C-u>TmuxNavigateLeft<CR>
+  "nmap <BS> :<C-u>TmuxNavigateLeft<CR>
 endif
 
 nmap <Leader>= <Plug>YSsurround<CR><C-}>

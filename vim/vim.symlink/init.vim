@@ -1,1 +1,3 @@
-/Users/mscoutermarsh/.dotfiles/vim/vimrc.symlink
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
