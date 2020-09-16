@@ -122,9 +122,13 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 "-------------------------------------------------------------------------------
 
 " CPP compile & run
-
-autocmd filetype cpp nnoremap <F8> :w <bar> !g++ -std=c++14 -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
-autocmd filetype cpp nnoremap <F9> :w <bar> !"./%:r"<CR>
+autocmd filetype cpp nnoremap <F3> :w <bar> !g++ -std=c++14 -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
+autocmd filetype cpp nnoremap <F4> :w <bar> !"./%:r"<CR>
+" C compile & run
+autocmd filetype c nnoremap <F3> :w <bar> !gcc -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
+autocmd filetype c nnoremap <F4> :w <bar> !"./%:r"<CR>
+" js run
+autocmd filetype javascript nnoremap <F4> :w <bar> !node "%"<CR>
 
 let g:solarized_termcolors=256
 set t_Co=256
