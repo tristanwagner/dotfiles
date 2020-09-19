@@ -2,9 +2,12 @@ rofi
 git
 nodejs
 npm
+neovim
 vim
 vim-gnome
 curl
+clang-tidy
+gdb
 gcc
 g++
 build-essential
@@ -19,3 +22,6 @@ ttf-ancient-fonts
 fonts-powerline
 cmake
 python3-dev
+htop
+ncdu
+xclip
