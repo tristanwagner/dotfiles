@@ -3,16 +3,16 @@ call plug#begin('~/.vim/plugged')
 " Addons
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'yegappan/mru'
+"Plug 'yegappan/mru'
 Plug 'alvan/vim-closetag'
 Plug 'vim-scripts/vim-auto-save'
 "Plug 'airblade/vim-gitgutter'
 Plug 'ervandew/supertab'
 " should try deoplete
-Plug 'tpope/vim-rhubarb'
+"Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-bundler'
+"Plug 'tpope/vim-endwise'
 
 " surrounding ops, like putting ' arround a word, or html tag etc..
 Plug 'tpope/vim-surround'
@@ -27,13 +27,16 @@ Plug 'blarghmatey/split-expander'
 Plug 'farmergreg/vim-lastplace'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+
+"automatic resize window
 Plug 'roman/golden-ratio'
+
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 
 " Tmux integration
-Plug 'benmills/vimux'
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'benmills/vimux'
+"Plug 'christoomey/vim-tmux-navigator'
 
 " File system navigation
 Plug 'tpope/vim-eunuch'
@@ -49,8 +52,9 @@ Plug 'groenewege/vim-less'
 Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'jparise/vim-graphql'
-" Plug 'leafgarland/typescript-vim'
+"Plug 'jparise/vim-graphql'
+Plug 'leafgarland/typescript-vim'
+"Plug 'posva/vim-vue'
 
 " Syntax errors
 Plug 'vim-syntastic/syntastic'
@@ -60,8 +64,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/goyo.vim'
 
 " Git support
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-dispatch'
+"Plug 'tpope/vim-fugitive'
 "Plug 'tpope/vim-fugitive', { 'commit': '444ba9fda5d05aa14c7e8664fa4a66a59c62a550' }
 
 " Themes
@@ -75,13 +79,13 @@ Plug 'reasonml-editor/vim-reason-plus'
 "Plug 'janko-m/vim-test'
 
 " Gist
-Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
+"Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 
 "marks
 Plug 'kshenoy/vim-signature'
 
 "multi cursor
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 " show next mappings
 "Plug 'liuchengxu/vim-which-key'
@@ -93,38 +97,5 @@ Plug 'dhruvasagar/vim-prosession'
 Plug 'rhysd/vim-clang-format'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
-
-" enhanced completion couldnt get it to work lol
-"Plug 'Valloric/YouCompleteMe'
-"make sure you have build-essential cmake python3-dev
-"need to compile it :
-"cd ~/.vim/plugged/YouCompleteMe
-"python3 install.py --clang-completer --ts-completer
-"
-"for c/c++:
-"follow instructions at https://github.com/ycm-core/YouCompleteMe
-"
-"download https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/clang+llvm-8.0.1-powerpc64le-linux-ubuntu-16.04.tar.xz
-"extract it in for example ~/ycm_temp
-"
-"cd ~
-"mkdir ycm_build
-"cd ycm_build
-"
-"cmake -G \"Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/ycm_temp/llvm_root_dir . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
-"
-"cmake --build . --target ycm_core --config Release
-"
-"optional regex ++:
-"
-"cd ~
-"mkdir regex_build
-"cd regex_build
-"cmake -G \"Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/cregex
-"cmake --build . --target _regex --config Release
-"
-"for js:
-"cd ~/.vim/plugged/YouCompleteMe
-""npm install -g --prefix third_party/tsserver typescript
 
 call plug#end()

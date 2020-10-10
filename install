@@ -168,6 +168,12 @@ install_ranger () {
   cd $DOTFILES_ROOT
 }
 
+#https://github.com/dronir/SpotifyControl
+install_spotify_control() {
+  # if in dotfiles root dir
+  ln -s $(pwd)/SpotifyControl/SpotifyControl /usr/local/bin/spotify
+}
+
 #setup_gitconfig
 install_pkgs || true
 install_zsh_customs

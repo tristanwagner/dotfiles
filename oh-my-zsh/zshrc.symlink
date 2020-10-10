@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,8 +15,8 @@ export ZSH=~/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnosterzak"
-
+#ZSH_THEME="agnosterzak"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -63,7 +70,8 @@ ZSH_THEME="agnosterzak"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-plugins+=(zsh-nvm history-substring-search vi-mode)
+plugins+=(history-substring-search vi-mode)
+#plugins+=(zsh-nvm history-substring-search vi-mode)
 
 # User configuration
 
@@ -97,11 +105,11 @@ export EDITOR='vim'
 
 alias vim='vim'
 alias vps='ssh root@vps473324.ovh.net'
-alias open='nautilus .'
+#alias open='nautilus .'
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+ZSH_DISABLE_COMPFIX='true'
 source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -414,12 +422,40 @@ function stopwatch () {
   done
 }
 
+#disable ipv6 mac
+function disable-ipv6() {
+  #sudo networksetup -setv6off Ethernet
+  sudo networksetup -setv6off Wi-Fi
+}
+
+#enable ipv6 mac
+function enable-ipv6() {
+  #sudo networksetup -setv6automatic Ethernet
+  sudo networksetup -setv6automatic Wi-Fi
+}
+
+# prettify json with node
+#cat file.json | node <<< "var o = $(cat); console.log(JSON.stringify(o, null, 4));"
+#with python
+#cat file.json | python -m json.tool
+
+# allow fzf to show hidden files
+#export FZF_DEFAULT_COMMAND="find -L"
+
 # load forgit
 source ~/.oh-my-zsh/custom/plugins/forgit.plugin.zsh
 
-export PATH=/home/tristan/.cargo/bin:$PATH
+#export PATH=/home/tristan/.cargo/bin:$PATH
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+#export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+source $(brew --prefix nvm)/nvm.sh
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# add utils to path
+export PATH=$PATH:$HOME/bin
+[ -f "/Users/tristanwagner/.ghcup/env" ] && source "/Users/tristanwagner/.ghcup/env" # ghcup-env

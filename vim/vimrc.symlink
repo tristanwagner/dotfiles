@@ -21,6 +21,11 @@ map <Space> <leader>
 map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
+" file content to hexdump
+map <Leader>hex :%!xxd<CR>
+" reverse
+map <Leader>bin :%!xxd -r<CR>
+
 
 " go to file in new tab
 nnoremap <Leader>o <C-W>gf<CR>
@@ -33,6 +38,8 @@ nnoremap <C-p> :Files<Cr>
 
 " prettify json
 nnoremap <Leader>p :%!python -m json.tool<CR>
+"node version :)
+""" nnoremap <Leader>p :%!node <<< \"console.log(JSON.stringify($(cat), null, 2))\"<CR>
 
 " ex mode is useless
 nnoremap Q :q<CR>
@@ -130,6 +137,11 @@ autocmd filetype c nnoremap <F4> :w <bar> !"./%:r"<Left>
 autocmd filetype c nnoremap <F5> :w <bar> term"./%:r"<CR>
 " js run
 autocmd filetype javascript nnoremap <F4> :w <bar> !node "%"<CR>
+
+"json fold
+"autocmd filetype json syntax on
+"autocmd filetype json set foldmethod=syntax
+
 
 " Terminal Function
 let g:term_buf = 0
