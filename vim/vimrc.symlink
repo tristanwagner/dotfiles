@@ -28,8 +28,10 @@ map <Leader>bin :%!xxd -r<CR>
 
 
 " go to file in new tab
-nnoremap <Leader>o <C-W>gf<CR>
-"
+"nnoremap <Leader>o <C-W>gf<CR>
+" use Ycm Goto instead
+nnoremap <Leader>o :tab YcmCompleter GoTo<CR>
+
 " Nerdtree
 map <C-b> :NERDTreeToggle<CR>
 
@@ -41,8 +43,28 @@ nnoremap <Leader>p :%!python -m json.tool<CR>
 "node version :)
 """ nnoremap <Leader>p :%!node <<< \"console.log(JSON.stringify($(cat), null, 2))\"<CR>
 
-" ex mode is useless
-nnoremap Q :q<CR>
+" only issue with this is that
+" for example if you use
+" vim file1 file2
+" and use :bw, the buffer won't be removed
+" you'd need to do :argdo bw
+" but then it'll remove every file so
+" I will see in future if I find an elegant solution
+function QuitTabOrBuffer()
+  if tabpagenr('$') > 1
+    execute "tabclose"
+  elseif bufnr('$') > 1
+    execute "bw"
+  else
+    execute "q"
+  endif
+endfunction
+
+" ex mode is useless instead quite current context
+nnoremap <silent> Q :call QuitTabOrBuffer()<CR>
+" old one
+" nnoremap Q :q<CR>
+
 
 " ragequit
 nnoremap <C-q> :q!<CR>
@@ -189,8 +211,8 @@ highlight Comment cterm=italic gui=italic
 " Easy tab navigation
 nnoremap <S-Left> :tabprevious<CR>
 nnoremap <S-Right> :tabnext<CR>
-nnoremap <S-Up> :bp<CR>
-nnoremap <S-Down> :bn<CR>
+nnoremap <S-Up> :bn<CR>
+nnoremap <S-Down> :bp<CR>
 
 " redo
 nnoremap U :redo<CR>
@@ -290,3 +312,17 @@ function! ExecuteMacroOverVisualRange()
   echo "@".getcmdline()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction
+
+" Close preview window
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" disable auto documentation on over
+let g:ycm_auto_hover = ''
+
+" use leader d to display doc
+nmap <leader>d <plug>(YCMHover)
+
+" remap diagnostic 
+let g:ycm_key_detailed_diagnostics = '<leader>D'
+let g:ycm_goto_buffer_command = 'new-or-existing-tab'

@@ -7,7 +7,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'alvan/vim-closetag'
 Plug 'vim-scripts/vim-auto-save'
 "Plug 'airblade/vim-gitgutter'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
+" trying YCM instead of supertab
+" if it is updated you need to recompile it 
+" https://github.com/ycm-core/YouCompleteMe:w
+" cd plugged/YouCompleteMe && python3 install.py --all
+Plug 'Valloric/YouCompleteMe'
 " should try deoplete
 "Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'

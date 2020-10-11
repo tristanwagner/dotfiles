@@ -16,8 +16,6 @@ alias -g M='| less'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
-# because typing is hard
-alias vim="vim"
 
 # fix for passing params to rake tasks
 alias rake='noglob rake'
@@ -53,7 +51,8 @@ alias ncv="npm cache verify"
 # Rails
 alias rk="rake"
 alias rc="NO_RENDERER=true bin/rails c"
-
+#use homebrew version instead of macos default version
+alias vim="/usr/local/bin/vi"
 # Config Files
 alias vimrc="vim ~/.vimrc"
 #reload vimrc
@@ -86,4 +85,7 @@ alias meteo='weather'
 alias ag='ag --hidden --path-to-ignore ~/.ignore'
 
 alias rm="rm -i"
-
+alias set-npm-auchan="set-npm-to \"auchan\""
+alias reset-npm="set-npm-to \"null\""
+alias auchan-npm-install="set-npm-auchan && npm install && reset-npm"
+alias auchan-proxy="http_proxy=http://proxy.fr.auchan.com:80 https_proxy=http://proxy.fr.auchan.com:80"
