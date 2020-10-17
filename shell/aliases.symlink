@@ -1,7 +1,7 @@
-alias sn="osascript ~/.dotfiles/SpotifyControl/SpotifyControl next"
-alias sp="osascript ~/.dotfiles/SpotifyControl/SpotifyControl prev"
+alias sn="osascript ~/dotfiles/SpotifyControl/SpotifyControl next"
+alias sp="osascript ~/dotfiles/SpotifyControl/SpotifyControl prev"
 # Now playing: Cher - Believe
-alias sb="osascript ~/.dotfiles/SpotifyControl/SpotifyControl start spotify:track:2goLsvvODILDzeeiT4dAoR"
+alias sb="osascript ~/dotfiles/SpotifyControl/SpotifyControl start spotify:track:2goLsvvODILDzeeiT4dAoR"
 
 # Safe delete
 #alias rm="trash"
@@ -22,6 +22,8 @@ alias rake='noglob rake'
 
 alias :w="echo this isn\'t vim 🌟"
 alias :q='exit'
+
+alias cl="clear"
 
 # git
 alias g='git'
@@ -52,9 +54,10 @@ alias ncv="npm cache verify"
 alias rk="rake"
 alias rc="NO_RENDERER=true bin/rails c"
 #use homebrew version instead of macos default version
-alias vim="/usr/local/bin/vi"
 # Config Files
+alias vim=/usr/local/bin/vi
 alias vimrc="vim ~/.vimrc"
+alias fix="git diff --name-only | uniq | xargs $EDITOR"
 #reload vimrc
 alias svimrc="vim +\"source ~/.vimrc\" +\":q\""
 alias vimplugins="vim ~/.dotfiles/vim/vim.symlink/plugin/plugins.vim"

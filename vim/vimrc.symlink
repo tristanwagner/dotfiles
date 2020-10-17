@@ -18,7 +18,7 @@ source ~/.vim/plugin/plugins.vim
 
 " Leader Mappings
 map <Space> <leader>
-map <Leader>w :update<CR>
+"map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
 " file content to hexdump
@@ -26,22 +26,72 @@ map <Leader>hex :%!xxd<CR>
 " reverse
 map <Leader>bin :%!xxd -r<CR>
 
+"cycle throught registers
+nnoremap <Leader>r :let @x=@" \| let @"=@0 \| let @0=@1 \| let @1=@x \| reg "01<CR>
 
 " go to file in new tab
 "nnoremap <Leader>o <C-W>gf<CR>
 " use Ycm Goto instead
 nnoremap <Leader>o :tab YcmCompleter GoTo<CR>
 
+" GoToDeclaration
+nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
+
+" GoToReferences
+nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
+
 " Nerdtree
 map <C-b> :NERDTreeToggle<CR>
 
 " CtrlP use FZF (faster!)
-nnoremap <C-p> :Files<Cr>
+nnoremap <C-f> <Esc><Esc>:Files!<Cr>
+inoremap <C-f> <Esc><Esc>:BLines!<Cr>
+nnoremap <C-g> <Esc><Esc>:BCommits!<Cr>
+" use bat for nice syntax hl in preview
+let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
+" make tab go to matching pair
+" this overrides ctrl-i which is actually useful ...
+"nnoremap <Tab> %
+
+" Visual mode pressing * searches for the current selection
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 " prettify json
-nnoremap <Leader>p :%!python -m json.tool<CR>
+nnoremap <Leader>pj :%!python -m json.tool<CR>
 "node version :)
 """ nnoremap <Leader>p :%!node <<< \"console.log(JSON.stringify($(cat), null, 2))\"<CR>
+
+" useful tabs keybinds
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+
+
+" move through windows with ctrl
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Disable highlights when pressing ENTER
+nnoremap <silent> <cr> :noh<cr>
+
+"Cope
+"Query :help cope if you are unsure what cope is. It's super useful!
+"When you search with Ack.vim or other quickfix windows, display your results in cope by doing: <leader>cc
+"To go to the next search result do: <leader>n
+"To go to the previous search results do: <leader>p
+"Cope mappings:
+map <leader>cc :botright cope<cr>
+map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+"close quickfix
+map <leader>cq :ccl<cr>
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
 
 " only issue with this is that
 " for example if you use
@@ -74,7 +124,7 @@ nnoremap <Leader>g :Git<CR>
 
 " use ag instead of ack ?
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --hidden --path-to-ignore ~/.ignore'
 endif
 
 cnoreabbrev ag Ack!
@@ -83,20 +133,31 @@ cnoreabbrev Ag Ack!
 cnoreabbrev AG Ack!
 cnoreabbrev Ack Ack!
 
+" When you press gv you Ack after the selected text
+vnoremap <silent> <leader>f :call VisualSelection('gv', '')<CR>
 " fuzzy search
-nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
+" nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
+nnoremap <Leader>f :Ack!<Space>""<left>
+
+" async search
+let g:ack_use_dispatch = 1
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 syntax enable
 
 autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
 
-let g:ackprg = 'ag --vimgrep --hidden --path-to-ignore ~/.ignore'
-
 " displays better title in gnome terminal tab :)
 set mouse=a                           " enable mouse
 set list                              " enable invisible chars
 set nocompatible
-set hidden                            " hidde buffers instead of closing them
+"set hidden                            " hidde buffers instead of closing them
 set smartindent
 set title
 set autoread                          " Auto reload changed files
@@ -104,8 +165,8 @@ set wildmenu                          " Tab autocomplete in command mode
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
 set clipboard=unnamed                 " Clipboard support (OSX)
 set laststatus=2                      " Show status line on startup
-set splitright                        " Open new splits to the right
-set splitbelow                        " Open new splits to the bottom
+set splitbelow splitright                        " Open new splits to the right
+"set splitbelow                        " Open new splits to the bottom
 "set lazyredraw                        " Reduce the redraw frequency, this one
 "fuck up the scroll
 set nolazyredraw                        " Reduce the redraw frequency
@@ -150,59 +211,68 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 " Colors & Formatting
 "-------------------------------------------------------------------------------
 
-" CPP compile & run
-autocmd filetype cpp nnoremap <F3> :w <bar> !g++ -std=c++14 -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
-autocmd filetype cpp nnoremap <F4> :w <bar> !"./%:r"<CR>
-" C compile & run
-autocmd filetype c nnoremap <F3> :w <bar> !gcc -Wshadow -Wall -o "%:r" "%" -O2<CR>
-autocmd filetype c nnoremap <F4> :w <bar> !"./%:r"<Left>
-autocmd filetype c nnoremap <F5> :w <bar> term"./%:r"<CR>
-" js run
-autocmd filetype javascript nnoremap <F4> :w <bar> !node "%"<CR>
+" CPP
+autocmd filetype cpp call SetCPPOptions()
+
+function! SetCPPOptions()
+  "execute
+  nnoremap <F3> :w <bar> !g++ -std=c++14 -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
+  nnoremap <F4> :w <bar> !"./%:r"<CR>
+endfunction
+
+" C
+autocmd filetype c call setCOptions()
+
+function! SetCOptions()
+  "execute
+  nnoremap <F3> :w <bar> !gcc -Wshadow -Wall -o "%:r" "%" -O2<CR>
+  nnoremap <F4> :w <bar> !"./%:r"<Left>
+  nnoremap <F5> :w <bar> term"./%:r"<CR>
+endfunction
+
+" js
+autocmd filetype javascript call SetJSOptions()
+
+function! SetJSOptions()
+  " Wrap in logging
+  nmap <leader>l yssfconsole.log<cr>
+  "execute
+  nnoremap <F4> :w <bar> !node "%"<CR>
+endfunction
+
+" ts
+autocmd filetype typescript call SetTSOptions()
+
+function! SetTSOptions()
+  " Wrap in logging
+  nmap <leader>l yssfconsole.log<cr>
+endfunction
+
+"python
+autocmd FileType python call SetPythonOptions()
+
+function! SetPythonOptions()
+  " Wrap in logging
+  nmap <leader>l yssfprint<cr>
+  "execute
+  nnoremap <F4> :w <bar> !python3 "%"<CR>
+endfunction
 
 "json fold
 "autocmd filetype json syntax on
 "autocmd filetype json set foldmethod=syntax
 
-
-" Terminal Function
-let g:term_buf = 0
-let g:term_win = 0
-function! TermToggle(height)
-    if win_gotoid(g:term_win)
-        hide
-    else
-        botright new
-        exec "resize " . a:height
-        try
-            exec "buffer " . g:term_buf
-        catch
-            call termopen($SHELL, {"detach": 0})
-            let g:term_buf = bufnr("")
-            set nonumber
-            set norelativenumber
-            set signcolumn=no
-        endtry
-        startinsert!
-        let g:term_win = win_getid()
-    endif
-endfunction
-" Toggle terminal on/off (neovim)
-nnoremap <A-t> :call TermToggle(12)<CR>
-inoremap <A-t> <Esc>:call TermToggle(12)<CR>
-tnoremap <A-t> <C-\><C-n>:call TermToggle(12)<CR>
+" Set filetype correctly for JSON-based lint config files
+au BufNewFile,BufRead .eslintrc set filetype=json
 
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
 
-" disable window resizing
-set noequalalways
-
 let g:solarized_termcolors=256
 set t_Co=256
+set termguicolors
 colorscheme molokai
-" colorscheme solarized
 set background=dark
 
 " Showcase comments in italics
@@ -211,6 +281,7 @@ highlight Comment cterm=italic gui=italic
 " Easy tab navigation
 nnoremap <S-Left> :tabprevious<CR>
 nnoremap <S-Right> :tabnext<CR>
+" Buffers navigation
 nnoremap <S-Up> :bn<CR>
 nnoremap <S-Down> :bp<CR>
 
@@ -237,11 +308,22 @@ let g:ale_fix_on_save = 0
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 
-map <Leader>l :ALEFix<CR>
+"map <Leader>l :ALEFix<CR>
+
+" Shortcuts for vim-test
+" Run test under cursor
+nmap <silent> <space>tu :w \| :TestNearest<CR>
+" Run current file (otherwise last file)
+nmap <silent> <space>tf :TestFile<CR>
+" Visit last test you ran
+nmap <silent> <space>tl :TestLast<CR>
+let g:test#preserve_screen = 1
 
 " Find/replace
 nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <C-r> :call VisualSelection('replace', '')<CR>
 
 let g:auto_save = 0  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
@@ -261,10 +343,10 @@ let g:airline_powerline_fonts = 1
 let NERDTreeShowHidden=1
 
 " Get off my lawn - helpful when learning Vim :)
-"nnoremap <Left> :echoe "Use h"<CR>
-"nnoremap <Right> :echoe "Use l"<CR>
-"nnoremap <Up> :echoe "Use k"<CR>
-"nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 "
 "-------------------------------------------------------------------------------
 " Neovim-specific configurations
@@ -281,11 +363,37 @@ if has('nvim')
 
   " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
   "nmap <BS> :<C-u>TmuxNavigateLeft<CR>
+  " Terminal Function
+  let g:term_buf = 0
+  let g:term_win = 0
+  function! TermToggle(height)
+      if win_gotoid(g:term_win)
+          hide
+      else
+          botright new
+          exec "resize " . a:height
+          try
+              exec "buffer " . g:term_buf
+          catch
+              call termopen($SHELL, {"detach": 0})
+              let g:term_buf = bufnr("")
+              set nonumber
+              set norelativenumber
+              set signcolumn=no
+          endtry
+          startinsert!
+          let g:term_win = win_getid()
+      endif
+  endfunction
+  " Toggle terminal on/off (neovim)
+  nnoremap <A-t> :call TermToggle(12)<CR>
+  inoremap <A-t> <Esc>:call TermToggle(12)<CR>
+  tnoremap <A-t> <C-\><C-n>:call TermToggle(12)<CR>
 endif
 
-nmap <Leader>= <Plug>YSsurround<CR><C-}>
+" Surround-vim addition to delete a function
+nmap <silent> dsf ds)db
 
-"
 " Convert slashes to backslashes for Windows.
 if has('win32')
   nmap ,cs :let @*=substitute(expand("%"), "/", "\\", "g")<CR>
@@ -326,3 +434,62 @@ nmap <leader>d <plug>(YCMHover)
 " remap diagnostic 
 let g:ycm_key_detailed_diagnostics = '<leader>D'
 let g:ycm_goto_buffer_command = 'new-or-existing-tab'
+
+" disable preview
+"set completeopt-=preview
+" use it as popup, doesnt work for me but would be cool
+"set completeopt+=popup
+
+" customize quickfix window
+function! s:CustomizeYcmQuickFixWindow()
+  " Set the window height to 5.
+  8wincmd _
+endfunction
+
+" call function on quickfix open
+autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
+" prevent window from closing automatically
+autocmd User YcmQuickFixOpened autocmd! ycmquickfix WinLeave
+
+" enable additionnal languages
+source /Users/tristanwagner/dotfiles/vim/vim.symlink/ycm-ls/lsp-examples/vimrc.generated
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
+endfunction
+
+
+" Move a line of text using ALT+[jk]
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`zd
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap Ï <M-j>
+  nmap È <M-k>
+  vmap Ï <M-j>
+  vmap È <M-k>
+endif
+
+" Shortcuts for frequently accessed files
+command! Vimrc e ~/.vimrc
+command! Zshrc e ~/.zshrc
+command! Gitconfig e ~/.gitconfig

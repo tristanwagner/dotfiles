@@ -3,38 +3,27 @@ call plug#begin('~/.vim/plugged')
 " Addons
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
-"Plug 'yegappan/mru'
 Plug 'alvan/vim-closetag'
 Plug 'vim-scripts/vim-auto-save'
-"Plug 'airblade/vim-gitgutter'
-"Plug 'ervandew/supertab'
-" trying YCM instead of supertab
 " if it is updated you need to recompile it 
 " https://github.com/ycm-core/YouCompleteMe:w
 " cd plugged/YouCompleteMe && python3 install.py --all
 Plug 'Valloric/YouCompleteMe'
-" should try deoplete
-"Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'
-"Plug 'tpope/vim-bundler'
-"Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 
 " surrounding ops, like putting ' arround a word, or html tag etc..
 Plug 'tpope/vim-surround'
 
 Plug 'tmhedberg/matchit'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'vim-scripts/tComment'
-Plug 'jremmen/vim-ripgrep'
+"Plug 'kana/vim-textobj-user'
+"Plug 'nelstrom/vim-textobj-rubyblock'
+"Plug 'ecomba/vim-ruby-refactoring'
+"Plug 'vim-scripts/tComment'
+Plug 'tpope/vim-commentary'
 Plug 'blarghmatey/split-expander'
 Plug 'farmergreg/vim-lastplace'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-
-"automatic resize window
-Plug 'roman/golden-ratio'
 
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
@@ -60,6 +49,7 @@ Plug 'mxw/vim-jsx'
 "Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 "Plug 'posva/vim-vue'
+Plug 'storyn26383/vim-vue'
 
 " Syntax errors
 Plug 'vim-syntastic/syntastic'
@@ -69,9 +59,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/goyo.vim'
 
 " Git support
-"Plug 'tpope/vim-dispatch'
-"Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-fugitive', { 'commit': '444ba9fda5d05aa14c7e8664fa4a66a59c62a550' }
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
@@ -81,10 +70,7 @@ Plug 'icymind/NeoSolarized'
 Plug 'reasonml-editor/vim-reason-plus'
 
 " Testing
-"Plug 'janko-m/vim-test'
-
-" Gist
-"Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
+Plug 'janko-m/vim-test'
 
 "marks
 Plug 'kshenoy/vim-signature'
@@ -100,7 +86,6 @@ Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
 
 Plug 'rhysd/vim-clang-format'
-
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 call plug#end()

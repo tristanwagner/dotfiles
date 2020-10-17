@@ -70,7 +70,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-plugins+=(history-substring-search vi-mode)
+plugins+=(history-substring-search vi-mode zsh-autosuggestions)
 #plugins+=(zsh-nvm history-substring-search vi-mode)
 
 # User configuration
@@ -91,6 +91,8 @@ export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# make fzf use ag instead of default command
+export FZF_DEFAULT_COMMAND='ag --path-to-ignore ~/.ignore --hidden -f -g ""'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -315,11 +317,23 @@ fi
 }
 
 # kills process running on specific port
+# not tested on macos
 # TODO: handle if no process to kill
 function killp () {
   kill $(sudo lsof -t -i:$1)
 }
 
+# display process listening on port
+# macos
+function listening() {
+    if [ $# -eq 0 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P
+    elif [ $# -eq 1 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+    else
+        echo "Usage: listening [pattern]"
+    fi
+}
 # vf - fuzzy open with vim from anywhere
 # ex: vf word1 word2 ... (even part of a file name)
 # zsh autoload function
@@ -418,17 +432,36 @@ function stopwatch () {
   done
 }
 
-#disable ipv6 mac
-function disable-ipv6() {
-  #sudo networksetup -setv6off Ethernet
-  sudo networksetup -setv6off Wi-Fi
-}
+# if not linux
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+    export EDITOR="mvim -v"
 
-#enable ipv6 mac
-function enable-ipv6() {
-  #sudo networksetup -setv6automatic Ethernet
-  sudo networksetup -setv6automatic Wi-Fi
-}
+    function vf() {
+      local files
+
+      files=(${(f)"$(mdfind $@ | grep -vE '~$' | fzf -0 -1 -m)"})
+
+      if [[ -n $files ]]
+      then
+         vim -- $files
+         print -l $files[1]
+      fi
+    }
+
+    #disable ipv6 mac
+    function disable-ipv6() {
+      #sudo networksetup -setv6off Ethernet
+      sudo networksetup -setv6off Wi-Fi
+      networksetup -setv6off Wi-Fi
+    }
+
+    #enable ipv6 mac
+    function enable-ipv6() {
+      #sudo networksetup -setv6automatic Ethernet
+      sudo networksetup -setv6automatic Wi-Fi
+    }
+fi
+
 
 # prettify json with node
 #cat file.json | node <<< "var o = $(cat); console.log(JSON.stringify(o, null, 4));"
