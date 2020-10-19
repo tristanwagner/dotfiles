@@ -1,0 +1,89 @@
+{
+    "configurations": {
+        "C - Launch": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "MIMode": "gdb",
+                "cwd": "${cwd}",
+                "debugOptions": [],
+                "externalConsole": true,
+                "logging": {
+                    "engineLogging": true
+                },
+                "name": "Cpp: Launch current file",
+                "program": "${fileDirname}/${fileBasenameNoExtension}",
+                "request": "launch",
+                "stopAtEntry": true,
+                "stopOnEntry": true,
+                "type": "cppdbg"
+            }
+        },
+        "Chrome - launch": {
+            "adapter": "chrome",
+            "configuration": {
+                "request": "launch",
+                "url": "http://localhost:1234/",
+                "webRoot": "${workspaceRoot}"
+            }
+        },
+        "Java - Launch": {
+            "adapter": "vscode-java",
+            "configuration": {
+                "args": "hello world!",
+                "classPaths": [
+                    "${workspaceRoot}/target/classes"
+                ],
+                "console": "integratedTerminal",
+                "mainClass": "com.vimspector.test.TestApplication",
+                "name": "Java: Launch current file",
+                "request": "launch",
+                "sourcePaths": [
+                    "${workspaceRoot}/src/main/java"
+                ],
+                "stopOnEntry": true
+            }
+        },
+        "Node - launch": {
+            "adapter": "vscode-node",
+            "configuration": {
+                "console": "integratedTerminal",
+                "cwd": "${workspaceRoot}",
+                "program": "${file}",
+                "protocol": "auto",
+                "request": "launch",
+                "stopOnEntry": true
+            }
+        },
+        "Perl - Launch": {
+            "adapter": "vscode-perl-debug",
+            "configuration": {
+                "console": "externalTerminal",
+                "cwd": "${cwd}",
+                "debugOptions": [],
+                "exec": "/usr/bin/env perl",
+                "execArgs": [],
+                "name": "Perl: Launch current file",
+                "program": "${file}",
+                "request": "launch",
+                "sessions": "single",
+                "stopAtEntry": true,
+                "stopOnEntry": true,
+                "type": "perl"
+            }
+        },
+        "Python - Launch": {
+            "adapter": "vscode-python",
+            "configuration": {
+                "console": "externalTerminal",
+                "cwd": "${cwd}",
+                "debugOptions": [],
+                "name": "Python: Launch current file",
+                "program": "${file}",
+                "request": "launch",
+                "stopAtEntry": true,
+                "stopOnEntry": true,
+                "type": "python"
+            }
+        }
+    }
+}

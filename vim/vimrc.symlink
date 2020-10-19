@@ -48,7 +48,8 @@ nnoremap <C-f> <Esc><Esc>:Files!<Cr>
 inoremap <C-f> <Esc><Esc>:BLines!<Cr>
 nnoremap <C-g> <Esc><Esc>:BCommits!<Cr>
 " use bat for nice syntax hl in preview
-let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+" not needed anymore it will be highlighted if installed
+" let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 " make tab go to matching pair
 " this overrides ctrl-i which is actually useful ...
@@ -57,7 +58,7 @@ let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=header,grid --line-
 " Visual mode pressing * searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 " prettify json
-nnoremap <Leader>pj :%!python -m json.tool<CR>
+nnoremap <Leader>js :%!python -m json.tool<CR>
 "node version :)
 """ nnoremap <Leader>p :%!node <<< \"console.log(JSON.stringify($(cat), null, 2))\"<CR>
 
@@ -216,8 +217,8 @@ autocmd filetype cpp call SetCPPOptions()
 
 function! SetCPPOptions()
   "execute
-  nnoremap <F3> :w <bar> !g++ -std=c++14 -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
-  nnoremap <F4> :w <bar> !"./%:r"<CR>
+  nnoremap <F1> :w <bar> !g++ -std=c++14 -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
+  nnoremap <F2> :w <bar> !"./%:r"<CR>
 endfunction
 
 " C
@@ -225,27 +226,76 @@ autocmd filetype c call setCOptions()
 
 function! SetCOptions()
   "execute
-  nnoremap <F3> :w <bar> !gcc -Wshadow -Wall -o "%:r" "%" -O2<CR>
-  nnoremap <F4> :w <bar> !"./%:r"<Left>
-  nnoremap <F5> :w <bar> term"./%:r"<CR>
+  nnoremap <F1> :w <bar> !gcc -Wshadow -Wall -o "%:r" "%" -O2<CR>
+  nnoremap <F2> :w <bar> !"./%:r"<Left>
+  "nnoremap <F5> :w <bar> term"./%:r"<CR>
 endfunction
 
 " js
 autocmd filetype javascript call SetJSOptions()
 
 function! SetJSOptions()
-  " Wrap in logging
-  nmap <leader>l yssfconsole.log<cr>
   "execute
-  nnoremap <F4> :w <bar> !node "%"<CR>
+  nnoremap <F2> :w <bar> !node "%"<CR>
+  "snippets
+  call JSSnippets()
 endfunction
 
+function! JSSnippets()
+  " Wrap in logging
+  nmap <leader>l yssfconsole.log<cr>
+  "snippets
+  nnoremap ,for o<Esc>:-1read $HOME/.vim/snippets/js/fori.js<CR>f.i
+  nnoremap ,fin o<Esc>:-1read $HOME/.vim/snippets/js/forin.js<CR>f)i
+  nnoremap ,fof o<Esc>:-1read $HOME/.vim/snippets/js/forof.js<CR>f)i
+  nnoremap ,whi o<Esc>:-1read $HOME/.vim/snippets/js/while.js<CR>f)i
+  nnoremap ,swi o<Esc>:-1read $HOME/.vim/snippets/js/switch.js<CR>f)i
+  nnoremap ,nfn o<Esc>:-1read $HOME/.vim/snippets/js/nfn.js<CR>f=hi
+  nnoremap ,clg o<Esc>:-1read $HOME/.vim/snippets/js/consolelog.js<CR>f)i
+  nnoremap ,clo o<Esc>:-1read $HOME/.vim/snippets/js/clo.js<CR>:s/<++>//g<left><left>
+  nnoremap ,cti o<Esc>:-1read $HOME/.vim/snippets/js/cti.js<CR>f'a
+  nnoremap ,cte o<Esc>:-1read $HOME/.vim/snippets/js/cte.js<CR>f'a
+  nnoremap ,ctm ddo<Esc>:-1read $HOME/.vim/snippets/js/ctm.js<CR>jVp:%s/<++>//g<left><left>
+  nnoremap ,prom o<Esc>:-1read $HOME/.vim/snippets/js/prom.js<CR>ji<Tab>
+  nnoremap ,sto o<Esc>:-1read $HOME/.vim/snippets/js/sto.js<CR>ji<Tab>
+  nnoremap ,sti o<Esc>:-1read $HOME/.vim/snippets/js/sti.js<CR>ji<Tab>
+  nnoremap ,anfn i<CR><Esc>:-1read $HOME/.vim/snippets/js/anfn.js<CR>0i<BS><Esc>JF)i
+  nnoremap ,imp o<Esc>:-1read $HOME/.vim/snippets/js/imp.js<CR>:s/<++>//g<left><left>
+  nnoremap ,imn o<Esc>:-1read $HOME/.vim/snippets/js/imn.js<CR>f'a
+  nnoremap ,imd o<Esc>:-1read $HOME/.vim/snippets/js/imd.js<CR>f}i
+  nnoremap ,mde o<Esc>:-1read $HOME/.vim/snippets/js/mde.js<CR>f}i
+  nnoremap ,cla :-1read $HOME/.vim/snippets/js/class.js<CR>:%s/<++>//g<left><left>
+endfunction
 " ts
 autocmd filetype typescript call SetTSOptions()
 
 function! SetTSOptions()
-  " Wrap in logging
-  nmap <leader>l yssfconsole.log<cr>
+  "snippets
+  call JSSnippets()
+endfunction
+
+autocmd filetype vue call SetVueOptions()
+
+function! SetVueOptions()
+  call JSSnippets()
+endfunction
+
+autocmd filetype html call SetHtmlOptions()
+
+function! SetHtmlOptions()
+  call JSSnippets()
+endfunction
+
+autocmd filetype jsx call SetJSXOptions()
+
+function! SetJSXOptions()
+  call JSSnippets()
+endfunction
+
+autocmd filetype tsx call SetTSXOptions()
+
+function! SetTSXOptions()
+  call JSSnippets()
 endfunction
 
 "python
@@ -255,7 +305,7 @@ function! SetPythonOptions()
   " Wrap in logging
   nmap <leader>l yssfprint<cr>
   "execute
-  nnoremap <F4> :w <bar> !python3 "%"<CR>
+  nnoremap <F2> :w <bar> !python3 "%"<CR>
 endfunction
 
 "json fold
@@ -263,7 +313,7 @@ endfunction
 "autocmd filetype json set foldmethod=syntax
 
 " Set filetype correctly for JSON-based lint config files
-au BufNewFile,BufRead .eslintrc set filetype=json
+au BufNewFile,BufRead .eslintrc,.prettierrc,.babelrc set filetype=json
 
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
@@ -312,12 +362,21 @@ let g:ale_linters_explicit = 1
 
 " Shortcuts for vim-test
 " Run test under cursor
-nmap <silent> <space>tu :w \| :TestNearest<CR>
+nmap <silent> <leader>tu :w \| :TestNearest<CR>
 " Run current file (otherwise last file)
-nmap <silent> <space>tf :TestFile<CR>
+nmap <silent> <leader>tf :TestFile<CR>
 " Visit last test you ran
-nmap <silent> <space>tl :TestLast<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+" run all test
+nmap <silent> <leader>ts :TestSuite<CR>
+" visit last edited test file
+nmap <silent> <leader>tv :TestVisit<CR>
 let g:test#preserve_screen = 1
+" make test commands execute using dispatch.vim
+let test#strategy = "vimterminal"
+" specify config file
+"let g:test#javascript#jest#executable = 'jest --config ./config/jest/jest.conf.js'
+let g:test#javascript#jest#options = '--config ./config/jest/jest.conf.js'
 
 " Find/replace
 nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
@@ -493,3 +552,9 @@ endif
 command! Vimrc e ~/.vimrc
 command! Zshrc e ~/.zshrc
 command! Gitconfig e ~/.gitconfig
+
+"debugger
+let g:vimspector_enable_mappings = 'HUMAN'
+
+"Snippets
+nnoremap ,html :-1read $HOME/.vim/snippets/html/skeleton.html<CR>7jf>a

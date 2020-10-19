@@ -88,4 +88,6 @@ Plug 'dhruvasagar/vim-prosession'
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+" debugger
+Plug 'puremourning/vimspector'
 call plug#end()

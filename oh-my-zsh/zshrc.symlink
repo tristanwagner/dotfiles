@@ -488,3 +488,8 @@ source $(brew --prefix nvm)/nvm.sh
 # add utils to path
 export PATH=$PATH:$HOME/bin
 [ -f "/Users/tristanwagner/.ghcup/env" ] && source "/Users/tristanwagner/.ghcup/env" # ghcup-env
+
+# define bat theme
+export BAT_THEME="Monokai Extended"
+# allow dotfiles while tabbing
+setopt globdots
