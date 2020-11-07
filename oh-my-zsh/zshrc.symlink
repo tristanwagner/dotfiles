@@ -64,13 +64,19 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# auto nvm use when .nvmrc
+export NVM_AUTO_USE=true
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-plugins+=(history-substring-search vi-mode zsh-autosuggestions)
+plugins+=(history-substring-search vi-mode)
+# nice plugin but takes a while to load
+plugins+=(zsh-autosuggestions)
+plugins+=(zsh-nvm)
 #plugins+=(zsh-nvm history-substring-search vi-mode)
 
 # User configuration
@@ -87,7 +93,8 @@ plugins+=(history-substring-search vi-mode zsh-autosuggestions)
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='vim'
+export EDITOR='mvim -v'
+export VISUAL='mvim -v'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -334,6 +341,15 @@ function listening() {
         echo "Usage: listening [pattern]"
     fi
 }
+
+# with fzf you can do something like vim **<TAB> or cd **<TAB> to enable fzf
+# CTRL-T is also available to select dir or files
+
+# search files and open with vim
+function vims() {
+  vim $(fzf --preview 'bat --color=always --style=numbers {}')
+}
+
 # vf - fuzzy open with vim from anywhere
 # ex: vf word1 word2 ... (even part of a file name)
 # zsh autoload function
@@ -434,7 +450,7 @@ function stopwatch () {
 
 # if not linux
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
-    export EDITOR="mvim -v"
+    alias vim=/usr/local/bin/vi
 
     function vf() {
       local files
@@ -462,6 +478,21 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     }
 fi
 
+function kt-rssa() {
+  kitty --session ~/dotfiles/kitty/rssa.session.kitty
+}
+
+function kt-transco() {
+  kitty --session ~/dotfiles/kitty/transco.session.kitty
+}
+
+function kt-starterkit() {
+  kitty --session ~/dotfiles/kitty/starterkit.session.kitty
+}
+
+function kt-360() {
+  kitty --session ~/dotfiles/kitty/v360.session.kitty
+}
 
 # prettify json with node
 #cat file.json | node <<< "var o = $(cat); console.log(JSON.stringify(o, null, 4));"
@@ -477,9 +508,12 @@ source ~/.oh-my-zsh/custom/plugins/forgit.plugin.zsh
 #export PATH=/home/tristan/.cargo/bin:$PATH
 
 #export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
+export NVM_LAZY_LOAD=true
+# export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim')
+
+#export NVM_DIR="$HOME/.nvm"
+#source $(brew --prefix nvm)/nvm.sh
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -490,6 +524,15 @@ export PATH=$PATH:$HOME/bin
 [ -f "/Users/tristanwagner/.ghcup/env" ] && source "/Users/tristanwagner/.ghcup/env" # ghcup-env
 
 # define bat theme
-export BAT_THEME="Monokai Extended"
+export BAT_THEME="gruvbox"
 # allow dotfiles while tabbing
 setopt globdots
+
+# useful zsh keybinds
+# Ctrl + U – delete from the cursor to the start of the line.
+# Ctrl + K – delete from the cursor to the end of the line.
+# Ctrl + W – delete from the cursor to the start of the preceding word.
+# Alt + D – delete from the cursor to the end of the next word.
+# Ctrl + L – clear the terminal.
+# debug zsh loading time
+# zmodload zsh/zprof

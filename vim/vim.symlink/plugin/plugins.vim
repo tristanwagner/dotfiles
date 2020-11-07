@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'morhetz/gruvbox'
 " Addons
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
@@ -15,8 +16,21 @@ Plug 'tpope/vim-endwise'
 " surrounding ops, like putting ' arround a word, or html tag etc..
 Plug 'tpope/vim-surround'
 
+" generate html from notation html > body > div
+Plug 'rstacruz/sparkup'
+
+" gr motion
+Plug 'vim-scripts/ReplaceWithRegister'
+
+Plug 'christoomey/vim-sort-motion'
+
 Plug 'tmhedberg/matchit'
-"Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-function'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-indent'
 "Plug 'nelstrom/vim-textobj-rubyblock'
 "Plug 'ecomba/vim-ruby-refactoring'
 "Plug 'vim-scripts/tComment'
@@ -27,7 +41,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
-
+Plug 'vim-airline/vim-airline-themes'
 " Tmux integration
 "Plug 'benmills/vimux'
 "Plug 'christoomey/vim-tmux-navigator'
@@ -48,11 +62,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 "Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
-"Plug 'posva/vim-vue'
 Plug 'storyn26383/vim-vue'
 
 " Syntax errors
-Plug 'vim-syntastic/syntastic'
 Plug 'ntpeters/vim-better-whitespace'
 
 " Markdown support

@@ -1,0 +1,22 @@
+new_tab back
+title back
+cd ~/auchan/TRANSCO/back
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab front
+title front
+cd ~/auchan/TRANSCO/front
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab server
+layout grid
+cd ~/auchan/TRANSCO/back
+launch zsh -c 'nvm use default && npm run back:dev'
+cd ~/auchan/TRANSCO/back
+launch zsh -c 'nvm use default && npm run database:up'
+cd ~/auchan/TRANSCO/front
+launch zsh -c 'nvm use default && npm run serve'
+cd ~/auchan/TRANSCO/test
+launch zsh

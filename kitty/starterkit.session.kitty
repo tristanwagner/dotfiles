@@ -1,0 +1,32 @@
+new_tab back
+title back
+cd ~/auchan/starterkit/back
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab front
+title front
+cd ~/auchan/starterkit/front
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab e2e
+title e2e
+cd ~/auchan/starterkit/e2e
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab eslint-conf
+title eslint-conf
+cd ~/auchan/starterkit/eslint-config
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab server
+layout grid
+cd ~/auchan/starterkit/back
+launch zsh -c "npm run build:routes:back && npm run doc:back && npm run dev:back"
+cd ~/auchan/starterkit/front
+launch zsh -c "npm run serve"
+cd ~/auchan/starterkit/e2e
+launch zsh

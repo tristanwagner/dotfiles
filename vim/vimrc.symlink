@@ -3,18 +3,57 @@
 "
 " Vim settings for https://github.com/tristanwagner
 "
-
+" exemple de regex pour matcher interface (ITestInterface) {
+" ou interface (ITest) extends {
+"
+" \(interface \)\@<=\(\w*\)\(\s\)\@=
+" \@<= : match apres le token
+" \@=  : no match apres le token et sur le token
+" 
+" copier tous les resultats d'une regex dans une variable t
+" 
+" :let t=[] | %s/\(interface \)\@<=\(\w*\)\(\s\)\@=/\=add(t,submatch(2))[len(t)-1]/g
+"
+" dans la partie replace on va executer une commande \=add() pour ajouter le
+" match a t
+" submatch(2) car ce qui nous interesse est le 2eme objet matché (ce quil y a
+" entre 'interface ' et ' {'
+" ensuite on pointe sur l'index de t [len(t) - 1] pour remplacer par le match
+" que l'on vient de retirer comme ça le fichier ne bouge pas
+" maintenant pour coller le contenu de la variable t on peut faire
+" 
+" "=tp
+" ou encore :pu=t
+" ou encore :pu=join(t, ', ')
+"
+" autre exemple
+"
+" :let t=[] | %s/\<case\s\+\(\w\+\):\zs/\=add(t,submatch(1))[1:0]/g
+"
+"
+" :g and :v permets de selectionner des lignes, g pour inclure v pour exclure
+" la commande a appliquer peut etre nimporte quoi.. par exemple 
+"
+" :g/-/norm @a pour appliquer la macro a aux lignes contenant -
+"
+" ou
+"
+" :v/-/s/word/newword pour remplacer word par newword sur toutes les lignes
+" qui ne contiennent pas -
+" 
+" :g/include/command
+"
+" :v/exclude/command
+"
+" command peut etre t0 ou t$ pour copier ces lignes la ou est le curseur
+"
 " Settings in this file may depend on plugins, so let's install them first.
 " Not to be confused with the contents of ~/.vim/plugin/* which are
-" configuration options for each plugin and automatically loaded by Vim.
+" configuration options for each plugin and automatically loaded by Vim
 
 source ~/.vim/plugin/plugins.vim
 
-" check these 2 plugins
-"
-" https://github.com/carlitux/deoplete-ternjs
-"
-" https://github.com/skwp/greplace.vim
+autocmd!
 
 " Leader Mappings
 map <Space> <leader>
@@ -28,17 +67,6 @@ map <Leader>bin :%!xxd -r<CR>
 
 "cycle throught registers
 nnoremap <Leader>r :let @x=@" \| let @"=@0 \| let @0=@1 \| let @1=@x \| reg "01<CR>
-
-" go to file in new tab
-"nnoremap <Leader>o <C-W>gf<CR>
-" use Ycm Goto instead
-nnoremap <Leader>o :tab YcmCompleter GoTo<CR>
-
-" GoToDeclaration
-nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
-
-" GoToReferences
-nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
 
 " Nerdtree
 map <C-b> :NERDTreeToggle<CR>
@@ -93,6 +121,10 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>cq :ccl<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
+" to apply a command to all files in quicklist we can do
+" :cfdo or :cdo
+" if it modifies the file we can to :cdo <stuff> | update
+" | update allow to save the file after the modification
 
 " only issue with this is that
 " for example if you use
@@ -140,6 +172,9 @@ vnoremap <silent> <leader>f :call VisualSelection('gv', '')<CR>
 " nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
 nnoremap <Leader>f :Ack!<Space>""<left>
 
+" grab between
+" nnoremap <leader>gb :let t=[] | %s/\(<+b-start+>\)\@<=\(<+pattern+>\)\(<+b-end+>\)\@=/\=add(t,submatch(2))[len(t)-1]/g
+
 " async search
 let g:ack_use_dispatch = 1
 
@@ -152,13 +187,26 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 syntax enable
 
-autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
+"-------------------------------------------------------------------------------
+" Colors & Formatting
+"-------------------------------------------------------------------------------
+
+" Colorscheme
+set termguicolors
+autocmd vimenter * colorscheme gruvbox
+autocmd vimenter * AirlineTheme gruvbox
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_invert_tabline = 0
+" stopped using molokai because for some reason
+" it started to load in about 6secs..
+"autocmd vimenter * colorscheme molokai
+set background=dark
 
 " displays better title in gnome terminal tab :)
 set mouse=a                           " enable mouse
 set list                              " enable invisible chars
 set nocompatible
-"set hidden                            " hidde buffers instead of closing them
+set hidden                            " hidde buffers instead of closing them
 set smartindent
 set title
 set autoread                          " Auto reload changed files
@@ -182,7 +230,7 @@ set history=500
 set hlsearch                          " Highlight search results
 set ignorecase smartcase              " Search queries intelligently set case
 set incsearch                         " Show search results as you type
-set timeoutlen=1000 "ttimeoutlen=0     " Remove timeout when hitting escape
+set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show size of visual selection
 
 set pastetoggle=<F2>                  " Paste mode is cool if you paste a big chunk of text
@@ -208,9 +256,15 @@ set number            " Enable line numbers
 set scrolloff=5       " Leave 5 lines of buffer when scrolling
 set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 
+" kitty issue
+let &t_ut=''
+
 "-------------------------------------------------------------------------------
-" Colors & Formatting
+" Specific file types and snippets
 "-------------------------------------------------------------------------------
+
+" turn off syntax if file is big
+autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
 
 " CPP
 autocmd filetype cpp call SetCPPOptions()
@@ -251,7 +305,7 @@ function! JSSnippets()
   nnoremap ,whi o<Esc>:-1read $HOME/.vim/snippets/js/while.js<CR>f)i
   nnoremap ,swi o<Esc>:-1read $HOME/.vim/snippets/js/switch.js<CR>f)i
   nnoremap ,nfn o<Esc>:-1read $HOME/.vim/snippets/js/nfn.js<CR>f=hi
-  nnoremap ,clg o<Esc>:-1read $HOME/.vim/snippets/js/consolelog.js<CR>f)i
+  nnoremap ,clg o<Esc>:-1read $HOME/.vim/snippets/js/clg.js<CR>f)i
   nnoremap ,clo o<Esc>:-1read $HOME/.vim/snippets/js/clo.js<CR>:s/<++>//g<left><left>
   nnoremap ,cti o<Esc>:-1read $HOME/.vim/snippets/js/cti.js<CR>f'a
   nnoremap ,cte o<Esc>:-1read $HOME/.vim/snippets/js/cte.js<CR>f'a
@@ -278,6 +332,7 @@ autocmd filetype vue call SetVueOptions()
 
 function! SetVueOptions()
   call JSSnippets()
+  let g:vue_pre_processors = 'detect_on_enter'
 endfunction
 
 autocmd filetype html call SetHtmlOptions()
@@ -308,6 +363,9 @@ function! SetPythonOptions()
   nnoremap <F2> :w <bar> !python3 "%"<CR>
 endfunction
 
+" html skeleton
+nnoremap ,html :-1read $HOME/.vim/snippets/html/skeleton.html<CR>7jf>a
+
 "json fold
 "autocmd filetype json syntax on
 "autocmd filetype json set foldmethod=syntax
@@ -318,12 +376,6 @@ au BufNewFile,BufRead .eslintrc,.prettierrc,.babelrc set filetype=json
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
-
-let g:solarized_termcolors=256
-set t_Co=256
-set termguicolors
-colorscheme molokai
-set background=dark
 
 " Showcase comments in italics
 highlight Comment cterm=italic gui=italic
@@ -341,16 +393,37 @@ nnoremap U :redo<CR>
 " yank and keep cursor at end of yank
 vmap y y']
 
+"-------------------------------------------------------------------------------
 " ALE
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
-let g:ale_fixers = {
-      \'javascript': ['eslint'],
+"-------------------------------------------------------------------------------
+let g:ale_linter_aliases = {
+      \'vue': ['vue', 'javascript'],
+      \'jsx': ['css', 'javascript'],
       \}
 
-" very much needed, syntax checking for python is meh
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:ale_linters = {
+      \'javascript': ['eslint'],
+      \'typescript': ['eslint'],
+      \'vue': ['eslint', 'vls'],
+      \'jsx': ['eslint'],
+      \}
+
+let g:ale_fixers = {
+      \'javascript': ['eslint'],
+      \'typescript': ['eslint'],
+      \'vue': ['eslint'],
+      \'jsx': ['eslint'],
+      \}
+" Do not lint or fix minified files.
+let g:ale_pattern_options = {
+      \'\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+      \'\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+      \}
+
+" If you configure g:ale_pattern_options outside of vimrc, you need this.
+let g:ale_pattern_options_enabled = 1
+
+let g:ale_lint_on_text_changed = 'never'
 
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 0
@@ -379,10 +452,10 @@ let test#strategy = "vimterminal"
 let g:test#javascript#jest#options = '--config ./config/jest/jest.conf.js'
 
 " Find/replace
-nnoremap <C-r> :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
+nnoremap <leader>r :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
 " When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <C-r> :call VisualSelection('replace', '')<CR>
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 let g:auto_save = 0  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
@@ -480,6 +553,21 @@ function! ExecuteMacroOverVisualRange()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
+" a function to call !s from string
+function SearchString(textobject)
+  execute "normal yi" . a:textobject
+  execute ":silent !s ". getreg('"') 
+  execute ":redraw!"
+endfunction
+
+nnoremap <leader>si' :call SearchString("'")<CR>
+nnoremap <leader>si" :call SearchString('"')<CR>
+nnoremap <leader>sl :call SearchString('l')<CR>
+
+"-------------------------------------------------------------------------------
+" YCM
+"-------------------------------------------------------------------------------
+
 " Close preview window
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -489,6 +577,17 @@ let g:ycm_auto_hover = ''
 
 " use leader d to display doc
 nmap <leader>d <plug>(YCMHover)
+
+" go to file in new tab
+"nnoremap <Leader>o <C-W>gf<CR>
+" use Ycm Goto instead
+nnoremap <Leader>o :tab YcmCompleter GoTo<CR>
+
+" GoToDeclaration
+nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
+
+" GoToReferences
+nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
 
 " remap diagnostic 
 let g:ycm_key_detailed_diagnostics = '<leader>D'
@@ -556,5 +655,177 @@ command! Gitconfig e ~/.gitconfig
 "debugger
 let g:vimspector_enable_mappings = 'HUMAN'
 
-"Snippets
-nnoremap ,html :-1read $HOME/.vim/snippets/html/skeleton.html<CR>7jf>a
+" show hidden files
+let NERDTreeShowHidden=1
+
+" Get off my lawn - helpful when learning Vim :)
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+"
+"-------------------------------------------------------------------------------
+" Neovim-specific configurations
+"-------------------------------------------------------------------------------
+
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  set termguicolors
+  "colorscheme NeoSolarized
+  set background=dark
+
+  " Fix vim-tmux-navigator <C-h> https://git.io/viGRU
+  "nmap <BS> <C-W>h
+
+  " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
+  "nmap <BS> :<C-u>TmuxNavigateLeft<CR>
+  " Terminal Function
+  let g:term_buf = 0
+  let g:term_win = 0
+  function! TermToggle(height)
+      if win_gotoid(g:term_win)
+          hide
+      else
+          botright new
+          exec "resize " . a:height
+          try
+              exec "buffer " . g:term_buf
+          catch
+              call termopen($SHELL, {"detach": 0})
+              let g:term_buf = bufnr("")
+              set nonumber
+              set norelativenumber
+              set signcolumn=no
+          endtry
+          startinsert!
+          let g:term_win = win_getid()
+      endif
+  endfunction
+  " Toggle terminal on/off (neovim)
+  nnoremap <A-t> :call TermToggle(12)<CR>
+  inoremap <A-t> <Esc>:call TermToggle(12)<CR>
+  tnoremap <A-t> <C-\><C-n>:call TermToggle(12)<CR>
+endif
+
+" Surround-vim addition to delete a function
+nmap <silent> dsf ds)db
+
+" Convert slashes to backslashes for Windows.
+if has('win32')
+  nmap ,cs :let @*=substitute(expand("%"), "/", "\\", "g")<CR>
+  nmap ,cl :let @*=substitute(expand("%:p"), "/", "\\", "g")<CR>
+
+  " This will copy the path in 8.3 short format, for DOS and Windows 9x
+  nmap ,c8 :let @*=substitute(expand("%:p:8"), "/", "\\", "g")<CR>
+else
+  nmap ,cs :let @+=expand("%:t")<CR>
+  nmap ,cps :let @+=expand("%")<CR>
+  nmap ,cpl :let @+=expand("%:p")<CR>
+endif
+
+" file type messages is for highlights when checking logs like in /var/log
+nnoremap <Leader>m :set filetype=messages<CR>
+
+" Execute a macro over a visual range
+" would be the equivalent to
+" select visual range and type
+" :'<,'>normal @<macro letter>
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
+"-------------------------------------------------------------------------------
+" YCM
+"-------------------------------------------------------------------------------
+
+" Close preview window
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" disable auto documentation on over
+let g:ycm_auto_hover = ''
+
+" use leader d to display doc
+nmap <leader>d <plug>(YCMHover)
+
+" go to file in new tab
+"nnoremap <Leader>o <C-W>gf<CR>
+" use Ycm Goto instead
+nnoremap <Leader>o :tab YcmCompleter GoTo<CR>
+
+" GoToDeclaration
+nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
+
+" GoToReferences
+nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
+
+" remap diagnostic 
+let g:ycm_key_detailed_diagnostics = '<leader>D'
+let g:ycm_goto_buffer_command = 'new-or-existing-tab'
+
+" disable preview
+"set completeopt-=preview
+" use it as popup, doesnt work for me but would be cool
+"set completeopt+=popup
+
+" customize quickfix window
+function! s:CustomizeYcmQuickFixWindow()
+  " Set the window height to 5.
+  8wincmd _
+endfunction
+
+" call function on quickfix open
+autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
+" prevent window from closing automatically
+autocmd User YcmQuickFixOpened autocmd! ycmquickfix WinLeave
+
+" enable additionnal languages
+source /Users/tristanwagner/dotfiles/vim/vim.symlink/ycm-ls/lsp-examples/vimrc.generated
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
+endfunction
+
+
+" Move a line of text using ALT+[jk]
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`zd
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap Ï <M-j>
+  nmap È <M-k>
+  vmap Ï <M-j>
+  vmap È <M-k>
+endif
+
+" Shortcuts for frequently accessed files
+command! Vimrc e ~/.vimrc
+command! Zshrc e ~/.zshrc
+command! Gitconfig e ~/.gitconfig
+
+"debugger
+let g:vimspector_enable_mappings = 'HUMAN'
+
+let g:markdown_fenced_languages = ['python', 'javascript', 'json', 'bash', 'typescript', 'html']

@@ -19,3 +19,4 @@ Clone this repo (or your own fork!) to your **home** directory (`/Users/username
 git clone https://github.com/tristanwagner/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install
+```

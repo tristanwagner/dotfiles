@@ -1,0 +1,22 @@
+new_tab back
+title back
+cd ~/auchan/vision360produit/back
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab front
+title front
+cd ~/auchan/vision360produit/front
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab server
+layout grid
+cd ~/auchan/vision360produit
+launch zsh
+cd ~/auchan/vision360produit
+launch zsh
+cd ~/auchan/vision360produit/back
+launch zsh -c "npm run dev:back"
+cd ~/auchan/vision360produit/front
+launch zsh -c "npm run serve"

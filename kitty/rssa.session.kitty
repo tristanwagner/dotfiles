@@ -1,0 +1,22 @@
+new_tab back
+title back
+cd ~/auchan/RSSA/back
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab front
+title front
+cd ~/auchan/RSSA/front
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab server
+layout grid
+cd ~/auchan/RSSA/back
+launch zsh -c 'nvm use default && npm run dev:back'
+cd ~/auchan/RSSA/back
+launch zsh -c 'nvm use default && npm run database:up'
+cd ~/auchan/RSSA/front
+launch zsh -c 'nvm use default && npm run serve'
+cd ~/auchan/RSSA/test
+launch zsh

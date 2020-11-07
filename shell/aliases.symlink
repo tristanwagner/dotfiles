@@ -92,3 +92,9 @@ alias set-npm-auchan="set-npm-to \"auchan\""
 alias reset-npm="set-npm-to \"null\""
 alias auchan-npm-install="set-npm-auchan && npm install && reset-npm"
 alias auchan-proxy="http_proxy=http://proxy.fr.auchan.com:80 https_proxy=http://proxy.fr.auchan.com:80"
+
+# display image in terminal
+alias icat="kitty +kitten icat"
+alias d="kitty +kitten diff"
+
+alias brews="brew search | fzf --preview 'brew info {} | bat --style=numbers --color=always'"
