@@ -69,6 +69,8 @@ Plug 'ntpeters/vim-better-whitespace'
 
 " Markdown support
 Plug 'junegunn/goyo.vim'
+" markdown preview :GripStart
+Plug 'PratikBhusal/vim-grip'
 
 " Git support
 Plug 'tpope/vim-dispatch'
@@ -102,4 +104,14 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 " debugger
 Plug 'puremourning/vimspector'
+
+" rainbow parentheses
+Plug 'luochen1990/rainbow'
+
+" go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" oneliners into multliners
+Plug 'AndrewRadev/splitjoin.vim'
+
 call plug#end()

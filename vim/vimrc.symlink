@@ -263,24 +263,30 @@ let &t_ut=''
 " Specific file types and snippets
 "-------------------------------------------------------------------------------
 
+" File skeletons
+autocmd BufNewFile README.md 0r ~/dotfiles/vim/vim.symlink/skeletons/README.md
+
+autocmd BufNewFile *.sh 0r ~/dotfiles/vim/vim.symlink/skeletons/bash.sh
+
 " turn off syntax if file is big
 autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
+
 
 " CPP
 autocmd filetype cpp call SetCPPOptions()
 
 function! SetCPPOptions()
   "execute
-  nnoremap <F1> :w <bar> !g++ -std=c++14 -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
+  nnoremap <F1> :w <bar> !g++ -std=c++14 -g -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
   nnoremap <F2> :w <bar> !"./%:r"<CR>
 endfunction
 
 " C
-autocmd filetype c call setCOptions()
+autocmd filetype c call SetCOptions()
 
 function! SetCOptions()
   "execute
-  nnoremap <F1> :w <bar> !gcc -Wshadow -Wall -o "%:r" "%" -O2<CR>
+  nnoremap <F1> :w <bar> !gcc -g -Wshadow -Wall -o "%:r" "%" -O2<CR>
   nnoremap <F2> :w <bar> !"./%:r"<Left>
   "nnoremap <F5> :w <bar> term"./%:r"<CR>
 endfunction
@@ -351,6 +357,18 @@ autocmd filetype tsx call SetTSXOptions()
 
 function! SetTSXOptions()
   call JSSnippets()
+endfunction
+
+"go
+autocmd FileType go call SetGoOptions()
+
+function! SetGoOptions()
+  " Wrap in logging
+  nmap <leader>l yssfmt.Println<cr>
+  "execute
+  nnoremap <F2> :w <bar> :GoRun<CR>
+  "doc
+  nnoremap <F1> :w <bar> :GoDoc<CR>
 endfunction
 
 "python
@@ -588,6 +606,9 @@ nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
 
 " GoToReferences
 nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
+
+" FixIt
+nnoremap <Leader>jf :YcmCompleter FixIt<CR>
 
 " remap diagnostic 
 let g:ycm_key_detailed_diagnostics = '<leader>D'
@@ -829,3 +850,42 @@ command! Gitconfig e ~/.gitconfig
 let g:vimspector_enable_mappings = 'HUMAN'
 
 let g:markdown_fenced_languages = ['python', 'javascript', 'json', 'bash', 'typescript', 'html']
+
+" rainbow parentheses
+let g:rainbow_active = 0 "set to 0 if you want to enable it later via :RainbowToggle
+
+let g:rainbow_conf = {
+      \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+      \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+      \   'guis': [''],
+      \   'cterms': [''],
+      \   'operators': '_,_',
+      \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+      \   'separately': {
+      \      '*': {},
+      \      'javascript': {
+      \         'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+      \      },
+      \      'typescript': {
+      \         'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+      \      },
+      \      'vue': {
+      \         'parentheses': ['start=/{/ end=/}/ contains=@javaScript containedin=@javaScript',
+      \             'start=/(/ end=/)/ contains=@javaScript containedin=@javaScript',
+      \             'start=/[/ end=/]/ contains=@javaScript containedin=@javaScript',
+      \             'start=/{/ end=/}/ contains=@javaScript containedin=@javaScript',
+      \             'start=/(/ end=/)/ contains=@typeScript containedin=@typeScript',
+      \             'start=/[/ end=/]/ contains=@typeScript containedin=@typeScript',
+      \             'start=/\v\<((script|style|area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+      \      },
+      \      'css': 0,
+      \   }
+      \}
+
+" Go
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_functions_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1

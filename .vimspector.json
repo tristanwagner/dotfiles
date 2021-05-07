@@ -3,7 +3,7 @@
         "C - Launch": {
             "adapter": "vscode-cpptools",
             "configuration": {
-                "MIMode": "gdb",
+                "MIMode": "lldb",
                 "cwd": "${cwd}",
                 "debugOptions": [],
                 "externalConsole": true,
@@ -84,6 +84,15 @@
                 "stopOnEntry": true,
                 "type": "python"
             }
+        },
+        "Go - Launch": {
+          "adapter": "vscode-go",
+          "configuration": {
+            "request": "launch",
+            "program": "${file}",
+            "mode": "debug",
+            "dlvToolPath": "$HOME/go/bin/dlv"
+          }
         }
     }
 }

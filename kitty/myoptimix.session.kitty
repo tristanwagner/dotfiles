@@ -1,24 +1,22 @@
 new_tab back
 title back
-cd ~/auchan/RSSA/back
+cd ~/auchan/myoptimix/back
 launch zsh -c 'mvim -v'
 layout tall
 
 new_tab front
 title front
-cd ~/auchan/RSSA/front
+cd ~/auchan/myoptimix/front
 launch zsh -c 'mvim -v'
 layout tall
 
 new_tab server
 layout grid
-cd ~/auchan/RSSA
+cd ~/auchan/myoptimix
 launch zsh
-cd ~/auchan/RSSA
+cd ~/auchan/myoptimix
 launch zsh
-cd ~/auchan/RSSA/back
+cd ~/auchan/myoptimix/back
 launch zsh -c "npm run dev:back"
-cd ~/auchan/RSSA/front
+cd ~/auchan/myoptimix/front
 launch zsh -c "npm run serve"
-cd ~/auchan/RSSA/back
-launch zsh -c "npm run database:up"

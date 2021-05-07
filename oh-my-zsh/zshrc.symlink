@@ -138,6 +138,14 @@ function udp () {
 function tcp () {
   echo -n  $1 | xxd -r -p | nc $2 $3
 }
+# send data over tls protocol
+# example 
+# tls 'GET / HTTP/1.1\r\nHost: test.com\r\n\r\n' test.com 443
+# we can go through proxy by adding for example -proxy proxy.auchan.com:80
+# not all openssl version has the proxy option
+function tls () {
+  printf $1 | openssl s_client -ign_eof -connect $2:$3 
+}
 
 # funny conversion back and forth of a file
 #  hextoascii $(xxd -p install | tr -d '\n')
@@ -494,6 +502,10 @@ function kt-360() {
   kitty --session ~/dotfiles/kitty/v360.session.kitty
 }
 
+function kt-opt() {
+  kitty --session ~/dotfiles/kitty/myoptimix.session.kitty
+}
+
 # prettify json with node
 #cat file.json | node <<< "var o = $(cat); console.log(JSON.stringify(o, null, 4));"
 #with python
@@ -536,3 +548,4 @@ setopt globdots
 # Ctrl + L – clear the terminal.
 # debug zsh loading time
 # zmodload zsh/zprof
+eval $(thefuck --alias)
