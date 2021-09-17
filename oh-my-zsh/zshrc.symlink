@@ -93,8 +93,8 @@ plugins+=(zsh-nvm)
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='mvim -v'
-export VISUAL='mvim -v'
+export EDITOR='vi'
+export VISUAL='vi'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -485,6 +485,10 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]; then
       sudo networksetup -setv6automatic Wi-Fi
     }
 fi
+
+function kt-inf() {
+  kitty --session ~/dotfiles/kitty/inf.session.kitty
+}
 
 function kt-rssa() {
   kitty --session ~/dotfiles/kitty/rssa.session.kitty

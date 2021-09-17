@@ -1,3 +1,7 @@
+#kitty
+# search 
+alias hg='kitty +kitten hyperlinked_grep'
+
 alias sn="osascript ~/dotfiles/SpotifyControl/SpotifyControl next"
 alias sp="osascript ~/dotfiles/SpotifyControl/SpotifyControl prev"
 # Now playing: Cher - Believe
@@ -11,7 +15,6 @@ alias tlf="tail -f"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
-alias -g G='| grep'
 alias -g M='| less'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
@@ -32,6 +35,7 @@ alias gs='git status -sb'
 alias gcb='git rev-parse --abbrev-ref HEAD | pbcopy'
 # because i make this typo a lot
 alias ggs='gs'
+alias gdiff='git difftool --no-symlinks --dir-diff'
 
 # Bundler
 alias b="bundle"

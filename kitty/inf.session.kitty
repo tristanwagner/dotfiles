@@ -1,0 +1,22 @@
+new_tab back
+title back
+cd ~/dev/infiniteplaya/back
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab front
+title front
+cd ~/dev/infiniteplaya/front
+launch zsh -c 'mvim -v'
+layout tall
+
+new_tab server
+layout grid
+cd ~/dev/infiniteplaya/back
+launch zsh
+cd ~/dev/infiniteplaya/front
+launch zsh
+cd ~/dev/infiniteplaya/back
+launch zsh -c "npm run dev"
+cd ~/dev/infiniteplaya/front
+launch zsh -c "npm run start"

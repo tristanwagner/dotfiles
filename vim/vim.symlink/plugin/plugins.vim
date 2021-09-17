@@ -25,12 +25,16 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-sort-motion'
 
 Plug 'tmhedberg/matchit'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-function'
+
+" move separated values right and left
+" also add argument text object
+Plug 'AndrewRadev/sideways.vim'
+
 Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-user'
 "Plug 'nelstrom/vim-textobj-rubyblock'
 "Plug 'ecomba/vim-ruby-refactoring'
 "Plug 'vim-scripts/tComment'
@@ -63,6 +67,7 @@ Plug 'mxw/vim-jsx'
 "Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 Plug 'storyn26383/vim-vue'
+Plug 'habamax/vim-asciidoctor'
 
 " Syntax errors
 Plug 'ntpeters/vim-better-whitespace'
@@ -71,10 +76,13 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/goyo.vim'
 " markdown preview :GripStart
 Plug 'PratikBhusal/vim-grip'
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
 " Git support
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
@@ -104,6 +112,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 " debugger
 Plug 'puremourning/vimspector'
+
+" close brackets
+Plug 'mapkts/enwise'
 
 " rainbow parentheses
 Plug 'luochen1990/rainbow'
