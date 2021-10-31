@@ -96,6 +96,8 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 nnoremap <Leader>json :%!python -m json.tool<CR>
 "node version :)
 """ nnoremap <Leader>p :%!node <<< \"console.log(JSON.stringify($(cat), null, 2))\"<CR>
+"to convert json to js object we can use also node
+":%!node <<< console.dir(\'$(cat)\', { depth: null })
 
 " useful tabs keybinds
 map <leader>tn :tabnew<cr>
