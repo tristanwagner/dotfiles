@@ -92,6 +92,7 @@ nnoremap <C-g> <Esc><Esc>:BCommits!<Cr>
 
 " Visual mode pressing * searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+
 " prettify json
 nnoremap <Leader>json :%!python -m json.tool<CR>
 "node version :)
@@ -182,10 +183,10 @@ cnoreabbrev AG Ack!
 cnoreabbrev Ack Ack!
 
 " When you press gv you Ack after the selected text
-vnoremap <silent> <leader>f :call VisualSelection('gv', '')<CR>
+vnoremap <silent> <leader>: :call VisualSelection('gv', '')<CR>
 " fuzzy search
 " nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
-nnoremap <Leader>f :Ack!<Space>""<left>
+nnoremap <Leader>: :Ack!<Space>""<left>
 
 " grab between
 " nnoremap <leader>gb :let t=[] | %s/\(<+b-start+>\)\@<=\(<+pattern+>\)\(<+b-end+>\)\@=/\=add(t,submatch(2))[len(t)-1]/g
@@ -612,59 +613,182 @@ nnoremap <leader>si' :call SearchString("'")<CR>
 nnoremap <leader>si" :call SearchString('"')<CR>
 nnoremap <leader>sl :call SearchString('l')<CR>
 
-"-------------------------------------------------------------------------------
-" YCM
-"-------------------------------------------------------------------------------
+"--
+" COC
+"--
 
-" Close preview window
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" use :lnext :lp to move between errors in file
-let g:ycm_always_populate_location_list = 1
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 
-" disable auto documentation on over
-let g:ycm_auto_hover = ''
+endfunction
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gp <Plug>(coc-references)
 
-" use leader d to display doc
-nmap <leader>d <plug>(YCMHover)
+" Use K to show documentation in preview window.
+nmap <silent> gk :call <SID>show_documentation()<CR>
+set completeopt+=preview
 
-" go to file in new tab
-"nnoremap <Leader>o <C-W>gf<CR>
-" use Ycm Goto instead
-nnoremap <Leader>o :tab YcmCompleter GoTo<CR>
-
-" GoToDeclaration
-nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
-
-" GoToReferences
-nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
-
-" FixIt
-nnoremap <Leader>jf :YcmCompleter FixIt<CR>
-
-" remap diagnostic 
-let g:ycm_key_detailed_diagnostics = '<leader>D'
-let g:ycm_goto_buffer_command = 'new-or-existing-tab'
-
-" disable preview
-"set completeopt-=preview
-" use it as popup, doesnt work for me but would be cool
-"set completeopt+=popup
-
-" customize quickfix window
-function! s:CustomizeYcmQuickFixWindow()
-  " Set the window height to 5.
-  8wincmd _
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
 endfunction
 
-" call function on quickfix open
-autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
-" prevent window from closing automatically
-autocmd User YcmQuickFixOpened autocmd! ycmquickfix WinLeave
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" enable additionnal languages
-source /Users/tristanwagner/dotfiles/vim/vim.symlink/ycm-ls/lsp-examples/vimrc.generated
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+" TODO: find bind
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>jf  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>ja  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nmap <silent><nowait> <M-a>  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nmap <silent><nowait> <M-e>  :<C-u>CocList extensions<cr>
+" Show commands.
+nmap <silent><nowait> <M-c>  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nmap <silent><nowait> <M-o>  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nmap <silent><nowait> <M-s>  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nmap <silent><nowait> <M-,>  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nmap <silent><nowait> <M-;>  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nmap <silent><nowait> <M-p>  :<C-u>CocListResume<CR>
+
+
+"" Prettier
+
+"Enable auto formatting of files that have "@format" or "@prettier" tag
+let g:prettier#autoformat = 1
+
+"Allow auto formatting for files without "@format" or "@prettier" tag
+let g:prettier#autoformat_require_pragma = 0
+
+""-------------------------------------------------------------------------------
+"" YCM
+""-------------------------------------------------------------------------------
+
+"" Close preview window
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+
+"" use :lnext :lp to move between errors in file
+"let g:ycm_always_populate_location_list = 1
+
+"" disable auto documentation on over
+"let g:ycm_auto_hover = ''
+
+"" use leader d to display doc
+"nmap <leader>d <plug>(YCMHover)
+
+"" go to file in new tab
+""nnoremap <Leader>o <C-W>gf<CR>
+"" use Ycm Goto instead
+"nnoremap <Leader>o :tab YcmCompleter GoTo<CR>
+
+"" GoToDeclaration
+"nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
+
+"" GoToReferences
+"nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
+
+"" FixIt
+"nnoremap <Leader>jf :YcmCompleter FixIt<CR>
+
+"" remap diagnostic 
+"let g:ycm_key_detailed_diagnostics = '<leader>D'
+"let g:ycm_goto_buffer_command = 'new-or-existing-tab'
+
+"" disable preview
+""set completeopt-=preview
+"" use it as popup, doesnt work for me but would be cool
+""set completeopt+=popup
+
+"" customize quickfix window
+"function! s:CustomizeYcmQuickFixWindow()
+"  " Set the window height to 5.
+"  8wincmd _
+"endfunction
+
+"" call function on quickfix open
+"autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
+"" prevent window from closing automatically
+"autocmd User YcmQuickFixOpened autocmd! ycmquickfix WinLeave
+
+"" enable additionnal languages
+"source /Users/tristanwagner/dotfiles/vim/vim.symlink/ycm-ls/lsp-examples/vimrc.generated
 
 function! VisualSelection(direction, extra_filter) range
   let l:saved_reg = @"

@@ -9,7 +9,8 @@ Plug 'vim-scripts/vim-auto-save'
 " if it is updated you need to recompile it 
 " https://github.com/ycm-core/YouCompleteMe:w
 " cd plugged/YouCompleteMe && python3 install.py --all
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 
@@ -68,6 +69,7 @@ Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'storyn26383/vim-vue'
 Plug 'habamax/vim-asciidoctor'
+Plug 'rescript-lang/vim-rescript'
 
 " Syntax errors
 Plug 'ntpeters/vim-better-whitespace'
