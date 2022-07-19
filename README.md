@@ -20,3 +20,22 @@ git clone https://github.com/tristanwagner/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install
 ```
+
+### Vim specific things for windows
+
+We need to install and USE gvim on windows, it seems complicated to really use it flawlessly in terminal emulators..
+
+After install my vim & config files were located in C:\tools\vim so I just took all my config files and copied them to this directory (paste and remplace).
+
+After a :PlugInstall most of the stuff seemed to work althought I had to install some powerline fonts for vim-airline to display properly
+
+#### Install powerline fonts
+
+Open powershell in admin mode and type
+
+```shell
+$ git clone https://github.com/powerline/fonts.git --depth=1
+$ Set-ExecutionPolicy Bypass
+$ \install.ps1
+$ Set-ExecutionPolicy Default
+```

@@ -1,3 +1,6 @@
+set termguicolors
+" this should fix launching vim in replace mode
+set t_u7=
 " use vim like tail => open file and put this in it
 " :set autoread | au CursorHold * checktime | call feedkeys("lh")
 "

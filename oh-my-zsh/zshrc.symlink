@@ -121,8 +121,12 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
+function validateYaml() {
+  python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
+}
+
 function vgst () {
- vim $(git status --porcelain | awk '{print $2}')
+  vim $(git status --porcelain | awk '{print $2}')
 }
 
 # send hexadecimal value in binary format over udp to remote adress and port
@@ -136,7 +140,7 @@ function udp () {
 #  usage :
 #  udp <hex> <host> <port>
 function tcp () {
-  echo -n  $1 | xxd -r -p | nc $2 $3
+  echo -n $1 | xxd -r -p | nc $2 $3
 }
 # send data over tls protocol
 # example 
@@ -552,4 +556,5 @@ setopt globdots
 # Ctrl + L – clear the terminal.
 # debug zsh loading time
 # zmodload zsh/zprof
+export PATH=$PATH:$HOME/.local/bin
 eval $(thefuck --alias)
