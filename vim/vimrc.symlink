@@ -61,7 +61,24 @@ set t_u7=
 "
 " :argsdo %s/\CBad/\CGood/ge | update
 
-source ~/.vim/plugin/plugins.vim
+if has('win32')
+  source C:\tools\vim\vim82\plugin\plugins.vim
+else
+  source ~/.vim/plugin/plugins.vim
+endif
+
+" set default font for gui per platform
+" I use gui only on windows because gvim is better imo
+" see readme to install powerline fonts on windows
+if has("gui_running")
+    if has("gui_gtk2")
+      set guifont=Inconsolata\ 12
+    elseif has("gui_macvim")
+      set guifont=Menlo\ Regular:h14
+    elseif has("gui_win32")
+      set guifont=DejaVu_Sans_Mono_for_Powerline:h18:cANSI:qDRAFT
+    endif
+endif
 
 autocmd!
 

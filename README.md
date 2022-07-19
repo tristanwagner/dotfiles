@@ -39,3 +39,13 @@ $ Set-ExecutionPolicy Bypass
 $ \install.ps1
 $ Set-ExecutionPolicy Default
 ```
+
+to modify the default font in gvim
+```
+" open guifont panel and chose a font
+:set guifont=*
+" print current font setting
+:set guifont?
+" paste the setting in vimrc for example I picked deja vu
+set guifont=DejaVu_Sans_Mono_for_Powerline:h18:cANSI:qDRAFT
+```
