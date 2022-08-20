@@ -1,0 +1,12 @@
+local wezterm = require 'wezterm'
+local act = wezterm.action
+
+return {
+  font = wezterm.font 'Roboto Mono for Powerline',
+  font_size = 10.0,
+  color_scheme = "Gruvbox Dark",
+  keys = {
+    { key = 'LeftArrow', mods = 'CMD', action = act.ActivateTabRelative(-1) },
+    { key = 'RightArrow', mods = 'CMD', action = act.ActivateTabRelative(1) },
+  }
+}

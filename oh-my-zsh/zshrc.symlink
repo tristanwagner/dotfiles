@@ -93,8 +93,8 @@ plugins+=(zsh-nvm)
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='vi'
-export VISUAL='vi'
+export EDITOR='vim'
+export VISUAL='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -462,8 +462,6 @@ function stopwatch () {
 
 # if not linux
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
-    alias vim=/usr/local/bin/vi
-
     function vf() {
       local files
 
@@ -540,11 +538,11 @@ export NVM_LAZY_LOAD=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # add utils to path
-export PATH=$PATH:$HOME/bin
+export PATH=/opt/homebrew/bin:/opt/local/bin:$PATH:$HOME/bin
 [ -f "/Users/tristanwagner/.ghcup/env" ] && source "/Users/tristanwagner/.ghcup/env" # ghcup-env
 
 # define bat theme
-export BAT_THEME="gruvbox"
+export BAT_THEME="gruvbox-dark"
 # allow dotfiles while tabbing
 setopt globdots
 
