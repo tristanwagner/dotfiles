@@ -1,5 +1,22 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "c",
+    "go",
+    "python",
+    "rust",
+    "markdown",
+    "javascript",
+    "typescript",
+    "json",
+    "jsonc"
+  ],
   "languageserver": {
+     "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    },
     "rescript": {
       "enable": true,
       "module": "~/dotfiles/vim/vim.symlink/plugged/vim-rescript/server/out/server.js",

@@ -15,12 +15,8 @@ alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
 
-# fix for passing params to rake tasks
-alias rake='noglob rake'
-
 alias :w="echo this isn\'t vim 🌟"
 alias :q='exit'
-
 alias cl="clear"
 
 # git
@@ -28,20 +24,12 @@ alias g='git'
 alias gs='git status -sb'
 # copy the current branch name
 alias gcb='git rev-parse --abbrev-ref HEAD | pbcopy'
-# because i make this typo a lot
-alias ggs='gs'
 alias gdiff='git difftool --no-symlinks --dir-diff'
+alias gstorecred="git config credential.helper store"
+#allow to patch staged files to unstage stuff
+alias grhp="git reset -p"
 
-# Bundler
-alias b="bundle"
-alias bi="bundle install"
-alias be="bundle exec"
-# because i make this typo a lot
-alias kbundle="bundle"
-
-# Rubygems
-alias gi="gem install"
-
+# node / npm
 alias n="node"
 alias ni="npm install"
 alias nr="npm run"
@@ -49,28 +37,21 @@ alias nrs="npm run start"
 alias nrb="npm run build"
 alias ncv="npm cache verify"
 
-# Rails
-alias rk="rake"
-alias rc="NO_RENDERER=true bin/rails c"
-#use homebrew version instead of macos default version
 # Config Files
 alias vimrc="vim ~/.vimrc"
 alias fix="git diff --name-only | uniq | xargs $EDITOR"
-#reload vimrc
 alias svimrc="vim +\"source ~/.vimrc\" +\":q\""
 alias vimplugins="vim ~/dotfiles/vim/vim.symlink/plugin/plugins.vim"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
 alias aliases="vim ~/.aliases"
 alias saliases="source ~/.aliases"
+
 alias ip="curl ipinfo.io/ip"
+alias meteo='weather'
 
 #reload sound devices
 alias reloadsound="pulseaudio -k && sudo alsa force-reload"
-alias gstorecred="git config credential.helper store"
-
-#allow to patch staged files to unstage stuff
-alias grhp="git reset -p"
 
 # vagrant
 alias vu="vagrant up"
@@ -78,21 +59,13 @@ alias vh="vagrant halt"
 
 # execute permission only
 alias chx='chmod 755'
-
 # read permission only
 alias chr='chmod 644'
 
-alias meteo='weather'
 alias ag='ag --hidden --path-to-ignore ~/.ignore'
 
 alias rm="rm -i"
-alias set-npm-auchan="set-npm-to \"auchan\""
-alias reset-npm="set-npm-to \"null\""
-alias auchan-npm-install="set-npm-auchan && npm install && reset-npm"
-alias auchan-proxy="http_proxy=http://proxy.fr.auchan.com:80 https_proxy=http://proxy.fr.auchan.com:80"
 
 # display image in terminal
 alias icat="kitty +kitten icat"
 alias d="kitty +kitten diff"
-
-alias brews="brew search | fzf --preview 'brew info {} | bat --style=numbers --color=always'"

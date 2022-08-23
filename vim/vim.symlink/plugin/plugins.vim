@@ -1,15 +1,12 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'morhetz/gruvbox'
 " Addons
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'alvan/vim-closetag'
-Plug 'vim-scripts/vim-auto-save'
-" if it is updated you need to recompile it 
-" https://github.com/ycm-core/YouCompleteMe:w
-" cd plugged/YouCompleteMe && python3 install.py --all
-" Plug 'Valloric/YouCompleteMe'
+
+" Plug 'vim-scripts/vim-auto-save'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
@@ -36,25 +33,21 @@ Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
-"Plug 'nelstrom/vim-textobj-rubyblock'
-"Plug 'ecomba/vim-ruby-refactoring'
-"Plug 'vim-scripts/tComment'
+
 Plug 'tpope/vim-commentary'
 Plug 'blarghmatey/split-expander'
 Plug 'farmergreg/vim-lastplace'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
-Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Tmux integration
-"Plug 'benmills/vimux'
-"Plug 'christoomey/vim-tmux-navigator'
 
 " File system navigation
 Plug 'tpope/vim-eunuch'
+
 " Vim clap requires vim >  8.1
 "Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -70,6 +63,12 @@ Plug 'leafgarland/typescript-vim'
 Plug 'storyn26383/vim-vue'
 Plug 'habamax/vim-asciidoctor'
 Plug 'rescript-lang/vim-rescript'
+" Reasonml
+Plug 'reasonml-editor/vim-reason-plus'
+Plug 'rhysd/vim-clang-format'
+Plug 'octol/vim-cpp-enhanced-highlight'
+" go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Syntax errors
 Plug 'ntpeters/vim-better-whitespace'
@@ -87,11 +86,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog'
 
 " Themes
-Plug 'altercation/vim-colors-solarized'
-Plug 'icymind/NeoSolarized'
-
-" Reasonml
-Plug 'reasonml-editor/vim-reason-plus'
+Plug 'morhetz/gruvbox'
 
 " Testing
 Plug 'janko-m/vim-test'
@@ -109,9 +104,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
 
-Plug 'rhysd/vim-clang-format'
-Plug 'octol/vim-cpp-enhanced-highlight'
-
 " debugger
 Plug 'puremourning/vimspector'
 
@@ -120,9 +112,6 @@ Plug 'mapkts/enwise'
 
 " rainbow parentheses
 Plug 'luochen1990/rainbow'
-
-" go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " oneliners into multliners
 Plug 'AndrewRadev/splitjoin.vim'

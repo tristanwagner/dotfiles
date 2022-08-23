@@ -1,4 +1,4 @@
-" this should fix launching vim in replace mode 
+" this should fix launching vim in replace mode
 " set t_u7=
 " use vim like tail => open file and put this in it
 " :set autoread | au CursorHold * checktime | call feedkeys("lh")
@@ -85,25 +85,17 @@ autocmd!
 map <Space> <leader>
 "map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
-map <Leader>gs :Gstatus<CR>
 " file content to hexdump
 map <Leader>hex :%!xxd<CR>
 " reverse
 map <Leader>bin :%!xxd -r<CR>
 
-"cycle throught registers
-nnoremap <Leader>r :let @x=@" \| let @"=@0 \| let @0=@1 \| let @1=@x \| reg "01<CR>
-
 " Nerdtree
 map <C-b> :NERDTreeToggle<CR>
 
-" CtrlP use FZF (faster!)
 nnoremap <C-f> <Esc><Esc>:Files!<Cr>
 inoremap <C-f> <Esc><Esc>:BLines!<Cr>
 nnoremap <C-g> <Esc><Esc>:BCommits!<Cr>
-" use bat for nice syntax hl in preview
-" not needed anymore it will be highlighted if installed
-" let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 " make tab go to matching pair
 " this overrides ctrl-i which is actually useful ...
@@ -114,6 +106,7 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 
 " prettify json
 nnoremap <Leader>json :%!python -m json.tool<CR>
+
 "node version :)
 """ nnoremap <Leader>p :%!node <<< \"console.log(JSON.stringify($(cat), null, 2))\"<CR>
 "to convert json to js object we can use also node
@@ -158,10 +151,10 @@ map <leader>p :cp<cr>
 " if it modifies the file we can to :cdo <stuff> | update
 " | update allow to save the file after the modification
 " This is an example of bulk search and replace
-" populate de arglist with sheel cmd 
+" populate de arglist with sheel cmd
 " :args `git grep -l findme`
 " :argdo %s/findme/replacement/gc | update
- 
+
 " only issue with this is that
 " for example if you use
 " vim file1 file2
@@ -187,31 +180,27 @@ nnoremap <silent> Q :call QuitTabOrBuffer()<CR>
 " ragequit
 nnoremap <C-q> :q!<CR>
 
-" git status
-nnoremap <Leader>g :Git<CR>
-
 " use ag instead of ack ?
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --hidden --smart-case --path-to-ignore ~/.ignore'
+  " fuzzy search
+  " nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
+  nnoremap <Leader>: :Ack!<Space>""<left>
+  cnoreabbrev ag Ack!
+  cnoreabbrev aG Ack!
+  cnoreabbrev Ag Ack!
+  cnoreabbrev AG Ack!
+  cnoreabbrev Ack Ack!
+
+  " When you press gv you Ack after the selected text
+  vnoremap <silent> <leader>: :call VisualSelection('gv', '')<CR>
+  " async search
+  let g:ack_use_dispatch = 1
+
 endif
-
-cnoreabbrev ag Ack!
-cnoreabbrev aG Ack!
-cnoreabbrev Ag Ack!
-cnoreabbrev AG Ack!
-cnoreabbrev Ack Ack!
-
-" When you press gv you Ack after the selected text
-vnoremap <silent> <leader>: :call VisualSelection('gv', '')<CR>
-" fuzzy search
-" nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
-nnoremap <Leader>: :Ack!<Space>""<left>
 
 " grab between
 " nnoremap <leader>gb :let t=[] | %s/\(<+b-start+>\)\@<=\(<+pattern+>\)\(<+b-end+>\)\@=/\=add(t,submatch(2))[len(t)-1]/g
-
-" async search
-let g:ack_use_dispatch = 1
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -220,23 +209,24 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
-syntax enable
-
 "-------------------------------------------------------------------------------
 " Colors & Formatting
 "-------------------------------------------------------------------------------
 
+syntax enable
+
 " Colorscheme
 set termguicolors
-autocmd vimenter * colorscheme gruvbox
+
+colorscheme gruvbox
+
+" this bugs out coc completion scheme
+" autocmd vimenter * colorscheme gruvbox
 autocmd vimenter * AirlineTheme gruvbox
 let g:gruvbox_invert_selection = 0
 let g:gruvbox_invert_tabline = 0
-" stopped using molokai because for some reason
-" it started to load in about 6secs..
-"autocmd vimenter * colorscheme molokai
-set background=dark
 
+set background=dark
 set colorcolumn=80                    " shoz a marker on column 80
 set mouse=a                           " enable mouse
 set list                              " enable invisible chars
@@ -276,12 +266,17 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-" Ignored files/directories from autocomplete (and CtrlP)
-set wildignore+=*/tmp/*
-set wildignore+=*.so
-set wildignore+=*.zip
-set wildignore+=*/vendor/bundle/*
-set wildignore+=*/node_modules/
+" Ignored files/directories from autocomplete
+set wildignore=*.o,*.obj,*~,*.exe,*.a,*.pdb,*.lib
+set wildignore+=*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex
+set wildignore+=*.log,*.pyc,*.sqlite,*.sqlite3,*.min.js,*.min.css,*.tags
+set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz
+set wildignore+=*.png,*.jpg,*.gif,*.bmp,*.tga,*.pcx,*.ppm,*.img,*.iso
+set wildignore+=*.pdf,*.dmg,*.app,*.ipa,*.apk,*.mobi,*.epub
+set wildignore+=*.mp4,*.avi,*.flv,*.mov,*.mkv,*.swf,*.swc
+set wildignore+=*.ppt,*.pptx,*.doc,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
+set wildignore+=*/.git/*,*/.svn/*,*.DS_Store
+set wildignore+=*/node_modules/*,*/nginx_runtime/*,*/build/*,*/logs/*,*/dist/*,*/tmp/*
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -315,14 +310,6 @@ let &t_ut=''
 " Specific file types and snippets
 "-------------------------------------------------------------------------------
 
-" File skeletons
-autocmd BufNewFile README.md 0r ~/dotfiles/vim/vim.symlink/skeletons/README.md
-
-autocmd BufNewFile *.sh 0r ~/dotfiles/vim/vim.symlink/skeletons/bash.sh
-
-" turn off syntax if file is big
-autocmd Filetype scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
-
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
     let save_cursor = getpos(".")
@@ -333,11 +320,28 @@ fun! CleanExtraSpaces()
 endfun
 
 if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.ts,*.json,*.adoc,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-endif
+  autocmd BufWritePre *.txt,*.js,*.ts,*.json,*.adoc,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 
-" CPP
-autocmd filetype cpp call SetCPPOptions()
+  " File skeletons
+  autocmd BufNewFile README.md 0r ~/dotfiles/vim/vim.symlink/skeletons/README.md
+  autocmd BufNewFile *.sh 0r ~/dotfiles/vim/vim.symlink/skeletons/bash.sh
+  autocmd BufNewFile index.html 0r ~/dotfiles/vim/vim.symlink/skeletons/index.html
+  
+  " turn off syntax if file is big
+  autocmd Filetype css,scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
+
+  autocmd filetype cpp call SetCPPOptions()
+  autocmd filetype c call SetCOptions()
+  autocmd FileType python call SetPythonOptions()
+  autocmd FileType go call SetGoOptions()
+  autocmd filetype html call SetHtmlOptions()
+  autocmd filetype vue call SetVueOptions()
+  autocmd filetype typescript call SetTSOptions()
+  autocmd filetype javascript call SetJSOptions()
+  autocmd filetype jsx call SetJSXOptions()
+  autocmd filetype tsx call SetTSXOptions()
+
+endif
 
 function! SetCPPOptions()
   "execute
@@ -345,18 +349,12 @@ function! SetCPPOptions()
   nnoremap <F2> :w <bar> !"./%:r"<CR>
 endfunction
 
-" C
-autocmd filetype c call SetCOptions()
-
 function! SetCOptions()
   "execute
   nnoremap <F1> :w <bar> !gcc -g -Wshadow -Wall -o "%:r" "%" -O2<CR>
   nnoremap <F2> :w <bar> !"./%:r"<Left>
   "nnoremap <F5> :w <bar> term"./%:r"<CR>
 endfunction
-
-" js
-autocmd filetype javascript call SetJSOptions()
 
 function! SetJSOptions()
   "execute
@@ -390,8 +388,6 @@ function! JSSnippets()
   nnoremap ,mde o<Esc>:-1read $HOME/.vim/snippets/js/mde.js<CR>f}i
   nnoremap ,cla :-1read $HOME/.vim/snippets/js/class.js<CR>:%s/<++>//g<left><left>
 endfunction
-" ts
-autocmd filetype typescript call SetTSOptions()
 
 function! SetTSOptions()
   "snippets
@@ -399,33 +395,23 @@ function! SetTSOptions()
   setlocal ts=2 sts=2 sw=2
 endfunction
 
-autocmd filetype vue call SetVueOptions()
-
 function! SetVueOptions()
   call JSSnippets()
   let g:vue_pre_processors = 'detect_on_enter'
 endfunction
 
-autocmd filetype html call SetHtmlOptions()
-
 function! SetHtmlOptions()
+  nnoremap <F2> :w <bar> !open "%"<CR>
   call JSSnippets()
 endfunction
-
-autocmd filetype jsx call SetJSXOptions()
 
 function! SetJSXOptions()
   call JSSnippets()
 endfunction
 
-autocmd filetype tsx call SetTSXOptions()
-
 function! SetTSXOptions()
   call JSSnippets()
 endfunction
-
-"go
-autocmd FileType go call SetGoOptions()
 
 function! SetGoOptions()
   " Wrap in logging
@@ -435,9 +421,6 @@ function! SetGoOptions()
   "doc
   nnoremap <F1> :w <bar> :GoDoc<CR>
 endfunction
-
-"python
-autocmd FileType python call SetPythonOptions()
 
 function! SetPythonOptions()
   " Wrap in logging
@@ -479,46 +462,6 @@ nnoremap U :redo<CR>
 
 " yank and keep cursor at end of yank
 vmap y y']
-
-"-------------------------------------------------------------------------------
-" ALE
-"-------------------------------------------------------------------------------
-let g:ale_linter_aliases = {
-      \'vue': ['vue', 'javascript'],
-      \'jsx': ['css', 'javascript'],
-      \}
-
-let g:ale_linters = {
-      \'javascript': ['eslint'],
-      \'typescript': ['eslint'],
-      \'vue': ['eslint', 'vls'],
-      \'jsx': ['eslint'],
-      \}
-
-let g:ale_fixers = {
-      \'javascript': ['eslint'],
-      \'typescript': ['eslint'],
-      \'vue': ['eslint'],
-      \'jsx': ['eslint'],
-      \}
-" Do not lint or fix minified files.
-let g:ale_pattern_options = {
-      \'\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-      \'\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-      \}
-
-" If you configure g:ale_pattern_options outside of vimrc, you need this.
-let g:ale_pattern_options_enabled = 1
-
-let g:ale_lint_on_text_changed = 'never'
-
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 0
-
-" Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
-
-"map <Leader>l :ALEFix<CR>
 
 " Shortcuts for vim-test
 " Run test under cursor
@@ -635,6 +578,33 @@ nnoremap <leader>sl :call SearchString('l')<CR>
 "--
 " COC
 "--
+" interesting conf to look 
+" https://github.com/fannheyward/init.vim/blob/master/init.vim
+let g:coc_global_extensions = [
+      \'coc-dictionary',
+      \'coc-ecdict',
+      \'coc-eslint',
+      \'coc-git',
+      \'coc-go',
+      \'coc-html',
+      \'coc-json',
+      \'coc-lists',
+      \'coc-markdownlint',
+      \'coc-marketplace',
+      \'coc-mocword',
+      \'coc-pairs',
+      \'coc-sh',
+      \'coc-snippets',
+      \'coc-sumneko-lua',
+      \'coc-tag',
+      \'coc-tsserver',
+      \'coc-typos',
+      \'coc-vimlsp',
+      \'coc-xml',
+      \'coc-yaml',
+      \'coc-yank'
+      \]
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -661,24 +631,48 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
 if has('nvim')
+  " Use <c-space> to trigger completion.
   inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+  inoremap <silent><expr> <S-TAB> coc#refresh()
 endif
 
+nmap <silent> gs <Plug>(coc-git-chunkinfo)
+nmap <silent> gl :CocList<CR>
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd :call <SID>go_to_definition()<CR>
+nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gp <Plug>(coc-references)
+nmap <leader>jr <Plug>(coc-references)
+" Symbol renaming.
+nmap <silent> gn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>jf  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>ja  <Plug>(coc-fix-current)
+
+" Formatting selected code.
+" TODO: find bind
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Use K to show documentation in preview window.
 nmap <silent> gk :call <SID>show_documentation()<CR>
+
 set completeopt+=preview
 
 function! s:show_documentation()
@@ -691,16 +685,19 @@ function! s:show_documentation()
   endif
 endfunction
 
+function! s:go_to_definition()
+  if CocActionAsync('jumpDefinition')
+    return v:true
+  endif
+
+  let ret = execute("silent! normal \<C-]>")
+  if ret =~ "Error" || ret =~ "错误"
+    call searchdecl(expand('<cword>'))
+  endif
+endfunction
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-" TODO: find bind
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -710,15 +707,6 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>jf  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>ja  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -754,7 +742,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show all diagnostics.
 nmap <silent><nowait> <M-a>  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nmap <silent><nowait> <M-e>  :<C-u>CocList extensions<cr>
+nmap <silent><nowait> <M-w>  :<C-u>CocList extensions<cr>
 " Show commands.
 nmap <silent><nowait> <M-c>  :<C-u>CocList commands<cr>
 " Find symbol of current document.
@@ -767,7 +755,37 @@ nmap <silent><nowait> <M-,>  :<C-u>CocNext<CR>
 nmap <silent><nowait> <M-;>  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nmap <silent><nowait> <M-p>  :<C-u>CocListResume<CR>
+""""""
+" if executable("rg")
+"   set grepprg=rg\ --vimgrep\ --no-heading
+" endif
 
+" function! s:grep_to_qf(...) abort
+"   return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+" endfunction
+
+" nnoremap <silent><nowait> <leader>s  :cgetexpr <SID>grep_to_qf(expand('<cword>'))<CR>
+" command! -nargs=+ Find cgetexpr <SID>grep_to_qf(<f-args>)
+
+command! -nargs=0 JSONPretty    %!python3 -m json.tool
+command! -nargs=0 Todos         CocList -A --normal grep -e TODO|FIXME|FIX|FIXIT|BUG|HACK|XXX
+command! -nargs=0 Status        CocList -A --normal gstatus
+
+" clean for searching
+command! -nargs=+ F             CocList -A --normal grep -e <f-args>
+
+" TODO: test
+command! -nargs=0 VSCode        execute ":!code -g %:p\:" . line('.') . ":" . col('.')
+
+" command line mode mappings
+cnoremap <C-a> <Home>
+cnoremap <C-b> <S-Left>
+cnoremap <C-f> <S-Right>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
+cnoremap <C-h> <BS>
+cnoremap <C-t> <C-R>=expand("%:p:h") . "/" <CR>
+cnoremap <C-n> <C-R>=expand("%:p")<CR>
 
 "" Prettier
 
@@ -776,60 +794,6 @@ let g:prettier#autoformat = 1
 
 "Allow auto formatting for files without "@format" or "@prettier" tag
 let g:prettier#autoformat_require_pragma = 0
-
-""-------------------------------------------------------------------------------
-"" YCM
-""-------------------------------------------------------------------------------
-
-"" Close preview window
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_autoclose_preview_window_after_insertion = 1
-
-"" use :lnext :lp to move between errors in file
-"let g:ycm_always_populate_location_list = 1
-
-"" disable auto documentation on over
-"let g:ycm_auto_hover = ''
-
-"" use leader d to display doc
-"nmap <leader>d <plug>(YCMHover)
-
-"" go to file in new tab
-""nnoremap <Leader>o <C-W>gf<CR>
-"" use Ycm Goto instead
-"nnoremap <Leader>o :tab YcmCompleter GoTo<CR>
-
-"" GoToDeclaration
-"nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
-
-"" GoToReferences
-"nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
-
-"" FixIt
-"nnoremap <Leader>jf :YcmCompleter FixIt<CR>
-
-"" remap diagnostic 
-"let g:ycm_key_detailed_diagnostics = '<leader>D'
-"let g:ycm_goto_buffer_command = 'new-or-existing-tab'
-
-"" disable preview
-""set completeopt-=preview
-"" use it as popup, doesnt work for me but would be cool
-""set completeopt+=popup
-
-"" customize quickfix window
-"function! s:CustomizeYcmQuickFixWindow()
-"  " Set the window height to 5.
-"  8wincmd _
-"endfunction
-
-"" call function on quickfix open
-"autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
-"" prevent window from closing automatically
-"autocmd User YcmQuickFixOpened autocmd! ycmquickfix WinLeave
-
-"" enable additionnal languages
-"source /Users/tristanwagner/dotfiles/vim/vim.symlink/ycm-ls/lsp-examples/vimrc.generated
 
 function! VisualSelection(direction, extra_filter) range
   let l:saved_reg = @"
@@ -851,12 +815,6 @@ endfunction
 function! CmdLine(str)
   call feedkeys(":" . a:str)
 endfunction
-
-" Move a line of text using ALT+[jk]
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`zd
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " show hidden files
 let NERDTreeShowHidden=1
@@ -964,9 +922,9 @@ inoremap hh <esc>
 
 " open notes
 noremap <leader>en :edit ~/dev/notes/README.adoc<CR>
+
 " copy current filname:line number into clipboard, then use gF to open the ref
 noremap <leader>er :let @*=expand("%:p") . ":" . (line(".")+1)<CR>
-
 
 "sideways.vim conf
 " alt + h or alt + l to move arg left or right
@@ -981,16 +939,40 @@ omap ia <Plug>SidewaysArgumentTextobjI
 xmap ia <Plug>SidewaysArgumentTextobjI
 
 " rebind alt key modifier
+" the bind can depends from terminal emulators,
+" to get the character that the bind produce you must
+" go in insert mode and press ctrl-v and then the keybind
+" for example now ctrl-v alt-j produces ∆
 if has("mac") || has("macunix")
   nmap Ï <M-j>
   nmap È <M-k>
   nmap Ì <M-h>
   nmap ¬ <M-l>
+  nmap ∆ <M-j>
+  nmap ˚ <M-k>
+  nmap ˙ <M-h>
   vmap Ï <M-j>
   vmap È <M-k>
   vmap Ì <M-h>
   vmap ¬ <M-l>
+  vmap ∆ <M-j>
+  vmap ˚ <M-k>
+  vmap ˙ <M-h>
+  nmap å <M-a>
+  nmap ∑ <M-w>
+  nmap ç <M-c>
+  nmap ø <M-o>
+  nmap ß <M-s>
+  nmap ≤ <M-,>
+  nmap … <M-;>
+  nmap π <M-p>
 endif
+
+" Move a line of text using ALT+[jk]
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`zd
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 function! OpenLog()
   let line = getline(".")
