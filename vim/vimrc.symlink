@@ -1,64 +1,5 @@
 " this should fix launching vim in replace mode
 " set t_u7=
-" use vim like tail => open file and put this in it
-" :set autoread | au CursorHold * checktime | call feedkeys("lh")
-"
-" Vim settings for https://github.com/tristanwagner
-"
-" exemple de regex pour matcher interface (ITestInterface) {
-" ou interface (ITest) extends {
-"
-" \(interface \)\@<=\(\w*\)\(\s\)\@=
-" \@<= : match apres le token
-" \@=  : no match apres le token et sur le token
-" 
-" copier tous les resultats d'une regex dans une variable t
-" 
-" :let t=[] | %s/\(interface \)\@<=\(\w*\)\(\s\)\@=/\=add(t,submatch(2))[len(t)-1]/g
-"
-" dans la partie replace on va executer une commande \=add() pour ajouter le
-" match a t
-" submatch(2) car ce qui nous interesse est le 2eme objet matché (ce quil y a
-" entre 'interface ' et ' {'
-" ensuite on pointe sur l'index de t [len(t) - 1] pour remplacer par le match
-" que l'on vient de retirer comme ça le fichier ne bouge pas
-" maintenant pour coller le contenu de la variable t on peut faire
-" 
-" "=tp
-" ou encore :pu=t
-" ou encore :pu=join(t, ', ')
-"
-" autre exemple
-"
-" :let t=[] | %s/\<case\s\+\(\w\+\):\zs/\=add(t,submatch(1))[1:0]/g
-"
-" :g and :v permets de selectionner des lignes, g pour inclure v pour exclure
-" la commande a appliquer peut etre nimporte quoi.. par exemple 
-"
-" :g/-/norm @a pour appliquer la macro a aux lignes contenant -
-"
-" ou
-"
-" :v/-/s/word/newword pour remplacer word par newword sur toutes les lignes
-" qui ne contiennent pas -
-" 
-" :g/include/command
-"
-" :v/exclude/command
-"
-" command peut etre t0 ou t$ pour copier ces lignes la ou est le curseur
-"
-" Settings in this file may depend on plugins, so let's install them first.
-" Not to be confused with the contents of ~/.vim/plugin/* which are
-" configuration options for each plugin and automatically loaded by Vim
-"
-" Effective editing of multiple files in Vim
-" https://jovica.org/posts/vim-edit-multiple-files/
-"
-" list all files with Bad in it and put in in args
-" :args `git grep -l Bad`
-"
-" :argsdo %s/\CBad/\CGood/ge | update
 
 if has('win32')
   source C:\tools\vim\vim82\plugin\plugins.vim
@@ -79,19 +20,32 @@ if has("gui_running")
     endif
 endif
 
-autocmd!
-
 " Leader Mappings
 map <Space> <leader>
 "map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
-" file content to hexdump
-map <Leader>hex :%!xxd<CR>
-" reverse
-map <Leader>bin :%!xxd -r<CR>
+
+
+" Find/replace
+nnoremap <leader>r :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
 " Nerdtree
 map <C-b> :NERDTreeToggle<CR>
+
+" show hidden files
+let NERDTreeShowHidden=1
+"
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" Close the tab if NERDTree is the only window remaining in it.
+" NOTE: I use the other method instead because when switching windows it
+" switch buffers toe
+" autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 nnoremap <C-f> <Esc><Esc>:Files!<Cr>
 inoremap <C-f> <Esc><Esc>:BLines!<Cr>
@@ -103,14 +57,6 @@ nnoremap <C-g> <Esc><Esc>:BCommits!<Cr>
 
 " Visual mode pressing * searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-
-" prettify json
-nnoremap <Leader>json :%!python -m json.tool<CR>
-
-"node version :)
-""" nnoremap <Leader>p :%!node <<< \"console.log(JSON.stringify($(cat), null, 2))\"<CR>
-"to convert json to js object we can use also node
-":%!node <<< console.dir(\'$(cat)\', { depth: null })
 
 " useful tabs keybinds
 map <leader>tn :tabnew<cr>
@@ -144,8 +90,11 @@ map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 "close quickfix
 map <leader>cq :ccl<cr>
+" next
 map <leader>n :cn<cr>
+" previous
 map <leader>p :cp<cr>
+
 " to apply a command to all files in quicklist we can do
 " :cfdo or :cdo
 " if it modifies the file we can to :cdo <stuff> | update
@@ -155,13 +104,6 @@ map <leader>p :cp<cr>
 " :args `git grep -l findme`
 " :argdo %s/findme/replacement/gc | update
 
-" only issue with this is that
-" for example if you use
-" vim file1 file2
-" and use :bw, the buffer won't be removed
-" you'd need to do :argdo bw
-" but then it'll remove every file so
-" I will see in future if I find an elegant solution
 function QuitTabOrBuffer()
   if tabpagenr('$') > 1
     execute "tabclose"
@@ -174,30 +116,9 @@ endfunction
 
 " ex mode is useless instead quite current context
 nnoremap <silent> Q :call QuitTabOrBuffer()<CR>
-" old one
-" nnoremap Q :q<CR>
 
 " ragequit
 nnoremap <C-q> :q!<CR>
-
-" use ag instead of ack ?
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --hidden --smart-case --path-to-ignore ~/.ignore'
-  " fuzzy search
-  " nnoremap <Leader>f :tabnew<CR>:Ack!<Space>""<left>
-  nnoremap <Leader>: :Ack!<Space>""<left>
-  cnoreabbrev ag Ack!
-  cnoreabbrev aG Ack!
-  cnoreabbrev Ag Ack!
-  cnoreabbrev AG Ack!
-  cnoreabbrev Ack Ack!
-
-  " When you press gv you Ack after the selected text
-  vnoremap <silent> <leader>: :call VisualSelection('gv', '')<CR>
-  " async search
-  let g:ack_use_dispatch = 1
-
-endif
 
 " grab between
 " nnoremap <leader>gb :let t=[] | %s/\(<+b-start+>\)\@<=\(<+pattern+>\)\(<+b-end+>\)\@=/\=add(t,submatch(2))[len(t)-1]/g
@@ -220,9 +141,6 @@ set termguicolors
 
 colorscheme gruvbox
 
-" this bugs out coc completion scheme
-" autocmd vimenter * colorscheme gruvbox
-autocmd vimenter * AirlineTheme gruvbox
 let g:gruvbox_invert_selection = 0
 let g:gruvbox_invert_tabline = 0
 
@@ -280,10 +198,6 @@ set wildignore+=*/node_modules/*,*/nginx_runtime/*,*/build/*,*/logs/*,*/dist/*,*
 
 " Set to auto read when a file is changed from the outside
 set autoread
-au FocusGained,BufEnter * checktime
-
-" Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " No annoying sound on errors
 set noerrorbells
@@ -291,10 +205,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
 "-------------------------------------------------------------------------------
 " Interface
 "-------------------------------------------------------------------------------
@@ -307,28 +217,44 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 let &t_ut=''
 
 "-------------------------------------------------------------------------------
-" Specific file types and snippets
+" Autocmd, Specific file types and snippets
 "-------------------------------------------------------------------------------
 
 " Delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
+function! CleanExtraSpaces()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfunction
+
+command! -nargs=0 TrimSpaces call CleanExtraSpaces()
 
 if has("autocmd")
-  autocmd BufWritePre *.txt,*.js,*.ts,*.json,*.adoc,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+  " this bugs out coc completion theme
+  " autocmd vimenter * colorscheme gruvbox
+  autocmd vimenter * AirlineTheme gruvbox
+
+  autocmd BufWritePre *.txt,*.js,*.ts,*.json,*.adoc,*.py,*.wiki,*.sh,*.coffee,*.vim :call CleanExtraSpaces()
 
   " File skeletons
   autocmd BufNewFile README.md 0r ~/dotfiles/vim/vim.symlink/skeletons/README.md
   autocmd BufNewFile *.sh 0r ~/dotfiles/vim/vim.symlink/skeletons/bash.sh
   autocmd BufNewFile index.html 0r ~/dotfiles/vim/vim.symlink/skeletons/index.html
-  
+
   " turn off syntax if file is big
-  autocmd Filetype css,scss if getfsize(@%) > 300 | setlocal syntax=OFF | endif
+  autocmd Filetype css,scss if getfsize(@%) > 1500 | setlocal syntax=OFF | endif
+
+  "json fold
+  " autocmd filetype json syntax on
+  " autocmd filetype json set foldmethod=syntax
+
+  " syntax and fold for json < 10 kB
+  autocmd Filetype json if getfsize(@%) > 10000 | setlocal syntax=OFF | else | syntax on | setl foldmethod=syntax  | endif
+
+  " Set filetype correctly for JSON-based lint config files
+  autocmd BufNewFile,BufRead .eslintrc,.prettierrc,.babelrc set filetype=json
 
   autocmd filetype cpp call SetCPPOptions()
   autocmd filetype c call SetCOptions()
@@ -340,25 +266,42 @@ if has("autocmd")
   autocmd filetype javascript call SetJSOptions()
   autocmd filetype jsx call SetJSXOptions()
   autocmd filetype tsx call SetTSXOptions()
+  autocmd filetype vim call SetVIMOptions()
 
+  " Properly disable sound on errors on MacVim
+  if has("gui_macvim")
+      autocmd GUIEnter * set vb t_vb=
+  endif
+
+  " update file
+  autocmd FocusGained,BufEnter * checktime
+
+  " Return to last edit position when opening files (You want this!)
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" execute compile file
+command! -nargs=0 Execute !"./%:r"
+command! -nargs=0 TExecute term "./%:r"
+
+nnoremap <F2> :Execute
+nnoremap <F5> :TExecute
+
+if exists(':Compile')
+  nnoremap <F1> :Compile
 endif
 
 function! SetCPPOptions()
-  "execute
-  nnoremap <F1> :w <bar> !g++ -std=c++14 -g -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
-  nnoremap <F2> :w <bar> !"./%:r"<CR>
+  command! -nargs=0  Compile !g++ -std=c++14 -g -Wshadow -Wall -o "%:r" "%" -O2 -Wno-used-result <CR>
 endfunction
 
 function! SetCOptions()
-  "execute
-  nnoremap <F1> :w <bar> !gcc -g -Wshadow -Wall -o "%:r" "%" -O2<CR>
-  nnoremap <F2> :w <bar> !"./%:r"<Left>
+  command! -nargs=0  Compile !gcc -g -Wshadow -Wall -o "%:r" "%" -O2<CR>
   "nnoremap <F5> :w <bar> term"./%:r"<CR>
 endfunction
 
 function! SetJSOptions()
-  "execute
-  nnoremap <F2> :w <bar> !node "%"<CR>
+  command! -nargs=0  Execute !"node ./%:r"
   "snippets
   call JSSnippets()
 endfunction
@@ -429,15 +372,18 @@ function! SetPythonOptions()
   nnoremap <F2> :w <bar> !python3 "%"<CR>
 endfunction
 
+function! SetVIMOptions()
+  "snippets
+  call VIMSnippets()
+endfunction
+
+function VIMSnippets()
+  " ch for comment header
+  nnoremap ,ch o<Esc>:-1read $HOME/.vim/snippets/vim/comment-header.vim<CR>jA
+endfunction
+
 " html skeleton
 nnoremap ,html :-1read $HOME/.vim/snippets/html/skeleton.html<CR>7jf>a
-
-"json fold
-"autocmd filetype json syntax on
-"autocmd filetype json set foldmethod=syntax
-
-" Set filetype correctly for JSON-based lint config files
-au BufNewFile,BufRead .eslintrc,.prettierrc,.babelrc set filetype=json
 
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
@@ -474,18 +420,14 @@ nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>ts :TestSuite<CR>
 " visit last edited test file
 nmap <silent> <leader>tv :TestVisit<CR>
+
 let g:test#preserve_screen = 1
 " make test commands execute using dispatch.vim
+
 let test#strategy = "vimterminal"
 " specify config file
 " let g:test#javascript#jest#executable = 'jest --config ./config/jest/jest.conf.js'
 let g:test#javascript#jest#options = '--config ./config/jest/jest.conf.js'
-
-" Find/replace
-nnoremap <leader>r :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 let g:auto_save = 0  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
@@ -500,9 +442,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " powerline
 let g:airline_powerline_fonts = 1
-
-" show hidden files
-let NERDTreeShowHidden=1
 
 " Get off my lawn - helpful when learning Vim :)
 nnoremap <Left> :echoe "Use h"<CR>
@@ -567,7 +506,7 @@ endfunction
 " a function to call !s from string
 function SearchString(textobject)
   execute "normal yi" . a:textobject
-  execute ":silent !s ". getreg('"') 
+  execute ":silent !s ". getreg('"')
   execute ":redraw!"
 endfunction
 
@@ -578,7 +517,7 @@ nnoremap <leader>sl :call SearchString('l')<CR>
 "--
 " COC
 "--
-" interesting conf to look 
+" interesting conf to look
 " https://github.com/fannheyward/init.vim/blob/master/init.vim
 let g:coc_global_extensions = [
       \'coc-dictionary',
@@ -638,12 +577,12 @@ else
   inoremap <silent><expr> <S-TAB> coc#refresh()
 endif
 
-nmap <silent> gs <Plug>(coc-git-chunkinfo)
 nmap <silent> gl :CocList<CR>
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
+
 " nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gd :call <SID>go_to_definition()<CR>
 nmap <silent> gD <Plug>(coc-declaration)
@@ -719,6 +658,12 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
+
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
 nmap <silent> <C-s> <Plug>(coc-range-select)
@@ -726,6 +671,9 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+
+" original way using =
+command! -nargs=0 BFormat exe 'normal gg=G'
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -767,15 +715,77 @@ nmap <silent><nowait> <M-p>  :<C-u>CocListResume<CR>
 " nnoremap <silent><nowait> <leader>s  :cgetexpr <SID>grep_to_qf(expand('<cword>'))<CR>
 " command! -nargs=+ Find cgetexpr <SID>grep_to_qf(<f-args>)
 
-command! -nargs=0 JSONPretty    %!python3 -m json.tool
+command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
+
+function! s:GrepArgs(...)
+  let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+  return join(list, "\n")
+endfunction
+
+" Keymapping for grep word under cursor with interactive mode
+nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+
+" Grep visual selection
+" vnoremap <leader>g :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
+vnoremap <leader>g :<C-u>call <SID>GrepFromSelected("v")<CR>
+
+" Grep motion from normal mode
+nnoremap <leader>g :<C-u>set operatorfunc=<SID>GrepFromSelected<CR>g@
+nnoremap <Leader>: :Rg<Space>
+
+nnoremap <silent> <Leader>cw  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+
+" undo git chunk
+nnoremap <silent> <leader>u :CocCommand git.chunkUndo<CR>
+
+" display chunkinfo
+nnoremap <silent> gs <Plug>(coc-git-chunkinfo)
+
+" navigate conflicts of current buffer
+nmap [gc <Plug>(coc-git-prevchunk)
+nmap ]gc <Plug>(coc-git-nextchunk)
+
+function! s:GrepFromSelected(type)
+  let saved_unnamed_register = @@
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+  let word = substitute(@@, '\n$', '', 'g')
+  let word = escape(word, '| ')
+  let @@ = saved_unnamed_register
+  execute 'CocList grep '.word
+endfunction
+
+" Prettify json with python
+command! -nargs=0 JSONPretty      %!python3 -m json.tool
+
+if executable("node")
+  command! -nargs=0 JSONtoObject  %!node <<< console.dir(JSON.parse(\'$(cat)\'), { depth: null })
+  command! -nargs=0 JSONPretty    %!node <<< \"console.log(JSON.stringify($(cat), null, 2))\"<CR>
+endif
+
 command! -nargs=0 Todos         CocList -A --normal grep -e TODO|FIXME|FIX|FIXIT|BUG|HACK|XXX
 command! -nargs=0 Status        CocList -A --normal gstatus
 
-" clean for searching
-command! -nargs=+ F             CocList -A --normal grep -e <f-args>
+" use vim like tail => open file and use this command
+command! -nargs=0 Tailf execute ":set autoread | au CursorHold * checktime | call feedkeys(\"lh\")"
 
 " TODO: test
-command! -nargs=0 VSCode        execute ":!code -g %:p\:" . line('.') . ":" . col('.')
+if executable("code")
+  command! -nargs=0 VSCode        execute ":!code -g %:p\:" . line('.') . ":" . col('.')
+endif
+
+if executable("xxd")
+  " file content to hexdump
+  command! -nargs=0 HexDump %!xxd
+  " reverse
+  command! -nargs=0 RHexDump %!xxd -r
+endif
 
 " command line mode mappings
 cnoremap <C-a> <Home>
@@ -787,6 +797,13 @@ cnoremap <C-h> <BS>
 cnoremap <C-t> <C-R>=expand("%:p:h") . "/" <CR>
 cnoremap <C-n> <C-R>=expand("%:p")<CR>
 
+cnoreabbrev Blame Git blame
+cnoreabbrev Ack! Rg
+
+
+" press $q in command mode to delete until last slash
+cno $q <C-\>eDeleteTillSlash()<cr>
+
 "" Prettier
 
 "Enable auto formatting of files that have "@format" or "@prettier" tag
@@ -794,6 +811,11 @@ let g:prettier#autoformat = 1
 
 "Allow auto formatting for files without "@format" or "@prettier" tag
 let g:prettier#autoformat_require_pragma = 0
+
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+
+vnoremap <silent> <leader>: :call VisualSelection('gv', '')<CR>
 
 function! VisualSelection(direction, extra_filter) range
   let l:saved_reg = @"
@@ -803,7 +825,7 @@ function! VisualSelection(direction, extra_filter) range
   let l:pattern = substitute(l:pattern, "\n$", "", "")
 
   if a:direction == 'gv'
-    call CmdLine("Ack '" . l:pattern . "' " )
+    call <SID>GrepFromSelected("v")
   elseif a:direction == 'replace'
     call CmdLine("%s" . '/'. l:pattern . '/')
   endif
@@ -815,9 +837,6 @@ endfunction
 function! CmdLine(str)
   call feedkeys(":" . a:str)
 endfunction
-
-" show hidden files
-let NERDTreeShowHidden=1
 
 " Surround-vim addition to delete a function
 nmap <silent> dsf ds)db
@@ -840,8 +859,8 @@ endif
 nnoremap <Leader>m :set filetype=messages<CR>
 
 " Shortcuts for frequently accessed files
-command! Vimrc e ~/.vimrc
-command! Zshrc e ~/.zshrc
+command! Vimrc e ~/dotfiles/vim/vimrc.symlink
+command! Zshrc e ~/dotfiles/oh-my-zsh/zshrc.symlink
 command! Gitconfig e ~/.gitconfig
 
 "debugger
@@ -904,7 +923,7 @@ inoremap $$ ""<esc>i
 inoremap $e ``<esc>i
 inoremap $t <><esc>i
 
-"visual mode surround 
+"visual mode surround
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
 vnoremap $2 <esc>`>a]<esc>`<i[<esc>
 vnoremap $3 <esc>`>a}<esc>`<i{<esc>
@@ -1012,8 +1031,6 @@ func! DeleteTillSlash()
     return g:cmd_edited
 endfunc
 
-" press $q in command mode to delete until last slash
-cno $q <C-\>eDeleteTillSlash()<cr>
 
 " close buffer
 map <leader>bd :bd<cr>
@@ -1045,6 +1062,7 @@ function! DeleteDuplicateLines() range
     endif
   endwhile
 endfunction
+
 command! -range=% DeleteDuplicateLines <line1>,<line2>call DeleteDuplicateLines()
 
 function! HandleURL()
@@ -1061,7 +1079,79 @@ function! HandleURL()
 endfunction
 
 nnoremap gx :call HandleURL()<CR>
-nnoremap <leader>u :call HandleURL()<CR>
 
 nnoremap dn ]c
 nnoremap dN [c
+
+" Effective editing of multiple files in Vim
+" https://jovica.org/posts/vim-edit-multiple-files/
+"
+" list all files with Bad in it and put in in args
+" :args `git grep -l Bad`
+" :argdo %s/\CBad/\CGood/ge | update
+
+command! -nargs=1 ArgsGrepPopulate exe 'args `rg -l '.<f-args>. '`'
+
+" to show some stats about the current file, like the file size press g<C-g>
+command! -nargs=0 FileStats exe 'normal g<C-g>'
+
+function Gitdiff(...)
+  let revision = a:0 == 1 ? a:1 : 'HEAD~0'
+
+  let s:filename = system('git rev-parse --show-prefix | tr -d "\n"') .  expand('%')
+  set nofoldenable
+  vert new
+  set bt=nofile
+
+  let s:cmd = 'git show '. revision .':' . s:filename
+  let @"=system(s:cmd)
+
+  exec 'normal ""PGdd'
+  diffthis
+  wincmd p
+  diffthis
+endfunction
+
+command! -nargs=? Gitdiff call Gitdiff(<f-args>)
+
+" exemple de regex pour matcher interface (ITestInterface) {
+" ou interface (ITest) extends {
+"
+" \(interface \)\@<=\(\w*\)\(\s\)\@=
+" \@<= : match apres le token
+" \@=  : no match apres le token et sur le token
+"
+" copier tous les resultats d'une regex dans une variable t
+"
+" :let t=[] | %s/\(interface \)\@<=\(\w*\)\(\s\)\@=/\=add(t,submatch(2))[len(t)-1]/g
+"
+" dans la partie replace on va executer une commande \=add() pour ajouter le
+" match a t
+" submatch(2) car ce qui nous interesse est le 2eme objet matché (ce quil y a
+" entre 'interface ' et ' {'
+" ensuite on pointe sur l'index de t [len(t) - 1] pour remplacer par le match
+" que l'on vient de retirer comme ça le fichier ne bouge pas
+" maintenant pour coller le contenu de la variable t on peut faire
+"
+" "=tp
+" ou encore :pu=t
+" ou encore :pu=join(t, ', ')
+"
+" autre exemple
+"
+" :let t=[] | %s/\<case\s\+\(\w\+\):\zs/\=add(t,submatch(1))[1:0]/g
+"
+" :g and :v permets de selectionner des lignes, g pour inclure v pour exclure
+" la commande a appliquer peut etre nimporte quoi.. par exemple
+"
+" :g/-/norm @a pour appliquer la macro a aux lignes contenant -
+"
+" ou
+"
+" :v/-/s/word/newword pour remplacer word par newword sur toutes les lignes
+" qui ne contiennent pas -
+"
+" :g/include/command
+" :v/exclude/command
+"
+" command peut etre t0 ou t$ pour copier ces lignes la ou est le curseur

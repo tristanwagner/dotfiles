@@ -145,45 +145,31 @@ default_to_zsh () {
   chsh -s $(which zsh)
 }
 
-install_pkgs () {
-  info 'installing packages'
-  xargs sudo apt-get -y install < pkglist
-}
-
 install_zsh_customs () {
-  /usr/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || true
+  $(which zsh) -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || true
   rsync -a $DOTFILES_ROOT/oh-my-zsh/custom/ ~/.oh-my-zsh/custom/
   git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 }
 
 install_fzf () {
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+  if ! [ -e ~/.fzf ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+  fi
 }
 
 install_ranger () {
-  git clone https://github.com/ranger/ranger ~/.ranger
-  cd ~/.ranger
-  sudo make install
-  cd $DOTFILES_ROOT
+  if ! [ -e ~/.ranger ]; then
+    git clone https://github.com/ranger/ranger ~/.ranger
+    cd ~/.ranger
+    sudo make install
+    cd $DOTFILES_ROOT
+  fi
 }
 
-#https://github.com/dronir/SpotifyControl
-install_spotify_control() {
-  # if in dotfiles root dir
-  ln -s $(pwd)/SpotifyControl/SpotifyControl /usr/local/bin/spotify
-}
-
-#setup_gitconfig
-install_pkgs || true
-install_zsh_customs
+setup_gitconfig
 install_dotfiles
-
-# find the installers and run them iteratively
-# not needed anymore i think
-#for installer in $(find . -name "*install.sh"); do
-#  sh -c "${installer}" || true
-#done
+install_zsh_customs
 
 install_fzf
 install_ranger

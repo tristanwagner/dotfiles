@@ -1,15 +1,18 @@
 call plug#begin('~/.vim/plugged')
 
 " Addons
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'alvan/vim-closetag'
+Plug 'kocotian/vim-dired'
 
 " Plug 'vim-scripts/vim-auto-save'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
+" used mainly for coerce see :help abolish-coerce
+Plug 'tpope/vim-abolish'
 
 " surrounding ops, like putting ' arround a word, or html tag etc..
 Plug 'tpope/vim-surround'
@@ -115,5 +118,8 @@ Plug 'luochen1990/rainbow'
 
 " oneliners into multliners
 Plug 'AndrewRadev/splitjoin.vim'
+
+" :ColorToggle for interpreting color codes
+Plug 'chrisbra/Colorizer'
 
 call plug#end()

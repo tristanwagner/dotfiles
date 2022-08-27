@@ -6,4 +6,6 @@ ruby/bundle.symlink/cache/
 vim/vim.symlink/plugged
 vim/vim.symlink/undo
 vim/vim.symlink/sessions
+vim/vim.symlink/session
 vim/vim.symlink/colors
+vim/vim.symlink/.netrwhist

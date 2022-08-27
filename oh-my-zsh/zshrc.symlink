@@ -169,6 +169,16 @@ function replace () {
   echo -n $1 | tr $2 $3
 }
 
+# retrieve cheatsheet from cheat.sh
+function cheat {
+  if [ $# -ne 1 ]; then
+    echo "Usage: cheat < query >"
+    return
+  fi
+
+  curl cheat.sh/$1
+}
+
 # Get weather
 function weather {
   if [ $# -ne 1 ]; then

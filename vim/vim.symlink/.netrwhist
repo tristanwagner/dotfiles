@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/Users/tristanwagner/auchan/myoptimix/back/src/app/errors/responses'
-let g:netrw_dirhist_2='/Users/tristanwagner/auchan/RSSA/back/src/app/validators/ccl'
-let g:netrw_dirhist_1='/home/tristan/dev/hackerrank'

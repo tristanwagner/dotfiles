@@ -1,51 +1,57 @@
 
-dotfiles
-===================
+# dotfiles
 
 Forked from [mcscoutermarsh's dotfiles](https://github.com/mscoutermarsh/dotfiles)
 
-## New to Vim?
-+ [Learning Vim in a Week](https://mikecoutermarsh.com/boston-vim-learning-vim-in-a-week/)
-+ [Upcase: The Art of Vim](https://upcase.com/vim) 
+## References
 
-If you're brand new to Vim, I recommend using [ThoughtBot's dotfiles](https://github.com/thoughtbot/dotfiles). They are better maintained than mine :).  
++ [Learning Vim in a Week](https://mikecoutermarsh.com/boston-vim-learning-vim-in-a-week/)
++ [Upcase: The Art of Vim](https://upcase.com/vim)
++ [ThoughtBot's dotfiles](https://github.com/thoughtbot/dotfiles)
 
 ## Installation
 
 If you have trouble during installation, please open an issue or pull request. :star:
 
 Clone this repo (or your own fork!) to your **home** directory (`/Users/username`).
-```
-git clone https://github.com/tristanwagner/dotfiles ~/.dotfiles
-cd ~/.dotfiles
+
+```shell
+git clone https://github.com/tristanwagner/dotfiles ~/dotfiles
+cd ~/dotfiles
 ./install
 ```
 
+## VIM
+
 ### Vim specific things for windows
 
-We need to install and USE gvim on windows, it seems complicated to really use it flawlessly in terminal emulators..
+We need to install and use gvim on windows, it seems complicated to really  
+use it flawlessly in terminal emulators..
 
-After install my vim & config files were located in C:\tools\vim so I just took all my config files and copied them to this directory (paste and remplace).
+After install my vim & config files were located in C:\tools\vim so I just  
+took all my config files and copied them to this directory (paste and remplace).
 
-After a :PlugInstall most of the stuff seemed to work althought I had to install some powerline fonts for vim-airline to display properly
+After a :PlugInstall most of the stuff seemed to work althought I had to  
+install some powerline fonts for vim-airline to display properly
 
-#### Install powerline fonts
+### Install powerline fonts
 
 Open powershell in admin mode and type
 
 ```shell
-$ git clone https://github.com/powerline/fonts.git --depth=1
-$ Set-ExecutionPolicy Bypass
-$ \install.ps1
-$ Set-ExecutionPolicy Default
+git clone https://github.com/powerline/fonts.git --depth=1
+Set-ExecutionPolicy Bypass
+\install.ps1
+Set-ExecutionPolicy Default
 ```
 
 to modify the default font in gvim
-```
+
+```vimscript
 " open guifont panel and chose a font
-:set guifont=*
+set guifont=*
 " print current font setting
-:set guifont?
+set guifont?
 " paste the setting in vimrc for example I picked deja vu
 set guifont=DejaVu_Sans_Mono_for_Powerline:h18:cANSI:qDRAFT
 ```
