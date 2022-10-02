@@ -8,6 +8,8 @@ return {
   keys = {
     { key = 'LeftArrow', mods = 'CMD', action = act.ActivateTabRelative(-1) },
     { key = 'RightArrow', mods = 'CMD', action = act.ActivateTabRelative(1) },
+    { key = '\'', mods = 'CMD', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }},
+    { key = '/', mods = 'CMD', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }},
   },
   send_composed_key_when_left_alt_is_pressed = true,
   audible_bell = "Disabled",

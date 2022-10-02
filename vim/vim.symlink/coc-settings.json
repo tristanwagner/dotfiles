@@ -5,8 +5,8 @@
     "python",
     "rust",
     "markdown",
-    "javascript",
-    "typescript",
+    "//javascript",
+    "//typescript",
     "json",
     "jsonc"
   ],

@@ -5,6 +5,8 @@ if has('win32')
   source C:\tools\vim\vim82\plugin\plugins.vim
 else
   source ~/.vim/plugin/plugins.vim
+  " use inerative zsh mode to be able to call aliases and zshrc functions
+  let &shell='/bin/zsh -i'
 endif
 
 " set default font for gui per platform
@@ -139,10 +141,10 @@ syntax enable
 " Colorscheme
 set termguicolors
 
-colorscheme gruvbox
-
 let g:gruvbox_invert_selection = 0
 let g:gruvbox_invert_tabline = 0
+
+colorscheme gruvbox
 
 set background=dark
 set colorcolumn=80                    " shoz a marker on column 80
@@ -220,6 +222,9 @@ let &t_ut=''
 " Autocmd, Specific file types and snippets
 "-------------------------------------------------------------------------------
 
+" .jsx extension not required to highlight jsx
+let g:jsx_ext_required = 0
+
 " Delete trailing white space on save, useful for some filetypes ;)
 function! CleanExtraSpaces()
   let save_cursor = getpos(".")
@@ -234,6 +239,8 @@ command! -nargs=0 TrimSpaces call CleanExtraSpaces()
 if has("autocmd")
   " this bugs out coc completion theme
   " autocmd vimenter * colorscheme gruvbox
+  " or
+  " autocmd vimenter * ++nested colorscheme gruvbox
   autocmd vimenter * AirlineTheme gruvbox
 
   autocmd BufWritePre *.txt,*.js,*.ts,*.json,*.adoc,*.py,*.wiki,*.sh,*.coffee,*.vim :call CleanExtraSpaces()
@@ -244,17 +251,23 @@ if has("autocmd")
   autocmd BufNewFile index.html 0r ~/dotfiles/vim/vim.symlink/skeletons/index.html
 
   " turn off syntax if file is big
-  autocmd Filetype css,scss if getfsize(@%) > 1500 | setlocal syntax=OFF | endif
+  autocmd Filetype css,scss if getfsize(@%) > 1000000 | setlocal syntax=OFF | endif
 
   "json fold
   " autocmd filetype json syntax on
   " autocmd filetype json set foldmethod=syntax
 
   " syntax and fold for json < 10 kB
-  autocmd Filetype json if getfsize(@%) > 10000 | setlocal syntax=OFF | else | syntax on | setl foldmethod=syntax  | endif
+  autocmd Filetype json if getfsize(@%) > 1000000 | setlocal syntax=OFF | endif
+  " this seems to bug airline tabline theme when I edit a json file the tabs
+  " are fked
+  " autocmd Filetype json if getfsize(@%) > 10000 | setlocal syntax=OFF | else | syntax on | setl foldmethod=syntax  | endif
 
   " Set filetype correctly for JSON-based lint config files
-  autocmd BufNewFile,BufRead .eslintrc,.prettierrc,.babelrc set filetype=json
+  autocmd BufNewFile,BufRead .stylelintrc,.eslintrc,.prettierrc,.babelrc,*.json.symlink set filetype=json
+
+  " Set filetype correctly for lua-based files
+  autocmd BufNewFile,BufRead *.lua.symlink set filetype=lua
 
   autocmd filetype cpp call SetCPPOptions()
   autocmd filetype c call SetCOptions()
@@ -437,8 +450,8 @@ let g:auto_save_events= ["InsertLeave", "TextChanged", "FocusLost"]
 " enable airline tabs
 let g:airline#extensions#tabline#enabled = 1
 
-" show only filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+" formatted tab names
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " powerline
 let g:airline_powerline_fonts = 1
@@ -596,8 +609,8 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>a  <Plug>(coc-codeaction-selected)<CR>
+nmap <leader>a  <Plug>(coc-codeaction-selected)<CR>
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>jf  <Plug>(coc-codeaction)
@@ -807,7 +820,7 @@ cno $q <C-\>eDeleteTillSlash()<cr>
 "" Prettier
 
 "Enable auto formatting of files that have "@format" or "@prettier" tag
-let g:prettier#autoformat = 1
+let g:prettier#autoformat = 0
 
 "Allow auto formatting for files without "@format" or "@prettier" tag
 let g:prettier#autoformat_require_pragma = 0
@@ -1113,6 +1126,8 @@ function Gitdiff(...)
 endfunction
 
 command! -nargs=? Gitdiff call Gitdiff(<f-args>)
+
+command! -nargs=0 GeneratePassword exe 'r !gpass'
 
 " exemple de regex pour matcher interface (ITestInterface) {
 " ou interface (ITest) extends {

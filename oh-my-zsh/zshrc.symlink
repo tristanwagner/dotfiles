@@ -189,6 +189,16 @@ function weather {
   curl http://wttr.in/$1
 }
 
+function gpass() {
+    if [ $# -eq 0 ]; then
+      LC_ALL=C tr -dc 'A-Za-z0-9-_.$#@' < /dev/urandom | head -c 16
+    elif [ $# -eq 1 ]; then
+      LC_ALL=C tr -dc 'A-Za-z0-9-_.$#@' < /dev/urandom | head -c $1
+    else
+        echo "Usage: gpass [character number]"
+    fi
+}
+
 # easy encryption
 function encrypt {
   if [ $# -ne 3 ]; then
@@ -219,6 +229,116 @@ function csv {
     less $1 | sed -e 's/,,/, ,/g' | column -s, -t | less -#5 -N -S
 }
 
+# Create vue components
+function vcomp {
+  if [ $# -ne 1 ]; then
+    echo "Usage: vcomp <component-name>"
+    return
+  fi
+
+  # Create basic files
+  mkdir ./src/components/$1
+  touch ./src/components/$1/$1.tsx
+  touch ./src/components/$1/$1.stories.tsx
+  touch ./src/components/$1/$1.types.ts
+  touch ./src/components/$1/$1.module.scss;
+
+  echo "export interface $1Props {
+};" > ./src/components/$1/$1.types.ts
+
+  echo "import { Meta, StoryFn } from '@storybook/vue3';
+import $1 from './$1';
+import './$1.stories.scss';
+
+export default {
+    title: '$1',
+    component: $1,
+    argTypes: {
+    },
+} as Meta;
+
+const Template: StoryFn = (args) => <$1 {...args} />;
+
+export const Default = Template.bind({});
+
+Default.args = {
+};" > ./src/components/$1/$1.stories.tsx
+
+  echo "import { defineComponent } from 'vue';
+import CSS from './$1.module.scss';
+import { $1Props } from './$1.types';
+
+const $1 = defineComponent<$1Props>({
+    name: 'v-$(echo $1 | awk '{print tolower($0)}')',
+    props: [
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+    ] as any,
+    setup({
+        ...props
+      },
+      { attrs, slots, expose }
+    ) {
+      return () => {
+         <>
+         </>
+      };
+    },
+});
+
+export default $1;" > ./src/components/$1/$1.tsx
+}
+
+# Create vue functional components
+function vfcomp {
+  if [ $# -ne 1 ]; then
+    echo "Usage: vfcomp <component-name>"
+    return
+  fi
+
+  # Create basic files
+  mkdir ./src/components/$1
+  touch ./src/components/$1/$1.tsx
+  touch ./src/components/$1/$1.stories.tsx
+  touch ./src/components/$1/$1.types.ts
+  touch ./src/components/$1/$1.module.scss;
+
+  echo "export interface $1Props {
+};" > ./src/components/$1/$1.types.ts
+
+  echo "import { Meta, StoryFn } from '@storybook/vue3';
+import $1 from './$1';
+import './$1.stories.scss';
+
+export default {
+    title: '$1',
+    component: $1,
+    argTypes: {
+    },
+} as Meta;
+
+const Template: StoryFn = (args) => <$1 {...args} />;
+
+export const Default = Template.bind({});
+
+Default.args = {
+};" > ./src/components/$1/$1.stories.tsx
+
+  echo "import { FunctionalComponent } from 'vue';
+import CSS from './$1.module.scss';
+import { $1Props } from './$1.types';
+
+const $1: FunctionalComponent<$1Props> = ({
+    ...props
+}, { attrs, slots, expose }) => {
+    return (
+        <>
+        </>
+    );
+};
+
+export default $1;" > ./src/components/$1/$1.tsx
+}
+
 # Create react native components
 function rn-comp {
   if [ $# -ne 1 ]; then
@@ -228,9 +348,9 @@ function rn-comp {
 
   # Create basic files
   mkdir ./app/components/$1
-  > ./app/components/$1/index.js
-  > ./app/components/$1/$1.js
-  > ./app/components/$1/styles.js;
+  touch ./app/components/$1/index.js
+  touch ./app/components/$1/$1.js
+  touch ./app/components/$1/styles.js;
 
   # Add boilerplate
   echo "import $1 from \"./$1\";
@@ -461,7 +581,7 @@ function fh () {
 
 # browse mans
 function fman() {
-    man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+    man -k . | fzf --prompt='Man> ' | awk '{print $1}' | sed 's/([^()*])//' | xargs -r man
 }
 
 function stopwatch () {

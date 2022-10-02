@@ -55,12 +55,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Syntax highlighting
+Plug 'nelsyeung/twig.vim'
+Plug 'jxnblk/vim-mdx-js'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-markdown'
 Plug 'groenewege/vim-less'
 Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 "Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 Plug 'storyn26383/vim-vue'
