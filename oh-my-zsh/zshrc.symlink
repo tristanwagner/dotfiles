@@ -240,6 +240,7 @@ function vcomp {
   mkdir ./src/components/$1
   touch ./src/components/$1/$1.tsx
   touch ./src/components/$1/$1.stories.tsx
+  touch ./src/components/$1/$1.stories.scss
   touch ./src/components/$1/$1.types.ts
   touch ./src/components/$1/$1.module.scss;
 
@@ -278,10 +279,10 @@ const $1 = defineComponent<$1Props>({
       },
       { attrs, slots, expose }
     ) {
-      return () => {
+      return () => (
          <>
          </>
-      };
+      );
     },
 });
 
@@ -299,6 +300,7 @@ function vfcomp {
   mkdir ./src/components/$1
   touch ./src/components/$1/$1.tsx
   touch ./src/components/$1/$1.stories.tsx
+  touch ./src/components/$1/$1.stories.scss
   touch ./src/components/$1/$1.types.ts
   touch ./src/components/$1/$1.module.scss;
 
@@ -618,30 +620,6 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     }
 fi
 
-function kt-inf() {
-  kitty --session ~/dotfiles/kitty/inf.session.kitty
-}
-
-function kt-rssa() {
-  kitty --session ~/dotfiles/kitty/rssa.session.kitty
-}
-
-function kt-transco() {
-  kitty --session ~/dotfiles/kitty/transco.session.kitty
-}
-
-function kt-starterkit() {
-  kitty --session ~/dotfiles/kitty/starterkit.session.kitty
-}
-
-function kt-360() {
-  kitty --session ~/dotfiles/kitty/v360.session.kitty
-}
-
-function kt-opt() {
-  kitty --session ~/dotfiles/kitty/myoptimix.session.kitty
-}
-
 # prettify json with node
 #cat file.json | node <<< "var o = $(cat); console.log(JSON.stringify(o, null, 4));"
 #with python
@@ -686,3 +664,6 @@ setopt globdots
 # zmodload zsh/zprof
 export PATH=$PATH:$HOME/.local/bin
 eval $(thefuck --alias)
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
