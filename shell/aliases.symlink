@@ -1,7 +1,7 @@
 alias notes='vim ~/dev/notes/README.md'
 
 #kitty
-# search 
+# search
 alias hg='kitty +kitten hyperlinked_grep'
 
 # Safe delete

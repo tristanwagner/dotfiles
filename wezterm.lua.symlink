@@ -1,3 +1,6 @@
+-- update wezterm with
+-- brew upgrade --cask wez/wezterm/wezterm
+
 local wezterm = require 'wezterm'
 local act = wezterm.action
 

@@ -208,6 +208,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
+set tags=./tags,tags
+
 "-------------------------------------------------------------------------------
 " Interface
 "-------------------------------------------------------------------------------
@@ -270,6 +272,9 @@ if has("autocmd")
   " Set filetype correctly for lua-based files
   autocmd BufNewFile,BufRead *.lua.symlink set filetype=lua
 
+  " generate ctags on update
+  autocmd BufWritePost *.c,*.h silent! execute '!ctags . &' | redraw!
+
   autocmd filetype cpp call SetCPPOptions()
   autocmd filetype c call SetCOptions()
   autocmd FileType python call SetPythonOptions()
@@ -281,7 +286,7 @@ if has("autocmd")
   autocmd filetype jsx call SetJSXOptions()
   autocmd filetype tsx call SetTSXOptions()
   autocmd filetype vim call SetVIMOptions()
-
+  autocmd FileType rescript call SetRescriptOptions()
   " Properly disable sound on errors on MacVim
   if has("gui_macvim")
       autocmd GUIEnter * set vb t_vb=
@@ -394,6 +399,11 @@ endfunction
 function VIMSnippets()
   " ch for comment header
   nnoremap ,ch o<Esc>:-1read $HOME/.vim/snippets/vim/comment-header.vim<CR>jA
+endfunction
+
+function SetRescriptOptions()
+  nnoremap <silent> <buffer> gd :RescriptJumpToDefinition<CR>
+  set omnifunc=rescript#Complete
 endfunction
 
 " html skeleton
@@ -555,7 +565,12 @@ let g:coc_global_extensions = [
       \'coc-vimlsp',
       \'coc-xml',
       \'coc-yaml',
-      \'coc-yank'
+      \'coc-yank',
+      \'coc-phpls',
+      \'coc-stylelintplus',
+      \'coc-cssmodules',
+      \'coc-prettier',
+      \'coc-clangd',
       \]
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -1105,7 +1120,7 @@ nnoremap dN [c
 " https://jovica.org/posts/vim-edit-multiple-files/
 "
 " list all files with Bad in it and put in in args
-" :args `git grep -l Bad`
+" :args `=systemlist("git grep -l Bad")`
 " :argdo %s/\CBad/\CGood/ge | update
 
 command! -nargs=1 ArgsGrepPopulate exe 'args `rg -l '.<f-args>. '`'

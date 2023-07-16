@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'alvan/vim-closetag'
-Plug 'kocotian/vim-dired'
+" Plug 'kocotian/vim-dired'
 
 " Plug 'vim-scripts/vim-auto-save'
 
@@ -67,7 +67,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 Plug 'storyn26383/vim-vue'
 Plug 'habamax/vim-asciidoctor'
-Plug 'rescript-lang/vim-rescript'
+Plug 'rescript-lang/vim-rescript', { 'tag': 'v2.1.0' }
 " Reasonml
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rhysd/vim-clang-format'
@@ -123,5 +123,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " :ColorToggle for interpreting color codes
 Plug 'chrisbra/Colorizer'
+
+" Arduino
+Plug 'stevearc/vim-arduino'
 
 call plug#end()

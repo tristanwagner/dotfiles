@@ -10,59 +10,22 @@
     "json",
     "jsonc"
   ],
+  "explorer.file.showHiddenFiles": true,
   "languageserver": {
     "go": {
       "command": "gopls",
-      "rootPatterns": [
-        "go.mod"
-      ],
+      "rootPatterns": ["go.mod"],
       "trace.server": "verbose",
-      "filetypes": [
-        "go"
-      ]
+      "filetypes": ["go"]
     },
     "rescript": {
       "enable": true,
       "module": "~/dotfiles/vim/vim.symlink/plugged/vim-rescript/server/out/server.js",
-      "args": [
-        "--node-ipc"
-      ],
-      "filetypes": [
-        "rescript"
-      ],
-      "rootPatterns": [
-        "bsconfig.json"
-      ]
-    },
-    "ccls": {
-      "command": "ccls",
-      "filetypes": [
-        "c",
-        "cpp",
-        "cuda",
-        "objc",
-        "objcpp"
-      ],
-      "rootPatterns": [
-        ".ccls-root",
-        "compile_commands.json"
-      ],
-      "initializationOptions": {
-        "cache": {
-          "directory": ".ccls-cache"
-        },
-        "client": {
-          "snippetSupport": true
-        }
-      }
+      "args": ["--node-ipc"],
+      "filetypes": ["rescript"],
+      "rootPatterns": ["bsconfig.json"]
     }
   },
-  "list.source.files.args": [
-    "--hidden",
-    "--files"
-  ],
-  "list.source.grep.args": [
-    "--hidden",
-    "--glob=!.git/*"
-  ]
+  "list.source.files.args": ["--hidden", "--files"],
+  "list.source.grep.args": ["--hidden", "--glob=!.git/*"]
 }
