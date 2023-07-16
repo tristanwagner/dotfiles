@@ -32,14 +32,14 @@ map <Leader>q :qall<CR>
 nnoremap <leader>r :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 
 " Nerdtree
-map <C-B> :NERDTreeToggle<CR>
+" map <C-B> :NERDTreeToggle<CR>
 
 " show hidden files
-let NERDTreeShowHidden=1
+" let NERDTreeShowHidden=1
 "
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " Close the tab if NERDTree is the only window remaining in it.
 " NOTE: I use the other method instead because when switching windows it
@@ -47,8 +47,9 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 " autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" FZF
 nnoremap gb <Esc><Esc>:Buffers!<Cr>
 nnoremap <C-f> <Esc><Esc>:Files!<Cr>
 inoremap <C-f> <Esc><Esc>:BLines!<Cr>

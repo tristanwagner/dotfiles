@@ -2,7 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " Addons
 " Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'alvan/vim-closetag'
 " Plug 'kocotian/vim-dired'
 
