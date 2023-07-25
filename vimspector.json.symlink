@@ -1,98 +1,130 @@
 {
-    "configurations": {
-        "C - Launch": {
-            "adapter": "vscode-cpptools",
-            "configuration": {
-                "MIMode": "lldb",
-                "cwd": "${cwd}",
-                "debugOptions": [],
-                "externalConsole": true,
-                "logging": {
-                    "engineLogging": true
-                },
-                "name": "Cpp: Launch current file",
-                "program": "${fileDirname}/${fileBasenameNoExtension}",
-                "request": "launch",
-                "stopAtEntry": true,
-                "stopOnEntry": true,
-                "type": "cppdbg"
-            }
+  "configurations": {
+    "C - Launch LLDB": {
+      "adapter": "CodeLLDB",
+      "filetype": [
+        "ccp",
+        "c",
+        "rust"
+      ],
+      "configuration": {
+        "request": "launch",
+        "program": "${fileDirname}/${fileBasenameNoExtension}_dbg"
+      }
+    },
+    "C - Attach LLDB": {
+      "adapter": "CodeLLDB",
+      "configuration": {
+        "request": "attach",
+        "program": "${fileDirname}/${fileBasenameNoExtension}_dbg",
+        "pid": "${PickProcess(\"${fileBasenameNoExtension}_dbg\")}"
+      }
+    },
+    "C - Launch": {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "MIMode": "lldb",
+        "cwd": "${cwd}",
+        "debugOptions": [],
+        "externalConsole": true,
+        "logging": {
+          "engineLogging": true
         },
-        "Chrome - launch": {
-            "adapter": "chrome",
-            "configuration": {
-                "request": "launch",
-                "url": "http://localhost:1234/",
-                "webRoot": "${workspaceRoot}"
-            }
-        },
-        "Java - Launch": {
-            "adapter": "vscode-java",
-            "configuration": {
-                "args": "hello world!",
-                "classPaths": [
-                    "${workspaceRoot}/target/classes"
-                ],
-                "console": "integratedTerminal",
-                "mainClass": "com.vimspector.test.TestApplication",
-                "name": "Java: Launch current file",
-                "request": "launch",
-                "sourcePaths": [
-                    "${workspaceRoot}/src/main/java"
-                ],
-                "stopOnEntry": true
-            }
-        },
-        "Node - launch": {
-            "adapter": "vscode-node",
-            "configuration": {
-                "console": "integratedTerminal",
-                "cwd": "${workspaceRoot}",
-                "program": "${file}",
-                "protocol": "auto",
-                "request": "launch",
-                "stopOnEntry": true
-            }
-        },
-        "Perl - Launch": {
-            "adapter": "vscode-perl-debug",
-            "configuration": {
-                "console": "externalTerminal",
-                "cwd": "${cwd}",
-                "debugOptions": [],
-                "exec": "/usr/bin/env perl",
-                "execArgs": [],
-                "name": "Perl: Launch current file",
-                "program": "${file}",
-                "request": "launch",
-                "sessions": "single",
-                "stopAtEntry": true,
-                "stopOnEntry": true,
-                "type": "perl"
-            }
-        },
-        "Python - Launch": {
-            "adapter": "vscode-python",
-            "configuration": {
-                "console": "externalTerminal",
-                "cwd": "${cwd}",
-                "debugOptions": [],
-                "name": "Python: Launch current file",
-                "program": "${file}",
-                "request": "launch",
-                "stopAtEntry": true,
-                "stopOnEntry": true,
-                "type": "python"
-            }
-        },
-        "Go - Launch": {
-          "adapter": "vscode-go",
-          "configuration": {
-            "request": "launch",
-            "program": "${file}",
-            "mode": "debug",
-            "dlvToolPath": "$HOME/go/bin/dlv"
-          }
-        }
+        "name": "Cpp: Launch current file",
+        "program": "${fileDirname}/${fileBasenameNoExtension}_dbg",
+        "request": "launch",
+        "stopAtEntry": true,
+        "stopOnEntry": true,
+        "type": "cppdbg"
+      }
+    },
+    "C - Launch OSX": {
+      "adapter": "CodeLLDB",
+      "filetype": [
+        "ccp",
+        "c"
+      ],
+      "configuration": {
+        "request": "launch",
+        "program": "${fileDirname}/${fileBasenameNoExtension}_dbg",
+        "externalConsole": true
+      }
+    },
+    "Chrome - launch": {
+      "adapter": "chrome",
+      "configuration": {
+        "request": "launch",
+        "url": "http://localhost:1234/",
+        "webRoot": "${workspaceRoot}"
+      }
+    },
+    "Java - Launch": {
+      "adapter": "vscode-java",
+      "configuration": {
+        "args": "hello world!",
+        "classPaths": [
+          "${workspaceRoot}/target/classes"
+        ],
+        "console": "integratedTerminal",
+        "mainClass": "com.vimspector.test.TestApplication",
+        "name": "Java: Launch current file",
+        "request": "launch",
+        "sourcePaths": [
+          "${workspaceRoot}/src/main/java"
+        ],
+        "stopOnEntry": true
+      }
+    },
+    "Node - launch": {
+      "adapter": "vscode-node",
+      "configuration": {
+        "console": "integratedTerminal",
+        "cwd": "${workspaceRoot}",
+        "program": "${file}",
+        "protocol": "auto",
+        "request": "launch",
+        "stopOnEntry": true
+      }
+    },
+    "Perl - Launch": {
+      "adapter": "vscode-perl-debug",
+      "configuration": {
+        "console": "externalTerminal",
+        "cwd": "${cwd}",
+        "debugOptions": [],
+        "exec": "/usr/bin/env perl",
+        "execArgs": [],
+        "name": "Perl: Launch current file",
+        "program": "${file}",
+        "request": "launch",
+        "sessions": "single",
+        "stopAtEntry": true,
+        "stopOnEntry": true,
+        "type": "perl"
+      }
+    },
+    "Python - Launch": {
+      "adapter": "vscode-python",
+      "configuration": {
+        "console": "externalTerminal",
+        "cwd": "${cwd}",
+        "debugOptions": [],
+        "name": "Python: Launch current file",
+        "program": "${file}",
+        "request": "launch",
+        "stopAtEntry": true,
+        "stopOnEntry": true,
+        "type": "python"
+      }
+    },
+    "Go - Launch": {
+      "adapter": "vscode-go",
+      "configuration": {
+        "request": "launch",
+        "program": "${file}",
+        "mode": "debug",
+        "dlvToolPath": "$HOME/go/bin/dlv"
+      }
     }
+  }
 }

@@ -273,6 +273,9 @@ if has("autocmd")
   " Set filetype correctly for lua-based files
   autocmd BufNewFile,BufRead *.lua.symlink set filetype=lua
 
+  " Set filetype correctly for objective c files
+  autocmd BufNewFile,BufRead *.m,*.mm set filetype=objc
+
   " generate ctags on update
   autocmd BufWritePost *.c,*.h silent! execute '!ctags . &' | redraw!
 
