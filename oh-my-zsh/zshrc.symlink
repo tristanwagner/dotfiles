@@ -121,6 +121,11 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
+## awk advanced search example
+# awk -v RS="\n\n" '/L337/ {if ($0 ~ /Blue/ && $0 ~ /Honda/) print $0}' mystery/vehicles
+# it means : search in mystery/vehicles for L337, take the whole paragraph (RS="\n\n")
+# and then take only paragraphs that contains Blue and Honda, and print the results
+
 function validateYaml() {
   python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
 }
@@ -196,6 +201,14 @@ function gpass() {
       LC_ALL=C tr -dc 'A-Za-z0-9-_.$#@' < /dev/urandom | head -c $1
     else
         echo "Usage: gpass [character number]"
+    fi
+}
+
+function get_file_line() {
+    if [ $# -eq 2 ]; then
+        head -n $2 $1 | tail -1
+    else
+        echo "Usage: get_file_line <file> <line>"
     fi
 }
 
