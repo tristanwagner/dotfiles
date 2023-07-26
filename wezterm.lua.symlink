@@ -1,18 +1,20 @@
 -- update wezterm with
 -- brew upgrade --cask wez/wezterm/wezterm
 
+-- To help debug config CTRL-SHIFT-L is useful
+
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
   font = wezterm.font 'Roboto Mono for Powerline',
   font_size = 16.0,
-  color_scheme = "Gruvbox Dark",
+  color_scheme = "GruvboxDark",
   keys = {
     { key = 'LeftArrow', mods = 'CMD', action = act.ActivateTabRelative(-1) },
     { key = 'RightArrow', mods = 'CMD', action = act.ActivateTabRelative(1) },
-    { key = '\'', mods = 'CMD', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }},
-    { key = '/', mods = 'CMD', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }},
+    { key = '|', mods = 'CMD', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }},
+    { key = '_', mods = 'CMD', action = act.SplitVertical { domain = 'CurrentPaneDomain' }},
   },
   send_composed_key_when_left_alt_is_pressed = true,
   audible_bell = "Disabled",
