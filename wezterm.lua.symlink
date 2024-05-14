@@ -15,6 +15,7 @@ return {
     { key = 'RightArrow', mods = 'CMD', action = act.ActivateTabRelative(1) },
     { key = '|', mods = 'CMD', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }},
     { key = '_', mods = 'CMD', action = act.SplitVertical { domain = 'CurrentPaneDomain' }},
+    { key = 'H', mods = 'SHIFT|CTRL', action = act.Search { CaseSensitiveString = '' }},
   },
   send_composed_key_when_left_alt_is_pressed = true,
   audible_bell = "Disabled",

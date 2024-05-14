@@ -824,6 +824,11 @@ if executable("xxd")
   command! -nargs=0 RHexDump %!xxd -r
 endif
 
+" reverse lines of selection
+if executable("tail")
+  command -range -nargs=0 Reverse <line1>,<line2>!tail -r
+endif
+
 " command line mode mappings
 cnoremap <C-a> <Home>
 cnoremap <C-b> <S-Left>
@@ -944,9 +949,13 @@ let g:go_highlight_function_parameters = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 
+" Astro
+let g:astro_typescript = 'enable'
+
 " abbreviations
 " insert current date/time
-iabbrev <expr> ddd strftime('%d/%m/%y %H:%M:%S')
+" iabbrev <expr> ddd strftime('%d/%m/%y %H:%M:%S')
+iabbrev <expr> ddd strftime('%Y-%m-%dT%H:%M:%SZ')
 iabbrev #i #include
 iabbrev #d #define
 

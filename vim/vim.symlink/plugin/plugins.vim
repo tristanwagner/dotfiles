@@ -127,4 +127,7 @@ Plug 'chrisbra/Colorizer'
 " Arduino
 Plug 'stevearc/vim-arduino'
 
+" Astro
+Plug 'wuelnerdotexe/vim-astro'
+
 call plug#end()
