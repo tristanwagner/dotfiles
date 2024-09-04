@@ -75,7 +75,7 @@ export NVM_AUTO_USE=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search vi-mode zsh-autosuggestions forgit zsh-nvm zsh-syntax-highlighting zsh-you-should-use zsh-bat)
+plugins=(git history-substring-search zsh-vi-mode zsh-autosuggestions forgit zsh-nvm zsh-syntax-highlighting zsh-you-should-use zsh-bat)
 #plugins+=(zsh-nvm history-substring-search vi-mode)
 
 # User configuration
