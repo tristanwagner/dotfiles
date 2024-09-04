@@ -16,6 +16,7 @@ if has("gui_running")
     if has("gui_gtk2")
       set guifont=Inconsolata\ 12
     elseif has("gui_macvim")
+      autocmd GUIEnter * set vb t_vb=
       set guifont=Menlo\ Regular:h14
     elseif has("gui_win32")
       set guifont=DejaVu_Sans_Mono_for_Powerline:h18:cANSI:qDRAFT
@@ -549,6 +550,7 @@ nnoremap <leader>sl :call SearchString('l')<CR>
 " https://github.com/fannheyward/init.vim/blob/master/init.vim
 let g:coc_global_extensions = [
       \'coc-dictionary',
+      \'coc-explorer',
       \'coc-ecdict',
       \'coc-eslint',
       \'coc-git',
@@ -1210,3 +1212,34 @@ command! -nargs=0 GeneratePassword exe 'r !gpass'
 " :v/exclude/command
 "
 " command peut etre t0 ou t$ pour copier ces lignes la ou est le curseur
+"
+" ZK
+" User command to index the current notebook.
+"
+" zk.index expects a notebook path as first argument, so we provide the current
+" buffer path with expand("%:p").
+command! -nargs=0 ZkIndex :call CocAction("runCommand", "zk.index", expand("%:p"))
+nnoremap <leader>zi :ZkIndex<CR>
+
+" Bulk rename file
+" :h rename-files
+" 1. :r !ls foo
+" 2. :%s/.*/mv & &/
+" 3. :w !zsh
+
+" User command to create and open a new note, to be called like this:
+" :ZkNew {"title": "An interesting subject", "dir": "inbox", ...}
+"
+" Note the concatenation with the "edit" command to open the note right away.
+command! -nargs=? ZkNew :exec "edit ".CocAction("runCommand", "zk.new", expand("%:p"), <args>).path
+" Create a new note after prompting for its title.
+nnoremap <leader>zn :ZkNew {"title": input("Title: "), "dir": input("Dir: ")}<CR>
+" Create a new note in the directory journal/daily.
+" nnoremap <leader>zj :ZkNew {"dir": "journal/daily"}<CR>
+" `filename`, `filenameStem`, `path`, `absPath`, `title`, `lead`, `body`, `snippets`, `rawContent`, `wordCount`, `tags`, `metadata`, `created`, `modified` and `checksum`.
+command! -nargs=1 ZkList :call CocAction("runCommand", "zk.list", expand("%:p"), <args>)
+" nnoremap <leader>zl :ZkList {"match": [input("Matchs: ")], "tags": [input("Tags: ")], "select": ["filename", "path", "tags", "snippets"]}<CR>
+nnoremap <leader>zl :ZkList {"match": ["zk"], "select": ["filename", "path", "tags", "snippets"]}
+
+command! -nargs=0 ZkTagList :call CocAction("runCommand", "zk.tag.list", expand("%:p"))
+nnoremap <leader>ztl :ZkTagList<CR>

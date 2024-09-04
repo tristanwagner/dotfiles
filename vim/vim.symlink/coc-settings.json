@@ -10,6 +10,7 @@
     "json",
     "jsonc"
   ],
+  "suggest.invalidInsertCharacters": [],
   "explorer.file.showHiddenFiles": true,
   "languageserver": {
     "go": {
@@ -24,6 +25,12 @@
       "args": ["--node-ipc"],
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
+    },
+    "zk": {
+      "command": "zk",
+      "args": ["lsp"],
+      "trace.server": "messages",
+      "filetypes": ["markdown"]
     }
   },
   "list.source.files.args": ["--hidden", "--files"],

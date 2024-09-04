@@ -1,13 +1,12 @@
-
 # dotfiles
 
 Forked from [mcscoutermarsh's dotfiles](https://github.com/mscoutermarsh/dotfiles)
 
 ## References
 
-+ [Learning Vim in a Week](https://mikecoutermarsh.com/boston-vim-learning-vim-in-a-week/)
-+ [Upcase: The Art of Vim](https://upcase.com/vim)
-+ [ThoughtBot's dotfiles](https://github.com/thoughtbot/dotfiles)
+- [Learning Vim in a Week](https://mikecoutermarsh.com/boston-vim-learning-vim-in-a-week/)
+- [Upcase: The Art of Vim](https://upcase.com/vim)
+- [ThoughtBot's dotfiles](https://github.com/thoughtbot/dotfiles)
 
 ## Installation
 
@@ -55,3 +54,14 @@ set guifont?
 " paste the setting in vimrc for example I picked deja vu
 set guifont=DejaVu_Sans_Mono_for_Powerline:h18:cANSI:qDRAFT
 ```
+
+## Stuff to install
+
+- oh my zsh
+- powerline10k
+- zsh-nvm / nvm
+- ag the silver searcher
+- fzf
+- thefuck
+- bat
+- rust/cargo
