@@ -4,3 +4,12 @@
 [submodule "powerline-fonts"]
 	path = powerline-fonts
 	url = https://github.com/Lokaltog/powerline-fonts
+[submodule "oh-my-zsh/custom/plugins/forgit"]
+	path = oh-my-zsh/custom/plugins/forgit
+	url = https://github.com/wfxr/forgit
+[submodule "oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "oh-my-zsh/custom/plugins/zsh-nvm"]
+	path = oh-my-zsh/custom/plugins/zsh-nvm
+	url = https://github.com/lukechilds/zsh-nvm
