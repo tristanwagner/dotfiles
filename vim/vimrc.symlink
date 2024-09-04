@@ -737,10 +737,17 @@ nmap <silent><nowait> <M-;>  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nmap <silent><nowait> <M-p>  :<C-u>CocListResume<CR>
 """"""
-" if executable("rg")
+if executable("rg")
 "   set grepprg=rg\ --vimgrep\ --no-heading
-" endif
+  let g:rg_command = '
+    \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+    \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+    \ -g "!*.{min.js,swp,o,zip}"
+    \ -g "!{.git,node_modules,vendor}/*" '
 
+  command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+  nnoremap <C-/> :execute "F"<CR>
+endif
 " function! s:grep_to_qf(...) abort
 "   return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
 " endfunction
