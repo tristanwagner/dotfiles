@@ -3,6 +3,18 @@
 # it means : search in mystery/vehicles for L337, take the whole paragraph (RS="\n\n")
 # and then take only paragraphs that contains Blue and Honda, and print the results
 
+function cd() {
+  builtin cd "$@" || return
+  if [[ -f ".envrc" ]]; then
+    source .envrc
+  fi
+}
+function serve() {
+  local port="${1:-8000}"
+  python3 -m http.server "$port"
+  echo "Serving at http://localhost:$port"
+}
+
 function validateYaml() {
   python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
 }
@@ -409,7 +421,7 @@ function vf() {
 function vg() {
   local files
 
-  read -r -d "\n" files <<<"$(ag --nobreak --noheading $@ | fzf -0 -1 -m | awk -F: '{print $1 ":" $2}')"
+  read -r -d "\n" files <<<"$(ag --nobreak --noheading $@ | fzf --preview 'bat --style=numbers --color=always' -0 -1 -m | awk -F: '{print $1 ":" $2}')"
 
   echo $files
 

@@ -75,7 +75,7 @@ export NVM_AUTO_USE=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search zsh-vi-mode zsh-autosuggestions forgit zsh-nvm zsh-syntax-highlighting zsh-you-should-use zsh-bat)
+plugins=(git zsh-z fzf history-substring-search zsh-vi-mode zsh-autosuggestions forgit zsh-nvm zsh-syntax-highlighting zsh-you-should-use zsh-bat)
 #plugins+=(zsh-nvm history-substring-search vi-mode)
 
 # User configuration
@@ -84,6 +84,12 @@ plugins=(git history-substring-search zsh-vi-mode zsh-autosuggestions forgit zsh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt share_history  # Share history across terminals
+setopt inc_append_history  # Save commands to history immediately
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -94,11 +100,12 @@ plugins=(git history-substring-search zsh-vi-mode zsh-autosuggestions forgit zsh
 
 export EDITOR='vim'
 export VISUAL='vim'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# make fzf use ag instead of default command
-export FZF_DEFAULT_COMMAND='ag --path-to-ignore ~/.ignore --hidden -f -g ""'
+# make fzf use rg instead of default command
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -153,12 +160,16 @@ setopt globdots
 # Ctrl + W – delete from the cursor to the start of the preceding word.
 # Alt + D – delete from the cursor to the end of the next word.
 # Ctrl + L – clear the terminal.
+# Ctrl + T – search file
+# Ctrl + R – search history
+# Ctrl + SHIFT + F – search buffer
 # debug zsh loading time
 # zmodload zsh/zprof
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-eval $(thefuck --alias)
+eval $(thefuck --alias f)
 
 # Uncomment that for profiling Initialization
 # zprof
+# neofetch

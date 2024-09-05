@@ -1,22 +1,121 @@
 -- update wezterm with
 -- brew upgrade --cask wez/wezterm/wezterm
 
+-- CTRL-SHIFT-U for emojis
+
 -- To help debug config CTRL-SHIFT-L is useful
 
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
+local function scheme_for_appearance(appearance)
+  if appearance:find 'Dark' then
+    return "Gruvbox Dark"
+  else
+    return "Solarized Light"
+  end
+end
+
 return {
-  font = wezterm.font 'Roboto Mono for Powerline',
+    launch_menu = {
+    {
+      label = "Top (System Monitor)",
+      args = {"top"},
+    },
+    {
+      label = "HTOP",
+      args = {"htop"},
+    },
+    {
+      label = "Python REPL",
+      args = {"python3"},
+    },
+    {
+      label = "Neovim",
+      args = {"nvim"},
+    },
+  },
+  font = wezterm.font_with_fallback({
+    "FiraCode Nerd Font",
+    "JetBrainsMono Nerd Font",
+  }),
+  window_background_opacity = 0.9,  -- Set transparency level
+  text_background_opacity = 0.8,  -- Transparency for text background
+  macos_window_background_blur = 20,  -- Blur effect on macOSenable_wayland = true,  -- Enable Wayland for better performance on Wayland systems
+  enable_tab_bar = true,
   font_size = 16.0,
-  color_scheme = "GruvboxDark",
+  color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
   keys = {
+    { key="`", mods="CMD", action=wezterm.action.SpawnCommandInNewTab{args={"vim"}} },
+    -- Naviguate tabs
     { key = 'LeftArrow', mods = 'CMD', action = act.ActivateTabRelative(-1) },
     { key = 'RightArrow', mods = 'CMD', action = act.ActivateTabRelative(1) },
-    { key = '|', mods = 'CMD', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }},
-    { key = '_', mods = 'CMD', action = act.SplitVertical { domain = 'CurrentPaneDomain' }},
+    -- Split panes
+    { key="\\", mods="CMD", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
+    { key="-", mods="CMD", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
+    -- Naviguate panes
+    { key="h", mods="CMD", action=wezterm.action{ActivatePaneDirection="Left"}},
+    { key="l", mods="CMD", action=wezterm.action{ActivatePaneDirection="Right"}},
+    { key="k", mods="CMD", action=wezterm.action{ActivatePaneDirection="Up"}},
+    { key="j", mods="CMD", action=wezterm.action{ActivatePaneDirection="Down"}},
+    -- Resize panes
+    { key="LeftArrow", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={"Left", 5}}},
+    { key="RightArrow", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={"Right", 5}}},
+    { key="UpArrow", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={"Up", 5}}},
+    { key="DownArrow", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={"Down", 5}}},
     { key = 'H', mods = 'SHIFT|CTRL', action = act.Search { CaseSensitiveString = '' }},
+    { key = 'l', mods = 'CTRL', action = act.ShowLauncher },
+    { key = "`", mods = "CTRL", action = wezterm.action.ToggleFullScreen },
   },
   send_composed_key_when_left_alt_is_pressed = true,
   audible_bell = "Disabled",
+  --window_background_opacity = 0.9,
+  --
+  hide_tab_bar_if_only_one_tab = true,  -- Hide tab bar if there's only one tab open
+  tab_bar_at_bottom = false,  -- Move the tab bar to the bottom
+  use_fancy_tab_bar = true,  -- Enable fancy tab bar
+  window_frame = {
+    active_titlebar_bg = '#2e3440',
+    inactive_titlebar_bg = '#2e3440',
+  },
+  scrollback_lines = 10000,  -- Increase scrollback lines
+  enable_scroll_bar = true,  -- Enable a scrollbar
+  mouse_bindings = {
+    {
+      event = {Down={streak=1, button="Right"}},
+      mods = "NONE",
+      action = wezterm.action{PasteFrom="PrimarySelection"},
+    },
+    {
+      event = {Up={streak=1, button="Left"}},
+      mods = "NONE",
+      action = wezterm.action{CompleteSelectionOrOpenLinkAtMouseCursor="PrimarySelection"},
+    },
+  },
+  colors = {
+    tab_bar = {
+      background = '#2e3440',  -- Background color of the tab bar
+      active_tab = {
+        bg_color = '#88c0d0',
+        fg_color = '#2e3440',
+        intensity = 'Bold',
+      },
+      inactive_tab = {
+        bg_color = '#3b4252',
+        fg_color = '#d8dee9',
+      },
+      inactive_tab_hover = {
+        bg_color = '#4c566a',
+        fg_color = '#d8dee9',
+      },
+      new_tab = {
+        bg_color = '#3b4252',
+        fg_color = '#d8dee9',
+      },
+      new_tab_hover = {
+        bg_color = '#4c566a',
+        fg_color = '#d8dee9',
+      },
+    },
+  },
 }
