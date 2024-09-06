@@ -739,6 +739,9 @@ nmap <silent><nowait> <M-;>  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nmap <silent><nowait> <M-p>  :<C-u>CocListResume<CR>
 """"""
+let g:fzf_vim = {}
+let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/']
+
 if executable("rg")
 "   set grepprg=rg\ --vimgrep\ --no-heading
   let g:rg_command = '
@@ -747,7 +750,7 @@ if executable("rg")
     \ -g "!*.{min.js,swp,o,zip}"
     \ -g "!{.git,node_modules,vendor}/*" '
 
-  command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+  command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
   nnoremap <C-/> :execute "F"<CR>
 endif
 " function! s:grep_to_qf(...) abort
