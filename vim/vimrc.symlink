@@ -5,7 +5,7 @@ if has('win32')
   source C:\tools\vim\vim82\plugin\plugins.vim
 else
   source ~/.vim/plugin/plugins.vim
-  " use inerative zsh mode to be able to call aliases and zshrc functions
+  " use interactive zsh mode to be able to call aliases and zshrc functions
   let &shell='/bin/zsh -i'
 endif
 
@@ -892,6 +892,44 @@ function! CmdLine(str)
   call feedkeys(":" . a:str)
 endfunction
 
+" open files in vim
+" vim -p **/*.md
+" :tabdo :call SpellNext()
+" ]s ]s to navigate
+" 1z= to fix
+" <leader>tc to close
+fun! SpellNext()
+    " Go to start of buffer and enable spell checking.
+    normal! gg
+    set spell
+
+    " Record cursor position.
+    let l:pos = getpos('.')
+
+    " Special case: first word is misspelled.
+    if spellbadword()[1] isnot# ''
+        return
+    endif
+
+    " Try to find a misspelled word.
+    normal! ]s
+
+    " No more words left if the position is unchanged from last
+    " time, so quit Vim.
+    if getpos('.') == l:pos
+        quit
+    endif
+endfun
+
+hi SpellBad cterm=underline,bold ctermfg=red
+
+" for example to change lang
+":setlocal spelllang=fr_fr
+nmap <F6> :setlocal spell!<CR>
+nmap <leader>sf 1z=
+
+" autocmd FileType markdown set spell
+
 " Surround-vim addition to delete a function
 nmap <silent> dsf ds)db
 
@@ -1214,7 +1252,7 @@ command! -nargs=0 GeneratePassword exe 'r !gpass'
 " :g/include/command
 " :v/exclude/command
 "
-" command peut etre t0 ou t$ pour copier ces lignes la ou est le curseur
+" command peut etre t0 ou t$ pour copier ces lignes la ou est le cursor
 "
 " ZK
 " User command to index the current notebook.
