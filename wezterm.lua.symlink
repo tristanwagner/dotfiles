@@ -46,7 +46,7 @@ return {
   font_size = 16.0,
   color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
   keys = {
-    { key="`", mods="CMD", action=wezterm.action.SpawnCommandInNewTab{args={"vim"}} },
+    { key=";", mods="CMD", action=wezterm.action.SpawnCommandInNewTab{args={"/opt/homebrew/bin/vim"}} },
     -- Naviguate tabs
     { key = 'LeftArrow', mods = 'CMD', action = act.ActivateTabRelative(-1) },
     { key = 'RightArrow', mods = 'CMD', action = act.ActivateTabRelative(1) },
