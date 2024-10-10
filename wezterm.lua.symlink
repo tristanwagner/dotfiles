@@ -64,7 +64,7 @@ return {
     { key="UpArrow", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={"Up", 5}}},
     { key="DownArrow", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={"Down", 5}}},
     { key = 'H', mods = 'SHIFT|CTRL', action = act.Search { CaseSensitiveString = '' }},
-    { key = 'l', mods = 'CTRL', action = act.ShowLauncher },
+    { key = 'm', mods = 'CTRL', action = act.ShowLauncher },
     { key = "`", mods = "CTRL", action = wezterm.action.ToggleFullScreen },
   },
   send_composed_key_when_left_alt_is_pressed = true,

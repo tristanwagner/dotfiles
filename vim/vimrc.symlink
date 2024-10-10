@@ -54,7 +54,7 @@ nnoremap <leader>r :%s/\<<C-r><C-w>\>//gci<Left><Left><Left><Left>
 nnoremap gb <Esc><Esc>:Buffers!<Cr>
 nnoremap <C-f> <Esc><Esc>:Files!<Cr>
 inoremap <C-f> <Esc><Esc>:BLines!<Cr>
-nnoremap <C-g> <Esc><Esc>:BCommits!<Cr>
+nnoremap gco <Esc><Esc>:BCommits!<Cr>
 
 " make tab go to matching pair
 " this overrides ctrl-i which is actually useful ...
@@ -626,8 +626,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gp <Plug>(coc-references)
 nmap <leader>jr <Plug>(coc-references)
 " Symbol renaming.
-nmap <silent> gn <Plug>(coc-rename)
-nmap <leader>rn <Plug>(coc-rename)
+nnoremap <silent> gp <Plug>(coc-rename)
+nnoremap <leader>sr :call CocAction('refactor')<CR>
+nnoremap <leader>sn :call CocAction('rename')<CR>
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -746,9 +747,8 @@ if executable("rg")
 "   set grepprg=rg\ --vimgrep\ --no-heading
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-    \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
     \ -g "!*.{min.js,swp,o,zip}"
-    \ -g "!{.git,node_modules,vendor}/*" '
+    \ -g "!**/{.git,node_modules,vendor}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
   nnoremap <C-/> :execute "F"<CR>
@@ -1131,7 +1131,8 @@ endfunc
 " close buffer
 map <leader>bd :bd<cr>
 " close all buffers
-map <leader>ba :bufdo bd!<cr>
+" map <leader>ba :bufdo bd!<cr>
+map <leader>ba :%bw<cr>
 
 " switch cwd to open buffer dir
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -1267,6 +1268,20 @@ nnoremap <leader>zi :ZkIndex<CR>
 " 1. :r !ls foo
 " 2. :%s/.*/mv & &/
 " 3. :w !zsh
+
+" Select all matches into one buffer
+" This can be simply achieved, by running a :s command with the n flag set (which
+" basically says, to not replace anything (but by using an \= in the replace part,
+" you can still capture the matches (see :h sub-replace-special).
+" So first let's clear register A:
+" qaq
+" Then you can capture your maches into register a by using:
+" :%s/'user': '[a-Z]*'/\=setreg('A', submatch(0), 'V')/gn
+" And paste your matches:
+" :put A
+
+" Cancel COMMIT_EDITMSG
+" quit vim with an error using :cq
 
 " User command to create and open a new note, to be called like this:
 " :ZkNew {"title": "An interesting subject", "dir": "inbox", ...}
