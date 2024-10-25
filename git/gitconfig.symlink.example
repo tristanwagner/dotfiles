@@ -32,3 +32,5 @@
   gpgsign = true
 [hub]
   protocol = https
+[rerere]
+  enabled = true

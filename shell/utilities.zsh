@@ -9,6 +9,7 @@ function cd() {
     source .envrc
   fi
 }
+
 function serve() {
   local port="${1:-8000}"
   python3 -m http.server "$port"
@@ -21,6 +22,63 @@ function validateYaml() {
 
 function vgst () {
   vim $(git status --porcelain | awk '{print $2}')
+}
+
+function opc() {
+  vim `git diff --name-only --diff-filter=U  | uniq`
+}
+
+function gitopen() {
+  COMMAND=diff
+  REV=HEAD
+  PATTERN=""
+
+  if [ "$#" -gt 3 ]; then
+    echo "Usage: gitopen [command] [revision] [pattern]"
+    echo "gitopen -- opens all added files that have changed since HEAD"
+    echo "gitopen diff HEAD -- these are the default parameters"
+    echo "gitopen diff master -- opens files that have changed from master"
+    echo "gitopen show -- opens files that were changed in the last revision (HEAD)"
+    echo "gitopen show HEAD -- default param, does the same"
+    echo "gitopen show 4b3ca34 -- opens a particular REV"
+    echo 'gitopen <command> <rev> ".txt" - use grep to filter filename results'
+    return 1
+  fi
+
+  if [ "$#" -gt 0 ]; then
+    COMMAND=$1
+    shift
+  fi
+
+  if [ "$#" -gt 0 ]; then
+    REV=$1
+    shift
+  fi
+
+  if [ "$#" -gt 0 ]; then
+    PATTERN=$1
+    shift
+  fi
+
+  if [ "$COMMAND" = "show" ]; then
+    PARAMS=(--pretty=format: --name-only --relative)
+  else
+    PARAMS=(--name-only --relative)
+  fi
+
+  if git rev-parse --verify "$REV" >/dev/null 2>&1; then
+    CMD=("git" "$COMMAND" "$REV" "${PARAMS[@]}")
+    if [ -n "$PATTERN" ]; then
+      echo "Running: ${CMD[*]} | grep "$PATTERN" | xargs -o $EDITOR"$'\n'
+      "${CMD[@]}" | grep "$PATTERN" | xargs -o $EDITOR
+    else
+      echo "Running: ${CMD[*]} | xargs -o $EDITOR"$'\n'
+      "${CMD[@]}" | xargs -o $EDITOR
+    fi
+  else
+    echo "Error: '$REV' is not a valid revision"
+    return 1
+  fi
 }
 
 # send hexadecimal value in binary format over udp to remote adress and port
