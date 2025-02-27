@@ -53,6 +53,8 @@ alias saliases="source ~/.aliases"
 alias ip="curl ipinfo.io/ip"
 alias meteo='weather'
 
+alias mvim='vim'
+
 #reload sound devices
 alias reloadsound="pulseaudio -k && sudo alsa force-reload"
 

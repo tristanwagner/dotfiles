@@ -22,15 +22,40 @@
 [core]
   excludesfile = ~/.gitignore
   editor = vim
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [difftool]
   prompt = false
 [mergetool]
   prompt = false
 [push]
-  default = upstream
+  default = simple
+  autoSetupRemote = true
+  followTags = true
 [commit]
   gpgsign = true
+  verbose = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
 [hub]
   protocol = https
 [rerere]
   enabled = true
+  autoupdate = true
+[help]
+  autocorrect = prompt
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
