@@ -588,4 +588,11 @@ fi
 # allow fzf to show hidden files
 #export FZF_DEFAULT_COMMAND="find -L"
 
+function jptv () {
+  mpv --script-opts=iptv=1 https://raw.githubusercontent.com/luongz/iptv-jp/main/jp.m3u
+}
+
+function frtv() {
+  mpv --script-opts=iptv=1 https://raw.githubusercontent.com/LeBazarDeBryan/XTVZ_/main/IPTV/ALL.m3u
+}
 

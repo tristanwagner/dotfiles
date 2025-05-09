@@ -41,19 +41,21 @@ alias nrb="npm run build"
 alias ncv="npm cache verify"
 
 # Config Files
-alias vimrc="vim ~/.vimrc"
+alias vimrc="e ~/.vimrc"
 alias fix="git diff --name-only | uniq | xargs $EDITOR"
-alias svimrc="vim +\"source ~/.vimrc\" +\":q\""
-alias vimplugins="vim ~/dotfiles/vim/vim.symlink/plugin/plugins.vim"
-alias zshrc="vim ~/.zshrc"
+alias svimrc="e +\"source ~/.vimrc\" +\":q\""
+alias vimplugins="e ~/dotfiles/vim/vim.symlink/plugin/plugins.vim"
+alias zshrc="e ~/.zshrc"
 alias szshrc="source ~/.zshrc"
-alias aliases="vim ~/.aliases"
+alias aliases="e ~/.aliases"
 alias saliases="source ~/.aliases"
 
 alias ip="curl ipinfo.io/ip"
 alias meteo='weather'
 
 alias mvim='vim'
+alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+alias lvim="lazyvim"
 
 #reload sound devices
 alias reloadsound="pulseaudio -k && sudo alsa force-reload"

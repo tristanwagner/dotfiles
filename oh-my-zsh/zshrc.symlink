@@ -98,8 +98,8 @@ setopt inc_append_history  # Save commands to history immediately
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='lvim'
+export VISUAL='lvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
