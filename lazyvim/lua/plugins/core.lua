@@ -1,7 +1,54 @@
 return {
   {
+    "tpope/vim-dispatch",
+    "tpope/vim-fugitive",
+    "tpope/vim-surround",
+    "tpope/vim-repeat",
+    "tpope/vim-endwise",
+    "tpope/vim-abolish",
+  },
+  -- gr motion
+  {
+    "vim-scripts/ReplaceWithRegister",
+    keys = {
+      {
+        -- default is bound to lsp_references
+        -- so rebound it to <leader>gr
+        "<leader>gr",
+        "<Plug>ReplaceWithRegisterOperator",
+        desc = "ReplaceWithRegisterOperator",
+      },
+    },
+  },
+  -- Looks like these are not compatible
+  -- {
+  --   "kana/vim-textobj-entire",
+  --   "kana/vim-textobj-function",
+  --   "kana/vim-textobj-indent",
+  --   "kana/vim-textobj-line",
+  --   "kana/vim-textobj-user",
+  -- },
+  {
+    "christoomey/vim-sort-motion",
+  },
+  -- generate html from notation html > body > div
+  {
+    "rstacruz/sparkup",
+  },
+  -- move separated values right and left also add argument text object
+  {
+
+    "AndrewRadev/sideways.vim",
+  },
+  {
     "ellisonleao/gruvbox.nvim",
   },
+  -- {
+  --   "folke/flash.nvim",
+  --   keys = {
+  --     { "s", false },
+  --   }
+  -- },
   {
     "LazyVim/LazyVim",
     opts = {
@@ -16,7 +63,6 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    ---@param opts cmp.ConfigSchema
     opts = function(
       _,
       opts
