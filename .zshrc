@@ -127,8 +127,7 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
-source ~/dotfiles/shell/utilities.zsh
-
+source ~/.utilities.zsh
 export NVM_DIR="$HOME/.nvm"
 export NVM_LAZY_LOAD=true
 
