@@ -1,3 +1,7 @@
+" example of json to js substitute
+" :%s/\"\(.*\)\":/\1:/g 
+" \1 = what ever is selected between \( and \)
+
 " this should fix launching vim in replace mode
 " set t_u7=
 

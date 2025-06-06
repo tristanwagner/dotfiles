@@ -106,6 +106,16 @@ then
   )
 end
 
+-- Replace word under cursor in current file
+vim.keymap.set(
+  "n",
+  "<leader>r",
+  ":%s/\\C\\<<C-r><C-w>\\>//gci<Left><Left><Left><Left>",
+  {
+    silent = true,
+  }
+)
+
 -- Press <Enter> in normal mode to remove highlights (search results)
 vim.keymap.set(
   "n",

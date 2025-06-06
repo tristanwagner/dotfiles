@@ -173,3 +173,11 @@ eval $(thefuck --alias f)
 # Uncomment that for profiling Initialization
 # zprof
 # neofetch
+
+# pnpm
+export PNPM_HOME="/Users/tristan/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -31,6 +31,7 @@ alias gstorecred="git config credential.helper store"
 #allow to patch staged files to unstage stuff
 alias grhp="git reset -p"
 alias gphf='git push origin HEAD -f'
+alias gc="git commit -s"
 
 # node / npm
 alias n="node"
