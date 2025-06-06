@@ -1,12 +1,9 @@
 # dotfiles
 
-Forked from [mcscoutermarsh's dotfiles](https://github.com/mscoutermarsh/dotfiles)
-
 ## References
 
 - [Learning Vim in a Week](https://mikecoutermarsh.com/boston-vim-learning-vim-in-a-week/)
 - [Upcase: The Art of Vim](https://upcase.com/vim)
-- [ThoughtBot's dotfiles](https://github.com/thoughtbot/dotfiles)
 
 ## Installation
 
@@ -15,9 +12,11 @@ If you have trouble during installation, please open an issue or pull request. :
 Clone this repo (or your own fork!) to your **home** directory (`/Users/username`).
 
 ```shell
+brew install stow # or other package manager
 git clone https://github.com/tristanwagner/dotfiles ~/dotfiles
 cd ~/dotfiles
 ./install
+stow .
 ```
 
 ## VIM
@@ -57,11 +56,65 @@ set guifont=DejaVu_Sans_Mono_for_Powerline:h18:cANSI:qDRAFT
 
 ## Stuff to install
 
-- oh my zsh
-- powerline10k
-- zsh-nvm / nvm
-- ag the silver searcher
-- fzf
-- thefuck
-- bat
-- rust/cargo
+### brew
+
+```sh
+bat
+git
+cmake
+docker
+docker-compose
+docker-machine
+ffmpeg
+go
+htop
+lua
+macvim
+mpv
+ncdu
+node
+nvm
+pkg-config
+python
+ruby
+sqlite
+youtube-dl
+wezterm
+rg
+fzf
+thefuck
+```
+
+### linux
+
+```sh
+rofi
+git
+nodejs
+npm
+neovim
+vim
+curl
+clang-tidy
+gdb
+gcc
+g++
+build-essential
+python
+python-pip
+python3-pip
+python3
+tmux
+rg
+zsh
+ttf-ancient-fonts
+fonts-powerline
+cmake
+python3-dev
+htop
+ncdu
+xclip
+bat
+lazydocker
+lazygit
+```
