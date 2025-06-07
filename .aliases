@@ -51,7 +51,10 @@ alias szshrc="source ~/.zshrc"
 alias aliases="e ~/.aliases"
 alias saliases="source ~/.aliases"
 
-alias ip="curl ipinfo.io/ip"
+alias publicip="curl ipinfo.io/ip"
+# in linux ifconfig is deprecated
+# in favor of ip
+alias ip="ip -c a s"
 alias meteo='weather'
 
 alias mvim='vim'
