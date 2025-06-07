@@ -85,12 +85,36 @@ vim.opt.wildignore:append({
 
 -- persist undo
 vim.opt.undodir =
-  vim.fn.expand(
-    "~/.config/lazyvim/.undo/"
-  )
+    vim.fn.expand(
+      "~/.config/lazyvim/.undo/"
+    )
 vim.opt.undofile =
-  true
+    true
 vim.opt.undolevels =
-  1000
+    1000
 vim.opt.undoreload =
-  10000
+    10000
+
+-- prevent bug where nvim is hanging from polling clipboard
+-- when over ssh
+-- use Ctrl + Shift + V to paste
+vim.o.clipboard = "unnamedplus"
+
+local function paste()
+  return {
+    vim.fn.split(vim.fn.getreg(""), "\n"),
+    vim.fn.getregtype(""),
+  }
+end
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = paste,
+    ["*"] = paste,
+  },
+}
