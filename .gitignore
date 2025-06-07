@@ -8,6 +8,10 @@ vim/vim/sessions
 vim/vim/session
 vim/vim/colors
 vim/vim/.netrwhist
+vim/vim.symlink/plugged
+vim/vim.symlink/sessions
+.config/lazyvim/.undo
+lazyvim/.undo
 *.DS_Store
 *.sw[nop]
 .bundle

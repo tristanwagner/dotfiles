@@ -56,7 +56,8 @@ alias meteo='weather'
 
 alias mvim='vim'
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
-alias lvim="lazyvim"
+alias nvim="NVIM_APPNAME=lazyvim nvim"
+alias lvim="NVIM_APPNAME=lazyvim nvim"
 
 #reload sound devices
 alias reloadsound="pulseaudio -k && sudo alsa force-reload"
