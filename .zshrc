@@ -117,7 +117,15 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 ZSH_DISABLE_COMPFIX='true'
 source $ZSH/oh-my-zsh.sh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if command -v fzf &>/dev/null; then
+  # Don't source FZF shell integrations if version is older than 0.48 (Avoids `unknown option: --bash`)
+  # Version comparison technique courtesy of Luciano Andress Martini:
+  # https://unix.stackexchange.com/questions/285924/how-to-compare-a-programs-version-in-a-shell-script
+  FZF_VERSION="$(fzf --version | cut -d' ' -f1)"
+  if [[ -f ~/.fzf.zsh && "$(printf '%s\n' 0.48 "$FZF_VERSION" | sort -V | head -n1)" = 0.48 ]]; then
+    source ~/.fzf.zsh
+  fi
+fi
 
 source ~/.aliases
 
@@ -135,8 +143,10 @@ export PATH=$HOME/.gem/ruby/2.6.0/bin:/opt/homebrew/bin:/opt/local/bin:$HOME/.lo
 export PATH=:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator/:$PATH
 
 # pyenv
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if command -v pyenv &>/dev/null; then
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
 
 # ghcup-env
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
@@ -161,7 +171,11 @@ setopt globdots
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-eval $(thefuck --alias f)
+
+if command -v thefuck &>/dev/null; then
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval $(thefuck --alias f)
+fi
 
 # Uncomment that for profiling Initialization
 # zprof
