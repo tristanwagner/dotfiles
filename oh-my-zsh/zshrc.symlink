@@ -98,8 +98,8 @@ setopt inc_append_history  # Save commands to history immediately
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='lvim'
-export VISUAL='lvim'
+export EDITOR='env NVIM_APPNAME=lazyvim nvim'
+export VISUAL='env NVIM_APPNAME=lazyvim nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -136,7 +136,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 
 # add utils to path
-export PATH=$HOME/.gem/ruby/2.6.0/bin:/opt/homebrew/bin:/opt/local/bin:$HOME/.local/bin:$HOME/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:/opt/homebrew/bin:/opt/local/bin:$HOME/.local/bin:$HOME/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/dotfiles/bin:$PATH
 
 # android
 export PATH=:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator/:$PATH
