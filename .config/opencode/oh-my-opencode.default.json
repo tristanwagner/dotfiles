@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "google_auth": false,
+  "categories": {
+    "visual": {
+      "model": "google/antigravity-gemini-3-pro-high",
+      "default_agent": "frontend-ui-ux-engineer",
+      "description": "UI/UX, styling, animations, layout, responsive design"
+    },
+    "business-logic": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "default_agent": "Sisyphus",
+      "description": "API logic, database operations, sync, AI processing"
+    },
+    "architecture": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "default_agent": "oracle",
+      "description": "System design, vendor lock-in reduction, multi-layer decisions"
+    },
+    "codebase-patterns": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "default_agent": "explore",
+      "description": "Finding existing utilities, patterns, implementations in this codebase"
+    },
+    "visual-engineering": {
+      "model": "google/gemini-3-pro-high"
+    },
+    "artistry": {
+      "model": "google/gemini-3-pro-high"
+    },
+    "writing": {
+      "model": "google/gemini-3-flash-high"
+    }
+  },
+  "claude_code": {
+    "mcp": true,
+    "commands": true,
+    "skills": true,
+    "agents": true,
+    "hooks": true,
+    "plugins": false
+  },
+  "disabled_hooks": [],
+  "disabled_skills": [],
+  "ralph_loop": {
+    "enabled": true,
+    "default_max_iterations": 50
+  },
+  "keyword_detector": {
+    "ultrawork": true,
+    "search": true,
+    "analyze": true,
+    "ulw": true
+  },
+  "agents": {
+    "OpenCode-Builder": {
+      "model": "google/antigravity-claude-opus-4-5-thinking"
+    },
+    "Prometheus (Planner)": {
+      "model": "google/antigravity-gemini-3-flash"
+    },
+    "Metis (Plan Consultant)": {
+      "model": "google/antigravity-claude-opus-4-5-thinking"
+    },
+    "Sisyphus": {
+      "model": "google/antigravity-claude-opus-4-5-thinking"
+    },
+    "orchestrator-sisyphus": {
+      "model": "google/antigravity-claude-opus-4-5-thinking"
+    },
+    "librarian": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "explore": {
+      "model": "opencode/grok-code"
+    },
+    "oracle": {
+      "model": "google/antigravity-claude-opus-4-5-thinking"
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "google/antigravity-gemini-3-pro-high"
+    },
+    "document-writer": {
+      "model": "google/antigravity-gemini-3-flash"
+    },
+    "multimodal-looker": {
+      "model": "google/antigravity-gemini-3-flash"
+    }
+  }
+}
