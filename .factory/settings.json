@@ -1,0 +1,818 @@
+{
+  "logoAnimation": "off",
+  "custom_models": [
+    {
+      "model_display_name": "CC-Opus-4.6-High",
+      "model": "claude-opus-4-6-thinking-32000",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Opus-4.6",
+      "model": "claude-opus-4-6",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Sonnet-4.6",
+      "model": "claude-sonnet-4-6",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Opus-4.5-High",
+      "model": "claude-opus-4-5-20251101-thinking-32000",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Opus-4.5-Medium",
+      "model": "claude-opus-4-5-20251101-thinking-10000",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Opus-4.5-Low",
+      "model": "claude-opus-4-5-20251101-thinking-4000",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Opus-4.5",
+      "model": "claude-opus-4-5-20251101",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Sonnet-4.5",
+      "model": "claude-sonnet-4-5-20250929",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Sonnet-4.5-Low",
+      "model": "claude-sonnet-4-5-20250929-thinking-4000",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Sonnet-4.5-Medium",
+      "model": "claude-sonnet-4-5-20250929-thinking-10000",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "CC-Sonnet-4.5-High",
+      "model": "claude-sonnet-4-5-20250929-thinking-32000",
+      "base_url": "http://localhost:8317",
+      "api_key": "dummy-not-used",
+      "provider": "anthropic"
+    },
+    {
+      "model_display_name": "AG-Opus-4.5-Thinking",
+      "model": "gemini-claude-opus-4-5-thinking",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "AG-Sonnet-4.5-Thinking",
+      "model": "gemini-claude-sonnet-4-5-thinking",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "AG-Sonnet-4.5",
+      "model": "gemini-claude-sonnet-4-5",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.1-Codex",
+      "model": "gpt-5.1-codex",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.1-Codex-High",
+      "model": "gpt-5.1-codex(high)",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.1-Codex-Max",
+      "model": "gpt-5.1-codex-max",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.1",
+      "model": "gpt-5.1",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.1-Low",
+      "model": "gpt-5.1(low)",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.1-High",
+      "model": "gpt-5.1(high)",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.2",
+      "model": "gpt-5.2",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.2-High",
+      "model": "gpt-5.2(high)",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.2-Codex",
+      "model": "gpt-5.2-codex",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GPT-5.2-Codex-High",
+      "model": "gpt-5.2-codex(high)",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "Gemini-3-Pro",
+      "model": "gemini-3-pro-preview",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "Gemini-3-Pro-Image",
+      "model": "gemini-3-pro-image-preview",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "Gemini-2.5-Pro",
+      "model": "gemini-2.5-pro",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "Gemini-2.5-Flash",
+      "model": "gemini-2.5-flash",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "Gemini-2.5-Flash-Lite",
+      "model": "gemini-2.5-flash-lite",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "Qwen3-Coder-Plus",
+      "model": "qwen3-coder-plus",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "Qwen3-Coder-Flash",
+      "model": "qwen3-coder-flash",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GLM-4.7",
+      "model": "glm-4.7",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GLM-4-Plus",
+      "model": "glm-4-plus",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GLM-4-Air",
+      "model": "glm-4-air",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    },
+    {
+      "model_display_name": "GLM-4-Flash",
+      "model": "glm-4-flash",
+      "base_url": "http://localhost:8317/v1",
+      "api_key": "dummy-not-used",
+      "provider": "openai"
+    }
+  ],
+  "customModels": [
+    {
+      "model": "claude-opus-4-6-thinking-32000",
+      "id": "custom:CC-Opus-4.6-High",
+      "index": 0,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Opus-4.6-High",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-opus-4-6",
+      "id": "custom:CC-Opus-4.6",
+      "index": 1,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Opus-4.6",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "id": "custom:CC-Sonnet-4.6",
+      "index": 2,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Sonnet-4.6",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-opus-4-5-20251101-thinking-32000",
+      "id": "custom:CC-Opus-4.5-High",
+      "index": 3,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Opus-4.5-High",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-opus-4-5-20251101-thinking-10000",
+      "id": "custom:CC-Opus-4.5-Medium",
+      "index": 4,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Opus-4.5-Medium",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-opus-4-5-20251101-thinking-4000",
+      "id": "custom:CC-Opus-4.5-Low",
+      "index": 5,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Opus-4.5-Low",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-opus-4-5-20251101",
+      "id": "custom:CC-Opus-4.5",
+      "index": 6,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Opus-4.5",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-sonnet-4-5-20250929",
+      "id": "custom:CC-Sonnet-4.5",
+      "index": 7,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Sonnet-4.5",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-sonnet-4-5-20250929-thinking-4000",
+      "id": "custom:CC-Sonnet-4.5-Low",
+      "index": 8,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Sonnet-4.5-Low",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-sonnet-4-5-20250929-thinking-10000",
+      "id": "custom:CC-Sonnet-4.5-Medium",
+      "index": 9,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Sonnet-4.5-Medium",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-sonnet-4-5-20250929-thinking-32000",
+      "id": "custom:CC-Sonnet-4.5-High",
+      "index": 10,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Sonnet-4.5-High",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "gemini-claude-opus-4-5-thinking",
+      "id": "custom:AG-Opus-4.5-Thinking",
+      "index": 11,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "AG-Opus-4.5-Thinking",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gemini-claude-sonnet-4-5-thinking",
+      "id": "custom:AG-Sonnet-4.5-Thinking",
+      "index": 12,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "AG-Sonnet-4.5-Thinking",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gemini-claude-sonnet-4-5",
+      "id": "custom:AG-Sonnet-4.5",
+      "index": 13,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "AG-Sonnet-4.5",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.1-codex",
+      "id": "custom:GPT-5.1-Codex",
+      "index": 14,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.1-Codex",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.1-codex(high)",
+      "id": "custom:GPT-5.1-Codex-High",
+      "index": 15,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.1-Codex-High",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.1-codex-max",
+      "id": "custom:GPT-5.1-Codex-Max",
+      "index": 16,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.1-Codex-Max",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.1",
+      "id": "custom:GPT-5.1",
+      "index": 17,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.1",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.1(low)",
+      "id": "custom:GPT-5.1-Low",
+      "index": 18,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.1-Low",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.1(high)",
+      "id": "custom:GPT-5.1-High",
+      "index": 19,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.1-High",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.2",
+      "id": "custom:GPT-5.2",
+      "index": 20,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.2",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.2(high)",
+      "id": "custom:GPT-5.2-High",
+      "index": 21,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.2-High",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "id": "custom:GPT-5.2-Codex",
+      "index": 22,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.2-Codex",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.2-codex(high)",
+      "id": "custom:GPT-5.2-Codex-High",
+      "index": 23,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.2-Codex-High",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "id": "custom:GPT-5.3-Codex",
+      "index": 35,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.3-Codex",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.3-codex(high)",
+      "id": "custom:GPT-5.3-Codex-High",
+      "index": 36,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.3-Codex-High",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.4",
+      "id": "custom:GPT-5.4",
+      "index": 37,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.4",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.4(high)",
+      "id": "custom:GPT-5.4-High",
+      "index": 38,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.4-High",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.4-mini",
+      "id": "custom:GPT-5.4-mini",
+      "index": 38,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.4-mini",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "claude-opus-4-6-thinking-128000",
+      "id": "custom:CC-Opus-4.6-Max",
+      "index": 39,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Opus-4.6-Max",
+      "maxOutputTokens": 128000,
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "id": "custom:CC-Haiku-4.5",
+      "index": 40,
+      "baseUrl": "http://localhost:8317",
+      "apiKey": "dummy-not-used",
+      "displayName": "CC-Haiku-4.5",
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
+      "model": "gemini-3-pro-preview",
+      "id": "custom:Gemini-3-Pro",
+      "index": 24,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "Gemini-3-Pro",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gemini-3-pro-image-preview",
+      "id": "custom:Gemini-3-Pro-Image",
+      "index": 25,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "Gemini-3-Pro-Image",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "id": "custom:Gemini-2.5-Pro",
+      "index": 26,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "Gemini-2.5-Pro",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "id": "custom:Gemini-2.5-Flash",
+      "index": 27,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "Gemini-2.5-Flash",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gemini-2.5-flash-lite",
+      "id": "custom:Gemini-2.5-Flash-Lite",
+      "index": 28,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "Gemini-2.5-Flash-Lite",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "qwen3-coder-plus",
+      "id": "custom:Qwen3-Coder-Plus",
+      "index": 29,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "Qwen3-Coder-Plus",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "qwen3-coder-flash",
+      "id": "custom:Qwen3-Coder-Flash",
+      "index": 30,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "Qwen3-Coder-Flash",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "glm-4.7",
+      "id": "custom:GLM-4.7",
+      "index": 31,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GLM-4.7",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "glm-4-plus",
+      "id": "custom:GLM-4-Plus",
+      "index": 32,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GLM-4-Plus",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "glm-4-air",
+      "id": "custom:GLM-4-Air",
+      "index": 33,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GLM-4-Air",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "glm-4-flash",
+      "id": "custom:GLM-4-Flash",
+      "index": 34,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GLM-4-Flash",
+      "noImageSupport": false,
+      "provider": "openai"
+    }
+  ],
+  "sessionDefaultSettings": {
+    "model": "custom:CC-Opus-4.6-Max",
+    "reasoningEffort": "none",
+    "interactionMode": "auto",
+    "autonomyLevel": "medium",
+    "autonomyMode": "auto-medium"
+  },
+  "soundFocusMode": "unfocused",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Execute",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/rtk-rewrite.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/dippy-wrapper.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Execute",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/conventional-commit.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Create",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/tdd-enforcer.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Execute|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/circuit-breaker.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Create",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/dep-antipatterns.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Create",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/post-edit-check.py",
+            "timeout": 45
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/schema-drift.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Create",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/import-boundary.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Create",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/context-activate.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/test-reminder.py"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/pre-compact-save.py"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/restore-compact.py"
+          }
+        ]
+      },
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/session-context.py"
+          }
+        ]
+      }
+    ]
+  },
+  "includeCoAuthoredByDroid": false,
+  "showThinkingInMainView": true,
+  "showTokenUsageIndicator": true
+}

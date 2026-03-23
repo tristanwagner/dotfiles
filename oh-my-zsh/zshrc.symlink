@@ -132,6 +132,9 @@ source ~/dotfiles/shell/utilities.zsh
 export NVM_DIR="$HOME/.nvm"
 export NVM_LAZY_LOAD=true
 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
 export PYENV_ROOT="$HOME/.pyenv"
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 
@@ -225,3 +228,19 @@ fi
 
 # Amp CLI
 export PATH="/Users/tristan/.amp/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
+
+# Added by Antigravity
+export PATH="/Users/tristan/.antigravity/antigravity/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

@@ -119,3 +119,7 @@ return {
     },
   },
 }
+
+config.keys = {
+  {key="Enter", mods="SHIFT", action=wezterm.action{SendString="\x1b\r"}},
+}

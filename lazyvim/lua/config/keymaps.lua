@@ -107,12 +107,60 @@ then
 end
 
 -- Replace word under cursor in current file
+-- vim.keymap.set(
+--   "n",
+--   "<leader>r",
+--   ":%s/\\C\\<<C-r><C-w>\\>//gci<Left><Left><Left><Left>",
+--   {
+--     silent = true,
+--   }
+-- )
+
+--- Example of using grug-far:
+--- Replace: I(\w+)Repo
+--- With: I${1}
+--- ITestRepo
+--- ITest
 vim.keymap.set(
-  "n",
-  "<leader>r",
-  ":%s/\\C\\<<C-r><C-w>\\>//gci<Left><Left><Left><Left>",
   {
-    silent = true,
+    "n",
+    "x",
+  },
+  "<leader>si",
+  function()
+    require(
+      "grug-far"
+    ).open({
+      visualSelectionUsage = "operate-within-range",
+    })
+  end,
+  {
+    desc = "grug-far: Search within range",
+  }
+)
+
+vim.keymap.set(
+  {
+    "n",
+    "x",
+  },
+  "<leader>r",
+  function()
+    require(
+      "grug-far"
+    ).open({
+      prefills = {
+        search = vim.fn.expand(
+          "<cword>"
+        ),
+        paths = vim.fn.expand(
+          "%"
+        ),
+      },
+    })
+  end,
+  {
+    desc = "grug-far: Search current word in current file",
   }
 )
 
@@ -330,6 +378,14 @@ else
     "n",
     ",cs",
     ':let @+=expand("%:t")<cr>',
+    {
+      silent = true,
+    }
+  )
+  vim.keymap.set(
+    "n",
+    ",cl",
+    ':let @*=expand("%:p")<cr>',
     {
       silent = true,
     }
