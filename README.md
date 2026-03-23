@@ -1,103 +1,96 @@
 # dotfiles
 
-Forked from [mcscoutermarsh's dotfiles](https://github.com/mscoutermarsh/dotfiles)
-
-## References
-
-- [Learning Vim in a Week](https://mikecoutermarsh.com/boston-vim-learning-vim-in-a-week/)
-- [Upcase: The Art of Vim](https://upcase.com/vim)
-- [ThoughtBot's dotfiles](https://github.com/thoughtbot/dotfiles)
-
 ## Installation
 
-If you have trouble during installation, please open an issue or pull request. :star:
-
-Clone this repo (or your own fork!) to your **home** directory (`/Users/username`).
-
-```shell
-git clone https://github.com/tristanwagner/dotfiles ~/dotfiles
-cd ~/dotfiles
-./install
-```
-
-### Stow
-
-Configs that map to `~/.<name>` directories are managed with [GNU Stow](https://www.gnu.org/software/stow/).
-
-Install stow:
+Clone this repo to your **home** directory and use [GNU Stow](https://www.gnu.org/software/stow/) to symlink configs.
 
 ```shell
 brew install stow
-```
-
-The repo structure mirrors `$HOME`. Directories like `.factory/` and `.config/` map directly to their home equivalents.
-
-To link everything:
-
-```shell
+git clone https://github.com/tristanwagner/dotfiles ~/dotfiles
 cd ~/dotfiles
-stow --no-folding -t ~ .
-```
-
-On first run, use `--adopt` to let stow take over existing files:
-
-```shell
+./install
 stow --no-folding --adopt -t ~ .
 ```
 
-`--no-folding` creates per-file symlinks so other tools (like Factory) can still write their own files alongside the managed ones.
+The repo mirrors `$HOME` -- directories like `.config/`, `.factory/`, and `.vim/` map directly to their home equivalents.
+
+`--no-folding` creates per-file symlinks so tools like Factory or oh-my-zsh can still write their own files alongside managed ones. `--adopt` takes over existing files on first run.
+
+To re-link after adding new files:
+
+```shell
+cd ~/dotfiles && stow --no-folding -t ~ .
+```
 
 To unlink:
 
 ```shell
-cd ~/dotfiles
-stow --no-folding -D -t ~ .
+cd ~/dotfiles && stow --no-folding -D -t ~ .
 ```
 
-Files that shouldn't be stowed (README, install script, etc.) are listed in `.stow-local-ignore`.
+Files excluded from stowing (README, install script, fonts, etc.) are listed in `.stow-local-ignore`.
 
-## VIM
+## Packages
 
-### Vim specific things for windows
+### brew
 
-We need to install and use gvim on windows, it seems complicated to really  
-use it flawlessly in terminal emulators..
-
-After install my vim & config files were located in C:\tools\vim so I just  
-took all my config files and copied them to this directory (paste and remplace).
-
-After a :PlugInstall most of the stuff seemed to work althought I had to  
-install some powerline fonts for vim-airline to display properly
-
-### Install powerline fonts
-
-Open powershell in admin mode and type
-
-```shell
-git clone https://github.com/powerline/fonts.git --depth=1
-Set-ExecutionPolicy Bypass
-\install.ps1
-Set-ExecutionPolicy Default
+```sh
+bat
+git
+cmake
+docker
+docker-compose
+docker-machine
+ffmpeg
+go
+htop
+lua
+macvim
+mpv
+ncdu
+node
+nvm
+pkg-config
+python
+ruby
+sqlite
+youtube-dl
+wezterm
+rg
+fzf
+thefuck
 ```
 
-to modify the default font in gvim
+### linux
 
-```vimscript
-" open guifont panel and chose a font
-set guifont=*
-" print current font setting
-set guifont?
-" paste the setting in vimrc for example I picked deja vu
-set guifont=DejaVu_Sans_Mono_for_Powerline:h18:cANSI:qDRAFT
+```sh
+rofi
+git
+nodejs
+npm
+neovim
+vim
+curl
+clang-tidy
+gdb
+gcc
+g++
+build-essential
+python
+python-pip
+python3-pip
+python3
+tmux
+rg
+zsh
+ttf-ancient-fonts
+fonts-powerline
+cmake
+python3-dev
+htop
+ncdu
+xclip
+bat
+lazydocker
+lazygit
 ```
-
-## Stuff to install
-
-- oh my zsh
-- powerline10k
-- zsh-nvm / nvm
-- ag the silver searcher
-- fzf
-- thefuck
-- bat
-- rust/cargo

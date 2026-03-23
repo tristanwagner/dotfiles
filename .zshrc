@@ -92,12 +92,6 @@ setopt share_history  # Share history across terminals
 setopt inc_append_history  # Save commands to history immediately
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 export EDITOR='env NVIM_APPNAME=lazyvim nvim'
 export VISUAL='env NVIM_APPNAME=lazyvim nvim'
 
@@ -127,8 +121,7 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
-source ~/dotfiles/shell/utilities.zsh
-
+source ~/.utilities.zsh
 export NVM_DIR="$HOME/.nvm"
 export NVM_LAZY_LOAD=true
 
