@@ -17,7 +17,7 @@
   ui = auto
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
+  editor = $EDITOR
 [diff]
   algorithm = histogram
   colorMoved = plain

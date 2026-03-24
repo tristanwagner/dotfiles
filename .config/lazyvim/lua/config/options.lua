@@ -5,6 +5,9 @@ vim.lsp.enable(
   "astro"
 )
 
+vim.lsp.enable(
+  "biome"
+)
 -- remove unwanted files from autocompletion
 vim.opt.wildignore:append({
   "*.o",

@@ -107,12 +107,60 @@ then
 end
 
 -- Replace word under cursor in current file
+-- vim.keymap.set(
+--   "n",
+--   "<leader>r",
+--   ":%s/\\C\\<<C-r><C-w>\\>//gci<Left><Left><Left><Left>",
+--   {
+--     silent = true,
+--   }
+-- )
+
+--- Example of using grug-far:
+--- Replace: I(\w+)Repo
+--- With: I${1}
+--- ITestRepo
+--- ITest
 vim.keymap.set(
-  "n",
-  "<leader>r",
-  ":%s/\\C\\<<C-r><C-w>\\>//gci<Left><Left><Left><Left>",
   {
-    silent = true,
+    "n",
+    "x",
+  },
+  "<leader>si",
+  function()
+    require(
+      "grug-far"
+    ).open({
+      visualSelectionUsage = "operate-within-range",
+    })
+  end,
+  {
+    desc = "grug-far: Search within range",
+  }
+)
+
+vim.keymap.set(
+  {
+    "n",
+    "x",
+  },
+  "<leader>r",
+  function()
+    require(
+      "grug-far"
+    ).open({
+      prefills = {
+        search = vim.fn.expand(
+          "<cword>"
+        ),
+        paths = vim.fn.expand(
+          "%"
+        ),
+      },
+    })
+  end,
+  {
+    desc = "grug-far: Search current word in current file",
   }
 )
 
@@ -336,6 +384,14 @@ else
   )
   vim.keymap.set(
     "n",
+    ",cl",
+    ':let @*=expand("%:p")<cr>',
+    {
+      silent = true,
+    }
+  )
+  vim.keymap.set(
+    "n",
     ",cps",
     ':let @+=expand("%")<cr>',
     {
@@ -383,7 +439,7 @@ vim.keymap.set(
 -- shortcuts for parenthesis etc
 vim.keymap.set(
   "i",
-  "$1",
+  "^1",
   "()<esc>i",
   {
     noremap = true,
@@ -391,7 +447,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "i",
-  "$2",
+  "^2",
   "[]<esc>i",
   {
     noremap = true,
@@ -399,7 +455,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "i",
-  "$3",
+  "^3",
   "{}<esc>i",
   {
     noremap = true,
@@ -407,7 +463,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "i",
-  "$4",
+  "^4",
   "{<esc>o}<esc>O",
   {
     noremap = true,
@@ -415,7 +471,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "i",
-  "$q",
+  "^q",
   "''<esc>i",
   {
     noremap = true,
@@ -423,7 +479,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "i",
-  "$$",
+  "^^",
   '""<esc>i',
   {
     noremap = true,
@@ -431,7 +487,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "i",
-  "$e",
+  "^e",
   "``<esc>i",
   {
     noremap = true,
@@ -439,7 +495,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "i",
-  "$t",
+  "^t",
   "<><esc>i",
   {
     noremap = true,
@@ -449,7 +505,7 @@ vim.keymap.set(
 -- visual mode surround
 vim.keymap.set(
   "v",
-  "$1",
+  "^1",
   "<esc>`>a)<esc>`<i(",
   {
     noremap = true,
@@ -457,7 +513,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "v",
-  "$2",
+  "^2",
   "<esc>`>a]<esc>`<i[",
   {
     noremap = true,
@@ -465,7 +521,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "v",
-  "$3",
+  "^3",
   "<esc>`>a}<esc>`<i{",
   {
     noremap = true,
@@ -473,7 +529,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "v",
-  "$$",
+  "^^",
   '<esc>`>a"<esc>`<i"',
   {
     noremap = true,
@@ -481,7 +537,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "v",
-  "$q",
+  "^q",
   "<esc>`>a'<esc>`<i'",
   {
     noremap = true,
@@ -489,7 +545,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "v",
-  "$e",
+  "^e",
   "<esc>`>a`<esc>`<i`",
   {
     noremap = true,

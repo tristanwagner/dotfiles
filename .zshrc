@@ -92,8 +92,8 @@ setopt share_history  # Share history across terminals
 setopt inc_append_history  # Save commands to history immediately
 
 # Preferred editor for local and remote sessions
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='env NVIM_APPNAME=lazyvim nvim'
+export VISUAL='env NVIM_APPNAME=lazyvim nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -133,14 +133,17 @@ source ~/.utilities.zsh
 export NVM_DIR="$HOME/.nvm"
 export NVM_LAZY_LOAD=true
 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
 export PYENV_ROOT="$HOME/.pyenv"
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 
 # add utils to path
-export PATH=$HOME/.gem/ruby/2.6.0/bin:/opt/homebrew/bin:/opt/local/bin:$HOME/.local/bin:$HOME/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:/opt/homebrew/bin:/opt/local/bin:$HOME/.local/bin:$HOME/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/dotfiles/bin:$PATH
 
 # android
-export PATH=:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator/:$PATH
+export PATH=:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator/:$HOME/Library/Python/3.9/bin:$PATH
 
 # pyenv
 if command -v pyenv &>/dev/null; then
@@ -181,6 +184,9 @@ fi
 # zprof
 # neofetch
 
+# necessary for expo & android emulator
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+
 # pnpm
 export PNPM_HOME="/Users/tristan/Library/pnpm"
 case ":$PATH:" in
@@ -188,3 +194,60 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# bun completions
+[ -s "/Users/tristan/.bun/_bun" ] && source "/Users/tristan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# opencode
+export PATH=/Users/tristan/.opencode/bin:$PATH
+#compdef opencode
+#
+###-begin-opencode-completions-###
+#
+# yargs command completion script
+#
+# Installation: opencode completion >> ~/.zshrc
+#    or opencode completion >> ~/.zprofile on OSX.
+#
+_opencode_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" opencode --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  if [[ ${#reply} -gt 0 ]]; then
+    _describe 'values' reply
+  else
+    _default
+  fi
+}
+if [[ "'${zsh_eval_context[-1]}" == "loadautofunc" ]]; then
+  _opencode_yargs_completions "$@"
+else
+  compdef _opencode_yargs_completions opencode
+fi
+###-end-opencode-completions-###
+
+# Amp CLI
+export PATH="/Users/tristan/.amp/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
+
+# Added by Antigravity
+export PATH="/Users/tristan/.antigravity/antigravity/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
