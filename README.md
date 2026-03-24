@@ -4,12 +4,27 @@
 
 Clone this repo to your **home** directory and use [GNU Stow](https://www.gnu.org/software/stow/) to symlink configs.
 
+One-liner:
+
 ```shell
-brew install stow
+curl -fsSL https://raw.githubusercontent.com/tristanwagner/dotfiles/master/install | sh
+```
+
+Or manually:
+
+```shell
 git clone https://github.com/tristanwagner/dotfiles ~/dotfiles
 cd ~/dotfiles
 ./install
-stow --no-folding --adopt -t ~ .
+```
+
+The install script handles everything: package installation (brew on macOS, apt/pacman on Linux), oh-my-zsh + plugins, backup of existing configs, stow, and setting zsh as default shell.
+
+Existing configs are backed up to `~/.dotfiles-backup/<timestamp>/` before being replaced. To restore:
+
+```shell
+./install restore                  # list available backups
+./install restore 20260324-090000  # restore a specific backup
 ```
 
 The repo mirrors `$HOME` -- directories like `.config/`, `.factory/`, and `.vim/` map directly to their home equivalents.

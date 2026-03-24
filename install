@@ -1,45 +1,265 @@
 #!/usr/bin/env bash
-
-DOTFILES_ROOT=$(pwd -P)
-
 set -e
 
-echo ''
+main() {
+  DOTFILES_DIR="$HOME/dotfiles"
+  BACKUP_ROOT="$HOME/.dotfiles-backup"
 
-default_to_zsh() {
-  #zsh should be installed w/ packages
-  chsh -s $(which zsh)
+  case "${1:-}" in
+    restore)
+      restore_backup "${2:-}"
+      return
+      ;;
+    dry-run)
+      dry_run
+      return
+      ;;
+  esac
+
+  # On fresh systems, ensure git is available
+  ensure_git
+
+  # Clone if not already present (supports curl | sh)
+  if [ ! -d "$DOTFILES_DIR" ]; then
+    git clone --recursive https://github.com/tristanwagner/dotfiles "$DOTFILES_DIR"
+  fi
+
+  # If run directly from the repo, use that path; otherwise use clone location
+  if [ -f "$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)/install" ] 2>/dev/null; then
+    DOTFILES_ROOT="$(cd "$(dirname "$0")" && pwd -P)"
+  else
+    DOTFILES_ROOT="$DOTFILES_DIR"
+  fi
+
+  detect_os
+  install_packages
+  install_oh_my_zsh
+  install_zsh_customs
+  backup_existing
+  run_stow
+  set_default_shell
+
+  echo ''
+  echo '  All installed!'
+  echo '  Run: source ~/.zshrc'
+}
+
+info()    { printf "\r  [ \033[00;34m..\033[0m ] %s\n" "$1"; }
+success() { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"; }
+fail()    { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"; exit 1; }
+
+detect_os() {
+  case "$(uname -s)" in
+    Darwin) OS="macos" ;;
+    Linux)  OS="linux" ;;
+    *)      fail "Unsupported OS: $(uname -s)" ;;
+  esac
+  info "detected $OS"
+}
+
+ensure_git() {
+  if command -v git &>/dev/null; then
+    return
+  fi
+  info "git not found, installing"
+  if command -v apt-get &>/dev/null; then
+    sudo apt-get update && sudo apt-get install -y git
+  elif command -v pacman &>/dev/null; then
+    sudo pacman -Syu --noconfirm git
+  elif command -v brew &>/dev/null; then
+    brew install git
+  else
+    fail "cannot install git: no supported package manager found"
+  fi
+}
+
+install_packages() {
+  if [ "$OS" = "macos" ]; then
+    if ! command -v brew &>/dev/null; then
+      info "installing homebrew"
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    info "installing brew packages"
+    brew install stow bat git cmake ffmpeg go htop lua mpv ncdu node nvm \
+      pkg-config python ruby sqlite yt-dlp wezterm ripgrep fzf thefuck neovim || true
+  else
+    if command -v apt-get &>/dev/null; then
+      sudo apt-get update
+      sudo apt-get install -y stow git neovim vim curl zsh fzf bat ripgrep htop ncdu \
+        build-essential cmake gcc g++ gdb python3 python3-pip tmux xclip \
+        fonts-powerline rsync || true
+    elif command -v pacman &>/dev/null; then
+      sudo pacman -Syu --noconfirm stow git neovim vim curl zsh fzf bat ripgrep htop ncdu \
+        base-devel cmake gcc gdb python python-pip tmux xclip rsync || true
+    else
+      fail "no supported package manager found (brew, apt, pacman)"
+    fi
+  fi
+  success "packages installed"
+}
+
+install_oh_my_zsh() {
+  if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    info "installing oh-my-zsh"
+    RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
+    success "oh-my-zsh installed"
+  else
+    info "oh-my-zsh already installed"
+  fi
 }
 
 install_zsh_customs() {
-  $(which zsh) -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || true
-  rsync -a $DOTFILES_ROOT/oh-my-zsh/custom/ ~/.oh-my-zsh/custom/
+  info "syncing oh-my-zsh customs"
+  git -C "$DOTFILES_ROOT" submodule update --init --recursive
+  rsync -a --exclude '.git' "$DOTFILES_ROOT/oh-my-zsh/custom/" "$HOME/.oh-my-zsh/custom/"
+  success "oh-my-zsh customs synced"
 }
 
-install_fzf() {
-  if ! [ -e ~/.fzf ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+# Get list of relative paths that stow would manage (respects .stow-local-ignore)
+# Parses both new LINK lines and conflict warnings from stow dry-run
+stow_targets() {
+  cd "$DOTFILES_ROOT"
+  stow --no-folding -n -v -t "$HOME" . 2>&1 | {
+    # LINK: .aliases => dotfiles/.aliases
+    sed -n 's/^LINK: \([^ ]*\) =>.*/\1/p'
+  }
+  stow --no-folding --adopt -n -v -t "$HOME" . 2>&1 | {
+    # With --adopt, conflicts become LINK lines
+    sed -n 's/^LINK: \([^ ]*\) =>.*/\1/p'
+  }
+}
+
+dry_run() {
+  if [ -f "$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)/install" ] 2>/dev/null; then
+    DOTFILES_ROOT="$(cd "$(dirname "$0")" && pwd -P)"
+  else
+    DOTFILES_ROOT="$DOTFILES_DIR"
+  fi
+
+  info "dry run -- no changes will be made"
+  echo ''
+
+  local has_backup=false
+  local has_stow=false
+
+  while IFS= read -r rel; do
+    local target="$HOME/$rel"
+    if [ -e "$target" ] || [ -L "$target" ]; then
+      if [ "$has_backup" = false ]; then
+        echo "  Would back up:"
+        has_backup=true
+      fi
+      if [ -L "$target" ]; then
+        echo "    ~/$rel -> $(readlink "$target")"
+      else
+        echo "    ~/$rel"
+      fi
+    else
+      if [ "$has_stow" = false ]; then
+        has_stow=true
+      fi
+    fi
+  done < <(stow_targets)
+
+  if [ "$has_backup" = false ]; then
+    echo "  Nothing to back up"
+  fi
+
+  echo ''
+  echo "  Would stow:"
+  cd "$DOTFILES_ROOT"
+  stow --no-folding -n -v -t "$HOME" . 2>&1 | grep 'LINK:' | sed 's/^/    /' || echo "    (everything already stowed)"
+  echo ''
+}
+
+restore_backup() {
+  local target="${1:-}"
+
+  if [ -z "$target" ]; then
+    # No argument: list available backups
+    if [ ! -d "$BACKUP_ROOT" ]; then
+      fail "no backups found in $BACKUP_ROOT"
+    fi
+    info "available backups:"
+    ls -1 "$BACKUP_ROOT" | while read -r d; do
+      local count
+      count=$(find "$BACKUP_ROOT/$d" -type f | wc -l | tr -d ' ')
+      echo "    $d  ($count files)"
+    done
+    echo ''
+    echo "  Usage: ./install restore <backup-name>"
+    return
+  fi
+
+  local backup_dir="$BACKUP_ROOT/$target"
+  if [ ! -d "$backup_dir" ]; then
+    fail "backup not found: $backup_dir"
+  fi
+
+  info "restoring from $backup_dir"
+
+  # Unstow first so symlinks don't block the copy
+  if [ -d "$DOTFILES_DIR" ]; then
+    cd "$DOTFILES_DIR"
+    stow --no-folding -D -t "$HOME" . 2>/dev/null || true
+  fi
+
+  # Copy backed-up files back to home
+  while IFS= read -r file; do
+    local rel="${file#$backup_dir/}"
+    mkdir -p "$HOME/$(dirname "$rel")"
+    cp -Rf "$file" "$HOME/$rel"
+  done < <(find "$backup_dir" -type f)
+
+  success "restored from $target"
+}
+
+backup_existing() {
+  local backup_dir="$BACKUP_ROOT/$(date +%Y%m%d-%H%M%S)"
+  local found=false
+
+  # Use stow's own dry-run to determine managed files (respects .stow-local-ignore)
+  while IFS= read -r rel; do
+    local target="$HOME/$rel"
+    if [ -e "$target" ] || [ -L "$target" ]; then
+      if [ "$found" = false ]; then
+        info "backing up existing configs to $backup_dir"
+        mkdir -p "$backup_dir"
+        found=true
+      fi
+      mkdir -p "$backup_dir/$(dirname "$rel")"
+      cp -RLf "$target" "$backup_dir/$rel" 2>/dev/null || cp -Rf "$target" "$backup_dir/$rel"
+      rm -rf "$target"
+    fi
+  done < <(stow_targets)
+
+  if [ "$found" = true ]; then
+    success "backed up to $backup_dir"
+  else
+    info "no existing files to back up"
   fi
 }
 
-install_ranger() {
-  if ! [ -e ~/.ranger ]; then
-    git clone https://github.com/ranger/ranger ~/.ranger
-    cd ~/.ranger
-    sudo make install
-    cd $DOTFILES_ROOT
+run_stow() {
+  info "stowing dotfiles"
+  cd "$DOTFILES_ROOT"
+  stow --no-folding --adopt -t "$HOME" .
+  # --adopt moves existing target files into the repo, overwriting repo versions.
+  # Restore repo versions so our configs are always the source of truth.
+  git checkout .
+  success "dotfiles stowed"
+}
+
+set_default_shell() {
+  local zsh_path
+  zsh_path="$(which zsh)"
+  if [ "$SHELL" != "$zsh_path" ]; then
+    info "setting zsh as default shell"
+    chsh -s "$zsh_path"
+    success "default shell set to zsh"
+  else
+    info "zsh is already the default shell"
   fi
 }
 
-install_zsh_customs
-install_fzf
-install_ranger
-default_to_zsh
-
-# symlink files
-stow .
-
-echo ''
-echo 'All installed!'
-echo 'run source ~/.zshrc'
+main "$@"
