@@ -776,6 +776,11 @@
           {
             "type": "command",
             "command": "~/.factory/hooks/test-reminder.py"
+          },
+          {
+            "type": "command",
+            "command": "~/.factory/hooks/verify-on-stop.py",
+            "timeout": 90
           }
         ]
       }

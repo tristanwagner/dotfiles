@@ -33,6 +33,15 @@ The primary agent is expensive (Opus Max). Delegate aggressively to cheaper droi
 9. **Complex multi-step tasks** — needs coordination, multiple file edits, or context the primary agent already has
    → `worker` (Opus) or handle directly
 
+10. **Writing tests** for existing code, adding test coverage
+    → `test-writer` (Sonnet — knows vitest, testing-library, project patterns)
+
+11. **DB schema changes** — edit schema, generate migration, review SQL
+    → `migrator` (Sonnet — end-to-end Drizzle workflow)
+
+12. **Improving skills/droids/hooks** — review quality, fix issues, iterate
+    → `skill-improver` (Sonnet — iterative review loop)
+
 ### When NOT to delegate
 
 - You already have all the context loaded and the task is 1-2 tool calls
@@ -42,3 +51,39 @@ The primary agent is expensive (Opus Max). Delegate aggressively to cheaper droi
 ### Parallel delegation
 
 When facing 2+ independent sub-tasks, dispatch multiple droids in parallel in a single response. Don't wait for one to finish before starting the next.
+
+## Completion Protocol — Verification Before Finishing
+
+**After any implementation work** (code edits, new files, refactors), you MUST complete these steps before telling the user you're done:
+
+### 1. Self-review (always)
+Before running checks, re-read the files you changed and verify:
+- Does this actually solve what was asked?
+- Are there obvious edge cases missed?
+- Does this follow the project's existing patterns?
+- Are imports correct and types sound?
+
+For non-trivial changes (3+ files, new features, architecture changes), invoke the `reflexion` skill for a structured self-critique with complexity triage.
+
+### 2. Run verification (always after code changes)
+```bash
+pnpm check-types    # TypeScript compilation
+pnpm check          # Biome lint + format
+pnpm test           # Tests (if relevant tests exist)
+```
+Fix any failures before reporting completion. If a failure is pre-existing (not from your changes), note it but don't block on it.
+
+### 3. Cross-model review (for important changes)
+For features, architecture changes, or security-sensitive code, dispatch a `second-opinion` or `critic` droid to review your work before presenting it to the user.
+
+**Never claim "done" without verification. If checks fail, fix them first.**
+
+## Session Hygiene
+
+### Scope discipline
+- One major topic per session. If the user pivots significantly (e.g., from implementing a feature to debugging model config), suggest starting a fresh session.
+- If context is getting heavy (50+ tool calls), consider whether a new session would be cleaner.
+
+### Plan persistence
+- When a brainstorming or planning session produces a plan, save it to `docs/plans/` or `docs/specs/` so the next session can pick it up.
+- Always reference existing specs/plans before starting implementation: check `docs/specs/` and `docs/plans/` first.
