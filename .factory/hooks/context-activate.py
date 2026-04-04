@@ -37,7 +37,7 @@ CONTEXT_RULES = [
         )
     },
     {
-        "match_dir": ["droids"],
+        "match_parent": ["droids"],
         "match_ext": [".md"],
         "hint": (
             "[CONTEXT] You're editing a droid definition. "
@@ -53,7 +53,7 @@ CONTEXT_RULES = [
         )
     },
     {
-        "match_dir": ["hooks"],
+        "match_parent": ["hooks"],
         "match_ext": [".py", ".sh"],
         "hint": (
             "[CONTEXT] You're editing a hook script. "
@@ -91,6 +91,7 @@ if not file_path:
 basename = os.path.basename(file_path).lower()
 ext = os.path.splitext(file_path)[1].lower()
 dirs = file_path.lower().split(os.sep)
+parent_dir = os.path.basename(os.path.dirname(file_path)).lower()
 
 hints = []
 for rule in CONTEXT_RULES:
@@ -108,6 +109,12 @@ for rule in CONTEXT_RULES:
                 continue
         elif "match_path" not in rule:
             matched = True
+
+    if "match_parent" in rule:
+        if parent_dir in [p.lower() for p in rule["match_parent"]]:
+            matched = True
+        else:
+            continue
 
     if "match_dir" in rule:
         if any(d.lower() in dirs for d in rule["match_dir"]):

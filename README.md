@@ -18,14 +18,33 @@ cd ~/dotfiles
 ./install
 ```
 
-The install script handles everything: package installation (brew on macOS, apt/pacman on Linux), oh-my-zsh + plugins, backup of existing configs, stow, and setting zsh as default shell.
-
-Existing configs are backed up to `~/.dotfiles-backup/<timestamp>/` before being replaced. To restore:
+The install script handles everything: package installation (brew on macOS, apt/pacman on Linux), oh-my-zsh + plugins, agent coding tools, backup of existing configs, stow, and setting zsh as default shell.
 
 ```shell
+./install                          # full install (includes agent tools)
+./install --no-agents              # skip agent tools
+./install dry-run                  # preview changes
 ./install restore                  # list available backups
 ./install restore 20260324-090000  # restore a specific backup
 ```
+
+Existing configs are backed up to `~/.dotfiles-backup/<timestamp>/` before being replaced.
+
+## Agent Coding Tools
+
+Installed by default (skip with `--no-agents`):
+
+| Tool | Description |
+|------|-------------|
+| [Factory (droid)](https://factory.ai) | AI coding agent with custom droids, hooks, skills, and MCP |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | Anthropic's CLI coding agent |
+| [RTK](https://github.com/rtk-ai/rtk) | Token optimizer -- rewrites commands for cost savings |
+| [Opencode](https://opencode.ai) | Multi-model terminal coding agent |
+| [Amp](https://amp.dev) | AI coding assistant |
+| [grep-app-mcp](https://www.npmjs.com/package/grep-app-mcp) | MCP server for searching public code on GitHub |
+| jq | JSON processor (required by RTK hook) |
+
+Factory configs (droids, hooks, skills, MCP) are stowed from `.factory/` into `~/.factory/`.
 
 The repo mirrors `$HOME` -- directories like `.config/`, `.factory/`, and `.vim/` map directly to their home equivalents.
 

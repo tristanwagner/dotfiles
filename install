@@ -35,6 +35,9 @@ main() {
   install_packages
   install_oh_my_zsh
   install_zsh_customs
+  if [ "${1:-}" != "--no-agents" ]; then
+    install_agent_tools
+  fi
   backup_existing
   run_stow
   set_default_shell
@@ -106,6 +109,82 @@ install_oh_my_zsh() {
   else
     info "oh-my-zsh already installed"
   fi
+}
+
+install_agent_tools() {
+  info "installing agent coding tools"
+
+  # Factory (droid CLI)
+  if ! command -v droid &>/dev/null; then
+    info "installing Factory (droid)"
+    curl -fsSL https://get.factory.ai | sh || true
+  else
+    info "droid already installed"
+  fi
+
+  # Claude Code
+  if ! command -v claude &>/dev/null; then
+    info "installing Claude Code"
+    if command -v npm &>/dev/null; then
+      npm install -g @anthropic-ai/claude-code || true
+    else
+      info "npm not found, skipping Claude Code"
+    fi
+  else
+    info "claude already installed"
+  fi
+
+  # RTK (token optimizer)
+  if ! command -v rtk &>/dev/null; then
+    info "installing RTK"
+    if [ "$OS" = "macos" ]; then
+      brew install rtk-ai/tap/rtk || true
+    else
+      cargo install rtk 2>/dev/null || curl -fsSL https://rtk.sh | sh || true
+    fi
+  else
+    info "rtk already installed"
+  fi
+
+  # Opencode
+  if ! command -v opencode &>/dev/null; then
+    info "installing Opencode"
+    curl -fsSL https://opencode.ai/install | sh || true
+  else
+    info "opencode already installed"
+  fi
+
+  # Amp
+  if ! command -v amp &>/dev/null; then
+    info "installing Amp"
+    curl -fsSL https://amp.dev/install | sh || true
+  else
+    info "amp already installed"
+  fi
+
+  # grep-app-mcp (used by Factory MCP)
+  if ! command -v grep-app-mcp &>/dev/null; then
+    info "installing grep-app-mcp"
+    if command -v npm &>/dev/null; then
+      npm install -g grep-app-mcp || true
+    fi
+  fi
+
+  # jq (needed by RTK hook)
+  if ! command -v jq &>/dev/null; then
+    info "installing jq"
+    if [ "$OS" = "macos" ]; then
+      brew install jq || true
+    else
+      if command -v apt-get &>/dev/null; then
+        sudo apt-get install -y jq || true
+      elif command -v pacman &>/dev/null; then
+        sudo pacman -S --noconfirm jq || true
+      fi
+    fi
+  fi
+
+  success "agent tools installed"
 }
 
 install_zsh_customs() {

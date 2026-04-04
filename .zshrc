@@ -251,3 +251,8 @@ zstyle ':completion:*' menu select
 # Added by Antigravity
 export PATH="/Users/tristan/.antigravity/antigravity/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/tristan/.lmstudio/bin"
+# End of LM Studio CLI section
+

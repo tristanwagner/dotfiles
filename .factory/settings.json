@@ -529,6 +529,26 @@
       "provider": "openai"
     },
     {
+      "model": "gpt-5.4(xhigh)",
+      "id": "custom:GPT-5.4-(xHigh)-1",
+      "index": 40,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.4 (xHigh)",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
+      "model": "gpt-5.4(medium)",
+      "id": "custom:GPT-5.4-(Medium)-3",
+      "index": 39,
+      "baseUrl": "http://localhost:8317/v1",
+      "apiKey": "dummy-not-used",
+      "displayName": "GPT-5.4 (Medium)",
+      "noImageSupport": false,
+      "provider": "openai"
+    },
+    {
       "model": "gpt-5.4-mini",
       "id": "custom:GPT-5.4-mini",
       "index": 38,
@@ -541,7 +561,7 @@
     {
       "model": "claude-opus-4-6-thinking-128000",
       "id": "custom:CC-Opus-4.6-Max",
-      "index": 39,
+      "index": 41,
       "baseUrl": "http://localhost:8317",
       "apiKey": "dummy-not-used",
       "displayName": "CC-Opus-4.6-Max",
@@ -552,7 +572,7 @@
     {
       "model": "claude-haiku-4-5-20251001",
       "id": "custom:CC-Haiku-4.5",
-      "index": 40,
+      "index": 42,
       "baseUrl": "http://localhost:8317",
       "apiKey": "dummy-not-used",
       "displayName": "CC-Haiku-4.5",
@@ -671,7 +691,7 @@
     }
   ],
   "sessionDefaultSettings": {
-    "model": "custom:CC-Opus-4.6-Max",
+    "model": "custom:GPT-5.4-High",
     "reasoningEffort": "none",
     "interactionMode": "auto",
     "autonomyLevel": "medium",
@@ -819,5 +839,14 @@
   },
   "includeCoAuthoredByDroid": false,
   "showThinkingInMainView": true,
-  "showTokenUsageIndicator": true
+  "showTokenUsageIndicator": true,
+  "hasSeenMissionOnboarding": true,
+  "missionModelSettings": {
+    "workerModel": "custom:CC-Opus-4.6-Max",
+    "workerReasoningEffort": "none",
+    "validationWorkerModel": "custom:GPT-5.3-Codex-High",
+    "validationWorkerReasoningEffort": "none",
+    "skipUserTesting": true
+  },
+  "todoDisplayMode": "inline"
 }

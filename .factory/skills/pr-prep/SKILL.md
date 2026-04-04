@@ -1,3 +1,8 @@
+---
+name: pr-prep
+description: Pre-flight checklist before creating a pull request. Runs all checks, catches common issues, and generates a PR description from the diff. Use when asked to "prep for PR", "review before merging", or "get this ready for review".
+---
+
 # PR Prep
 
 ## Overview

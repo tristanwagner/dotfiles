@@ -1,3 +1,8 @@
+---
+name: ask-questions
+description: Clarify requirements before implementing when requests are underspecified. Use when a task has multiple plausible interpretations or key details are unclear.
+---
+
 # Ask Questions If Underspecified
 
 ## Overview

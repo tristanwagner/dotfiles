@@ -1,3 +1,8 @@
+---
+name: receiving-code-review
+description: Systematic approach to responding to code review feedback. Use when addressing PR review comments, acting on /review findings, or when a reviewer has flagged issues.
+---
+
 # Receiving Code Review
 
 ## Overview

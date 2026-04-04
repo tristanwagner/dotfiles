@@ -1,3 +1,8 @@
+---
+name: supply-chain-audit
+description: Identifies dependencies at heightened risk of exploitation or takeover. Use when assessing dependency risk, evaluating supply chain attack surface, or auditing for unmaintained packages.
+---
+
 # Supply Chain Risk Auditor
 
 ## Overview

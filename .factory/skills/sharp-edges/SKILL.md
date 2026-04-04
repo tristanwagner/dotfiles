@@ -1,3 +1,8 @@
+---
+name: sharp-edges
+description: Identifies error-prone APIs, dangerous configurations, and footgun designs. Use when reviewing API design, auditing configs for dangerous options, or checking for "footguns" and "secure defaults".
+---
+
 # Sharp Edges Analysis
 
 ## Overview

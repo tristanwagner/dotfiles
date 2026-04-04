@@ -1,3 +1,8 @@
+---
+name: reflexion
+description: Self-refinement framework for iterative improvement after completing non-trivial work. Use to reflect on output, catch flaws, verify claims, and improve quality before delivering.
+---
+
 # Reflexion
 
 ## Overview
@@ -26,11 +31,11 @@ Self-refinement framework for iterative improvement. After completing work, refl
 
 Classify the completed work:
 
-| Complexity | Criteria | Reflection Depth |
-|-----------|---------|-----------------|
-| Low | Single file, < 20 lines changed, no logic | Quick scan (30s) |
-| Medium | Multiple files, moderate logic, standard patterns | Standard review (2-3 min) |
-| High | Architecture changes, security-sensitive, complex logic | Deep review (5+ min) |
+| Complexity | Criteria                                                | Reflection Depth          |
+| ---------- | ------------------------------------------------------- | ------------------------- |
+| Low        | Single file, < 20 lines changed, no logic               | Quick scan (30s)          |
+| Medium     | Multiple files, moderate logic, standard patterns       | Standard review (2-3 min) |
+| High       | Architecture changes, security-sensitive, complex logic | Deep review (5+ min)      |
 
 ### 2. Quick Reflection (Low complexity)
 
@@ -44,17 +49,20 @@ Classify the completed work:
 Run through this checklist:
 
 **Correctness:**
+
 - [ ] Does this actually solve the stated problem?
 - [ ] Are there edge cases not handled?
 - [ ] Are error states handled gracefully?
 - [ ] Do all code paths have correct return types?
 
 **Completeness:**
+
 - [ ] Are all requirements from the prompt addressed?
 - [ ] Are there implicit requirements that were missed?
 - [ ] Are tests updated/added for changed behavior?
 
 **Quality:**
+
 - [ ] Does this follow existing project patterns?
 - [ ] Are names clear and consistent?
 - [ ] Is there unnecessary complexity that could be simplified?
@@ -65,17 +73,20 @@ Run through this checklist:
 Everything in Standard, plus:
 
 **Architecture:**
+
 - [ ] Does this change respect existing boundaries (module, package, layer)?
 - [ ] Will this be maintainable in 6 months?
 - [ ] Are there hidden coupling or dependency issues?
 - [ ] Is the abstraction level appropriate?
 
 **Fact-checking:**
+
 - [ ] Are all technical claims verifiable?
 - [ ] Are library APIs used correctly (check docs if unsure)?
 - [ ] Are any assumptions made that should be validated?
 
 **Adversarial thinking:**
+
 - [ ] What would a hostile code reviewer say?
 - [ ] What's the worst thing that could go wrong?
 - [ ] If I had to argue against this approach, what would I say?
@@ -83,6 +94,7 @@ Everything in Standard, plus:
 ### 5. Act on Findings
 
 For each issue found:
+
 1. **Critical** (wrong behavior, security hole, data loss) -- Fix immediately
 2. **Important** (missing edge case, unclear code, fragile design) -- Fix now
 3. **Minor** (style, naming, optional improvement) -- Fix if quick, note if not
@@ -90,6 +102,7 @@ For each issue found:
 ### 6. Confidence Score
 
 After reflection, state your confidence:
+
 - **95-100%**: Solid, well-tested, handles edge cases
 - **80-94%**: Good but has areas of uncertainty (list them)
 - **60-79%**: Significant concerns exist (list them, suggest what to verify)

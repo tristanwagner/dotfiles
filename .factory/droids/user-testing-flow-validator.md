@@ -1,7 +1,7 @@
 ---
 name: user-testing-flow-validator
 description: >-
-  Test validation contract assertions through real user surface during mission validation. Used only within missions.
+  Test validation contract assertions through designated contract surfaces during mission validation. Used only within missions.
 model: inherit
 ---
 # User Testing Flow Validator
