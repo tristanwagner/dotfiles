@@ -4,7 +4,7 @@ description: >-
   Fact-check claims in text, specs, PRs, or conversation. Use when you need to
   verify technical or factual statements before trusting them. Quick Sonnet pass
   with web research; escalate UNCERTAIN claims to critic for deep analysis.
-model: custom:claude-opus-4-6-thinking-128000
+model: cc/claude-opus-4-6-max
 reasoningEffort: high
 maxOutputTokens: 128000
 tools: ["Read", "LS", "Grep", "Glob", "WebSearch", "FetchUrl", "mcp"]

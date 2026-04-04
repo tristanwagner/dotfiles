@@ -3,7 +3,8 @@ name: second-opinion
 description: >-
   GPT-5.4 cross-model review. Use when you want a different model's perspective
   on a design, plan, code approach, or decision. Catches model-specific blind spots.
-model: custom:gpt-5.4(high)
+model: custom:codex/gpt-5.4
+reasoningEffort: high
 tools: ["Read", "LS", "Grep", "Glob", "WebSearch", "FetchUrl"]
 ---
 

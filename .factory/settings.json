@@ -245,6 +245,1014 @@
       "base_url": "http://localhost:8317/v1",
       "api_key": "dummy-not-used",
       "provider": "openai"
+    },
+    {
+      "model_display_name": "cc/claude-opus-4-6",
+      "model": "cc/claude-opus-4-6",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "claude/claude-opus-4-6",
+      "model": "claude/claude-opus-4-6",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cc/claude-sonnet-4-6",
+      "model": "cc/claude-sonnet-4-6",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "claude/claude-sonnet-4-6",
+      "model": "claude/claude-sonnet-4-6",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cc/claude-opus-4-5-20251101",
+      "model": "cc/claude-opus-4-5-20251101",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "claude/claude-opus-4-5-20251101",
+      "model": "claude/claude-opus-4-5-20251101",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cc/claude-sonnet-4-5-20250929",
+      "model": "cc/claude-sonnet-4-5-20250929",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "claude/claude-sonnet-4-5-20250929",
+      "model": "claude/claude-sonnet-4-5-20250929",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cc/claude-haiku-4-5-20251001",
+      "model": "cc/claude-haiku-4-5-20251001",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "claude/claude-haiku-4-5-20251001",
+      "model": "claude/claude-haiku-4-5-20251001",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.4",
+      "model": "cx/gpt-5.4",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.4",
+      "model": "codex/gpt-5.4",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.4-mini",
+      "model": "cx/gpt-5.4-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.4-mini",
+      "model": "codex/gpt-5.4-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.3-codex",
+      "model": "cx/gpt-5.3-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.3-codex",
+      "model": "codex/gpt-5.3-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.3-codex-xhigh",
+      "model": "cx/gpt-5.3-codex-xhigh",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.3-codex-xhigh",
+      "model": "codex/gpt-5.3-codex-xhigh",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.3-codex-high",
+      "model": "cx/gpt-5.3-codex-high",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.3-codex-high",
+      "model": "codex/gpt-5.3-codex-high",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.3-codex-low",
+      "model": "cx/gpt-5.3-codex-low",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.3-codex-low",
+      "model": "codex/gpt-5.3-codex-low",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.3-codex-none",
+      "model": "cx/gpt-5.3-codex-none",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.3-codex-none",
+      "model": "codex/gpt-5.3-codex-none",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.1-codex-mini",
+      "model": "cx/gpt-5.1-codex-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.1-codex-mini",
+      "model": "codex/gpt-5.1-codex-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.1-codex-mini-high",
+      "model": "cx/gpt-5.1-codex-mini-high",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.1-codex-mini-high",
+      "model": "codex/gpt-5.1-codex-mini-high",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.2-codex",
+      "model": "cx/gpt-5.2-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.2-codex",
+      "model": "codex/gpt-5.2-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.2",
+      "model": "cx/gpt-5.2",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.2",
+      "model": "codex/gpt-5.2",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.1-codex-max",
+      "model": "cx/gpt-5.1-codex-max",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.1-codex-max",
+      "model": "codex/gpt-5.1-codex-max",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.1-codex",
+      "model": "cx/gpt-5.1-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.1-codex",
+      "model": "codex/gpt-5.1-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5.1",
+      "model": "cx/gpt-5.1",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5.1",
+      "model": "codex/gpt-5.1",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5-codex",
+      "model": "cx/gpt-5-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5-codex",
+      "model": "codex/gpt-5-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cx/gpt-5-codex-mini",
+      "model": "cx/gpt-5-codex-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "codex/gpt-5-codex-mini",
+      "model": "codex/gpt-5-codex-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qw/qwen3-coder-plus",
+      "model": "qw/qwen3-coder-plus",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qwen/qwen3-coder-plus",
+      "model": "qwen/qwen3-coder-plus",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qw/qwen3-coder-flash",
+      "model": "qw/qwen3-coder-flash",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qwen/qwen3-coder-flash",
+      "model": "qwen/qwen3-coder-flash",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qw/vision-model",
+      "model": "qw/vision-model",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qwen/vision-model",
+      "model": "qwen/vision-model",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qw/coder-model",
+      "model": "qw/coder-model",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qwen/coder-model",
+      "model": "qwen/coder-model",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "kr/claude-sonnet-4.5",
+      "model": "kr/claude-sonnet-4.5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "kiro/claude-sonnet-4.5",
+      "model": "kiro/claude-sonnet-4.5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "kr/claude-haiku-4.5",
+      "model": "kr/claude-haiku-4.5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "kiro/claude-haiku-4.5",
+      "model": "kiro/claude-haiku-4.5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "groq/llama-3.3-70b-versatile",
+      "model": "groq/llama-3.3-70b-versatile",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "groq/meta-llama/llama-4-maverick-17b-128e-instruct",
+      "model": "groq/meta-llama/llama-4-maverick-17b-128e-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "groq/qwen/qwen3-32b",
+      "model": "groq/qwen/qwen3-32b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "groq/openai/gpt-oss-120b",
+      "model": "groq/openai/gpt-oss-120b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cerebras/gpt-oss-120b",
+      "model": "cerebras/gpt-oss-120b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cerebras/zai-glm-4.7",
+      "model": "cerebras/zai-glm-4.7",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cerebras/llama-3.3-70b",
+      "model": "cerebras/llama-3.3-70b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cerebras/llama-4-scout-17b-16e-instruct",
+      "model": "cerebras/llama-4-scout-17b-16e-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cerebras/qwen-3-235b-a22b-instruct-2507",
+      "model": "cerebras/qwen-3-235b-a22b-instruct-2507",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cerebras/qwen-3-32b",
+      "model": "cerebras/qwen-3-32b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/gpt-oss-120b",
+      "model": "nvidia/gpt-oss-120b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/openai/gpt-oss-120b",
+      "model": "nvidia/openai/gpt-oss-120b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/meta/llama-3.3-70b-instruct",
+      "model": "nvidia/meta/llama-3.3-70b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/nvidia/llama-3.3-70b-instruct",
+      "model": "nvidia/nvidia/llama-3.3-70b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/meta/llama-4-maverick-17b-128e-instruct",
+      "model": "nvidia/meta/llama-4-maverick-17b-128e-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/moonshotai/kimi-k2.5",
+      "model": "nvidia/moonshotai/kimi-k2.5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/z-ai/glm4.7",
+      "model": "nvidia/z-ai/glm4.7",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/deepseek-ai/deepseek-v3.2",
+      "model": "nvidia/deepseek-ai/deepseek-v3.2",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/deepseek/deepseek-r1",
+      "model": "nvidia/deepseek/deepseek-r1",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/nvidia/llama-3.1-70b-instruct",
+      "model": "nvidia/nvidia/llama-3.1-70b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/nvidia/llama-3.1-405b-instruct",
+      "model": "nvidia/nvidia/llama-3.1-405b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "lc/LongCat-Flash-Lite",
+      "model": "lc/LongCat-Flash-Lite",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "longcat/LongCat-Flash-Lite",
+      "model": "longcat/LongCat-Flash-Lite",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "lc/LongCat-Flash-Chat",
+      "model": "lc/LongCat-Flash-Chat",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "longcat/LongCat-Flash-Chat",
+      "model": "longcat/LongCat-Flash-Chat",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "lc/LongCat-Flash-Thinking",
+      "model": "lc/LongCat-Flash-Thinking",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "longcat/LongCat-Flash-Thinking",
+      "model": "longcat/LongCat-Flash-Thinking",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "lc/LongCat-Flash-Thinking-2601",
+      "model": "lc/LongCat-Flash-Thinking-2601",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "longcat/LongCat-Flash-Thinking-2601",
+      "model": "longcat/LongCat-Flash-Thinking-2601",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "lc/LongCat-Flash-Omni-2603",
+      "model": "lc/LongCat-Flash-Omni-2603",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "longcat/LongCat-Flash-Omni-2603",
+      "model": "longcat/LongCat-Flash-Omni-2603",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pol/openai",
+      "model": "pol/openai",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pollinations/openai",
+      "model": "pollinations/openai",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pol/claude",
+      "model": "pol/claude",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pollinations/claude",
+      "model": "pollinations/claude",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pol/gemini",
+      "model": "pol/gemini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pollinations/gemini",
+      "model": "pollinations/gemini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pol/deepseek",
+      "model": "pol/deepseek",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pollinations/deepseek",
+      "model": "pollinations/deepseek",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pol/llama",
+      "model": "pol/llama",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pollinations/llama",
+      "model": "pollinations/llama",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pol/mistral",
+      "model": "pol/mistral",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "pollinations/mistral",
+      "model": "pollinations/mistral",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cf/@cf/meta/llama-3.3-70b-instruct",
+      "model": "cf/@cf/meta/llama-3.3-70b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cloudflare-ai/@cf/meta/llama-3.3-70b-instruct",
+      "model": "cloudflare-ai/@cf/meta/llama-3.3-70b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cf/@cf/meta/llama-3.1-8b-instruct",
+      "model": "cf/@cf/meta/llama-3.1-8b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cloudflare-ai/@cf/meta/llama-3.1-8b-instruct",
+      "model": "cloudflare-ai/@cf/meta/llama-3.1-8b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cf/@cf/google/gemma-3-12b-it",
+      "model": "cf/@cf/google/gemma-3-12b-it",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cloudflare-ai/@cf/google/gemma-3-12b-it",
+      "model": "cloudflare-ai/@cf/google/gemma-3-12b-it",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cf/@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "model": "cf/@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cloudflare-ai/@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "model": "cloudflare-ai/@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cf/@cf/qwen/qwen2.5-coder-15b-instruct",
+      "model": "cf/@cf/qwen/qwen2.5-coder-15b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cloudflare-ai/@cf/qwen/qwen2.5-coder-15b-instruct",
+      "model": "cloudflare-ai/@cf/qwen/qwen2.5-coder-15b-instruct",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cf/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "model": "cf/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "cloudflare-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "model": "cloudflare-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/nvidia/nv-embedqa-e5-v5",
+      "model": "nvidia/nvidia/nv-embedqa-e5-v5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/nvidia/nv-rerankqa-mistral-4b-v3",
+      "model": "nvidia/nvidia/nv-rerankqa-mistral-4b-v3",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "groq/whisper-large-v3",
+      "model": "groq/whisper-large-v3",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "groq/whisper-large-v3-turbo",
+      "model": "groq/whisper-large-v3-turbo",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "groq/distil-whisper-large-v3-en",
+      "model": "groq/distil-whisper-large-v3-en",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/parakeet-ctc-1.1b-asr",
+      "model": "nvidia/parakeet-ctc-1.1b-asr",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qwen/qwen3-asr",
+      "model": "qwen/qwen3-asr",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/fastpitch",
+      "model": "nvidia/fastpitch",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "nvidia/tacotron2",
+      "model": "nvidia/tacotron2",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "qwen/qwen3-tts",
+      "model": "qwen/qwen3-tts",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-4.1",
+      "model": "gh/gpt-4.1",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-4o",
+      "model": "gh/gpt-4o",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-4o-mini",
+      "model": "gh/gpt-4o-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-4",
+      "model": "gh/gpt-4",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-3.5-turbo",
+      "model": "gh/gpt-3.5-turbo",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5",
+      "model": "gh/gpt-5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5-mini",
+      "model": "gh/gpt-5-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5-codex",
+      "model": "gh/gpt-5-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5.1",
+      "model": "gh/gpt-5.1",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5.1-codex",
+      "model": "gh/gpt-5.1-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5.1-codex-mini",
+      "model": "gh/gpt-5.1-codex-mini",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5.1-codex-max",
+      "model": "gh/gpt-5.1-codex-max",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5.2",
+      "model": "gh/gpt-5.2",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gpt-5.2-codex",
+      "model": "gh/gpt-5.2-codex",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/claude-haiku-4.5",
+      "model": "gh/claude-haiku-4.5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/claude-opus-4.1",
+      "model": "gh/claude-opus-4.1",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/claude-opus-4.6",
+      "model": "gh/claude-opus-4.6",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/claude-opus-4-5-20251101",
+      "model": "gh/claude-opus-4-5-20251101",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/claude-sonnet-4",
+      "model": "gh/claude-sonnet-4",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/claude-sonnet-4.5",
+      "model": "gh/claude-sonnet-4.5",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gemini-3.1-pro-preview",
+      "model": "gh/gemini-3.1-pro-preview",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gemini-2.5-pro",
+      "model": "gh/gemini-2.5-pro",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/gemini-2.5-flash",
+      "model": "gh/gemini-2.5-flash",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/grok-code-fast-1",
+      "model": "gh/grok-code-fast-1",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model_display_name": "gh/oswe-vscode-prime",
+      "model": "gh/oswe-vscode-prime",
+      "base_url": "http://localhost:20128/v1",
+      "api_key": "dummy-omniroute-key",
+      "provider": "generic-chat-completion-api"
     }
   ],
   "customModels": [
@@ -688,11 +1696,1463 @@
       "displayName": "GLM-4-Flash",
       "noImageSupport": false,
       "provider": "openai"
+    },
+    {
+      "model": "cc/claude-opus-4-6",
+      "id": "custom:local20128-cc-claude-opus-4-6",
+      "index": 43,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cc/claude-opus-4-6",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "claude/claude-opus-4-6",
+      "id": "custom:local20128-claude-claude-opus-4-6",
+      "index": 44,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "claude/claude-opus-4-6",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cc/claude-sonnet-4-6",
+      "id": "custom:local20128-cc-claude-sonnet-4-6",
+      "index": 45,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cc/claude-sonnet-4-6",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "claude/claude-sonnet-4-6",
+      "id": "custom:local20128-claude-claude-sonnet-4-6",
+      "index": 46,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "claude/claude-sonnet-4-6",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cc/claude-opus-4-5-20251101",
+      "id": "custom:local20128-cc-claude-opus-4-5-20251101",
+      "index": 47,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cc/claude-opus-4-5-20251101",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "claude/claude-opus-4-5-20251101",
+      "id": "custom:local20128-claude-claude-opus-4-5-20251101",
+      "index": 48,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "claude/claude-opus-4-5-20251101",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cc/claude-sonnet-4-5-20250929",
+      "id": "custom:local20128-cc-claude-sonnet-4-5-20250929",
+      "index": 49,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cc/claude-sonnet-4-5-20250929",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "claude/claude-sonnet-4-5-20250929",
+      "id": "custom:local20128-claude-claude-sonnet-4-5-20250929",
+      "index": 50,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "claude/claude-sonnet-4-5-20250929",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cc/claude-haiku-4-5-20251001",
+      "id": "custom:local20128-cc-claude-haiku-4-5-20251001",
+      "index": 51,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cc/claude-haiku-4-5-20251001",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "claude/claude-haiku-4-5-20251001",
+      "id": "custom:local20128-claude-claude-haiku-4-5-20251001",
+      "index": 52,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "claude/claude-haiku-4-5-20251001",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.4",
+      "id": "custom:local20128-cx-gpt-5-4",
+      "index": 53,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.4",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.4",
+      "id": "custom:local20128-codex-gpt-5-4",
+      "index": 54,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.4",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.4-mini",
+      "id": "custom:local20128-cx-gpt-5-4-mini",
+      "index": 55,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.4-mini",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.4-mini",
+      "id": "custom:local20128-codex-gpt-5-4-mini",
+      "index": 56,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.4-mini",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.3-codex",
+      "id": "custom:local20128-cx-gpt-5-3-codex",
+      "index": 57,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.3-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.3-codex",
+      "id": "custom:local20128-codex-gpt-5-3-codex",
+      "index": 58,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.3-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.3-codex-xhigh",
+      "id": "custom:local20128-cx-gpt-5-3-codex-xhigh",
+      "index": 59,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.3-codex-xhigh",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.3-codex-xhigh",
+      "id": "custom:local20128-codex-gpt-5-3-codex-xhigh",
+      "index": 60,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.3-codex-xhigh",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.3-codex-high",
+      "id": "custom:local20128-cx-gpt-5-3-codex-high",
+      "index": 61,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.3-codex-high",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.3-codex-high",
+      "id": "custom:local20128-codex-gpt-5-3-codex-high",
+      "index": 62,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.3-codex-high",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.3-codex-low",
+      "id": "custom:local20128-cx-gpt-5-3-codex-low",
+      "index": 63,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.3-codex-low",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.3-codex-low",
+      "id": "custom:local20128-codex-gpt-5-3-codex-low",
+      "index": 64,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.3-codex-low",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.3-codex-none",
+      "id": "custom:local20128-cx-gpt-5-3-codex-none",
+      "index": 65,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.3-codex-none",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.3-codex-none",
+      "id": "custom:local20128-codex-gpt-5-3-codex-none",
+      "index": 66,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.3-codex-none",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.1-codex-mini",
+      "id": "custom:local20128-cx-gpt-5-1-codex-mini",
+      "index": 67,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.1-codex-mini",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.1-codex-mini",
+      "id": "custom:local20128-codex-gpt-5-1-codex-mini",
+      "index": 68,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.1-codex-mini",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.1-codex-mini-high",
+      "id": "custom:local20128-cx-gpt-5-1-codex-mini-high",
+      "index": 69,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.1-codex-mini-high",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.1-codex-mini-high",
+      "id": "custom:local20128-codex-gpt-5-1-codex-mini-high",
+      "index": 70,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.1-codex-mini-high",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.2-codex",
+      "id": "custom:local20128-cx-gpt-5-2-codex",
+      "index": 71,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.2-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.2-codex",
+      "id": "custom:local20128-codex-gpt-5-2-codex",
+      "index": 72,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.2-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.2",
+      "id": "custom:local20128-cx-gpt-5-2",
+      "index": 73,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.2",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.2",
+      "id": "custom:local20128-codex-gpt-5-2",
+      "index": 74,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.2",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.1-codex-max",
+      "id": "custom:local20128-cx-gpt-5-1-codex-max",
+      "index": 75,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.1-codex-max",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.1-codex-max",
+      "id": "custom:local20128-codex-gpt-5-1-codex-max",
+      "index": 76,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.1-codex-max",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.1-codex",
+      "id": "custom:local20128-cx-gpt-5-1-codex",
+      "index": 77,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.1-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.1-codex",
+      "id": "custom:local20128-codex-gpt-5-1-codex",
+      "index": 78,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.1-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5.1",
+      "id": "custom:local20128-cx-gpt-5-1",
+      "index": 79,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5.1",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5.1",
+      "id": "custom:local20128-codex-gpt-5-1",
+      "index": 80,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5.1",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5-codex",
+      "id": "custom:local20128-cx-gpt-5-codex",
+      "index": 81,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5-codex",
+      "id": "custom:local20128-codex-gpt-5-codex",
+      "index": 82,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cx/gpt-5-codex-mini",
+      "id": "custom:local20128-cx-gpt-5-codex-mini",
+      "index": 83,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cx/gpt-5-codex-mini",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "codex/gpt-5-codex-mini",
+      "id": "custom:local20128-codex-gpt-5-codex-mini",
+      "index": 84,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "codex/gpt-5-codex-mini",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qw/qwen3-coder-plus",
+      "id": "custom:local20128-qw-qwen3-coder-plus",
+      "index": 85,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qw/qwen3-coder-plus",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qwen/qwen3-coder-plus",
+      "id": "custom:local20128-qwen-qwen3-coder-plus",
+      "index": 86,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qwen/qwen3-coder-plus",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qw/qwen3-coder-flash",
+      "id": "custom:local20128-qw-qwen3-coder-flash",
+      "index": 87,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qw/qwen3-coder-flash",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qwen/qwen3-coder-flash",
+      "id": "custom:local20128-qwen-qwen3-coder-flash",
+      "index": 88,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qwen/qwen3-coder-flash",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qw/vision-model",
+      "id": "custom:local20128-qw-vision-model",
+      "index": 89,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qw/vision-model",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qwen/vision-model",
+      "id": "custom:local20128-qwen-vision-model",
+      "index": 90,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qwen/vision-model",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qw/coder-model",
+      "id": "custom:local20128-qw-coder-model",
+      "index": 91,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qw/coder-model",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qwen/coder-model",
+      "id": "custom:local20128-qwen-coder-model",
+      "index": 92,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qwen/coder-model",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "kr/claude-sonnet-4.5",
+      "id": "custom:local20128-kr-claude-sonnet-4-5",
+      "index": 93,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "kr/claude-sonnet-4.5",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "kiro/claude-sonnet-4.5",
+      "id": "custom:local20128-kiro-claude-sonnet-4-5",
+      "index": 94,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "kiro/claude-sonnet-4.5",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "kr/claude-haiku-4.5",
+      "id": "custom:local20128-kr-claude-haiku-4-5",
+      "index": 95,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "kr/claude-haiku-4.5",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "kiro/claude-haiku-4.5",
+      "id": "custom:local20128-kiro-claude-haiku-4-5",
+      "index": 96,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "kiro/claude-haiku-4.5",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "groq/llama-3.3-70b-versatile",
+      "id": "custom:local20128-groq-llama-3-3-70b-versatile",
+      "index": 97,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "groq/llama-3.3-70b-versatile",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "groq/meta-llama/llama-4-maverick-17b-128e-instruct",
+      "id": "custom:local20128-groq-meta-llama-llama-4-maverick-17b-128e-instruct",
+      "index": 98,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "groq/meta-llama/llama-4-maverick-17b-128e-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "groq/qwen/qwen3-32b",
+      "id": "custom:local20128-groq-qwen-qwen3-32b",
+      "index": 99,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "groq/qwen/qwen3-32b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "groq/openai/gpt-oss-120b",
+      "id": "custom:local20128-groq-openai-gpt-oss-120b",
+      "index": 100,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "groq/openai/gpt-oss-120b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cerebras/gpt-oss-120b",
+      "id": "custom:local20128-cerebras-gpt-oss-120b",
+      "index": 101,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cerebras/gpt-oss-120b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cerebras/zai-glm-4.7",
+      "id": "custom:local20128-cerebras-zai-glm-4-7",
+      "index": 102,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cerebras/zai-glm-4.7",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cerebras/llama-3.3-70b",
+      "id": "custom:local20128-cerebras-llama-3-3-70b",
+      "index": 103,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cerebras/llama-3.3-70b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cerebras/llama-4-scout-17b-16e-instruct",
+      "id": "custom:local20128-cerebras-llama-4-scout-17b-16e-instruct",
+      "index": 104,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cerebras/llama-4-scout-17b-16e-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cerebras/qwen-3-235b-a22b-instruct-2507",
+      "id": "custom:local20128-cerebras-qwen-3-235b-a22b-instruct-2507",
+      "index": 105,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cerebras/qwen-3-235b-a22b-instruct-2507",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cerebras/qwen-3-32b",
+      "id": "custom:local20128-cerebras-qwen-3-32b",
+      "index": 106,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cerebras/qwen-3-32b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/gpt-oss-120b",
+      "id": "custom:local20128-nvidia-gpt-oss-120b",
+      "index": 107,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/gpt-oss-120b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/openai/gpt-oss-120b",
+      "id": "custom:local20128-nvidia-openai-gpt-oss-120b",
+      "index": 108,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/openai/gpt-oss-120b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/meta/llama-3.3-70b-instruct",
+      "id": "custom:local20128-nvidia-meta-llama-3-3-70b-instruct",
+      "index": 109,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/meta/llama-3.3-70b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/nvidia/llama-3.3-70b-instruct",
+      "id": "custom:local20128-nvidia-nvidia-llama-3-3-70b-instruct",
+      "index": 110,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/nvidia/llama-3.3-70b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/meta/llama-4-maverick-17b-128e-instruct",
+      "id": "custom:local20128-nvidia-meta-llama-4-maverick-17b-128e-instruct",
+      "index": 111,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/meta/llama-4-maverick-17b-128e-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/moonshotai/kimi-k2.5",
+      "id": "custom:local20128-nvidia-moonshotai-kimi-k2-5",
+      "index": 112,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/moonshotai/kimi-k2.5",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/z-ai/glm4.7",
+      "id": "custom:local20128-nvidia-z-ai-glm4-7",
+      "index": 113,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/z-ai/glm4.7",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/deepseek-ai/deepseek-v3.2",
+      "id": "custom:local20128-nvidia-deepseek-ai-deepseek-v3-2",
+      "index": 114,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/deepseek-ai/deepseek-v3.2",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/deepseek/deepseek-r1",
+      "id": "custom:local20128-nvidia-deepseek-deepseek-r1",
+      "index": 115,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/deepseek/deepseek-r1",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/nvidia/llama-3.1-70b-instruct",
+      "id": "custom:local20128-nvidia-nvidia-llama-3-1-70b-instruct",
+      "index": 116,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/nvidia/llama-3.1-70b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/nvidia/llama-3.1-405b-instruct",
+      "id": "custom:local20128-nvidia-nvidia-llama-3-1-405b-instruct",
+      "index": 117,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/nvidia/llama-3.1-405b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "lc/LongCat-Flash-Lite",
+      "id": "custom:local20128-lc-longcat-flash-lite",
+      "index": 118,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "lc/LongCat-Flash-Lite",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "longcat/LongCat-Flash-Lite",
+      "id": "custom:local20128-longcat-longcat-flash-lite",
+      "index": 119,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "longcat/LongCat-Flash-Lite",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "lc/LongCat-Flash-Chat",
+      "id": "custom:local20128-lc-longcat-flash-chat",
+      "index": 120,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "lc/LongCat-Flash-Chat",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "longcat/LongCat-Flash-Chat",
+      "id": "custom:local20128-longcat-longcat-flash-chat",
+      "index": 121,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "longcat/LongCat-Flash-Chat",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "lc/LongCat-Flash-Thinking",
+      "id": "custom:local20128-lc-longcat-flash-thinking",
+      "index": 122,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "lc/LongCat-Flash-Thinking",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "longcat/LongCat-Flash-Thinking",
+      "id": "custom:local20128-longcat-longcat-flash-thinking",
+      "index": 123,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "longcat/LongCat-Flash-Thinking",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "lc/LongCat-Flash-Thinking-2601",
+      "id": "custom:local20128-lc-longcat-flash-thinking-2601",
+      "index": 124,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "lc/LongCat-Flash-Thinking-2601",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "longcat/LongCat-Flash-Thinking-2601",
+      "id": "custom:local20128-longcat-longcat-flash-thinking-2601",
+      "index": 125,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "longcat/LongCat-Flash-Thinking-2601",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "lc/LongCat-Flash-Omni-2603",
+      "id": "custom:local20128-lc-longcat-flash-omni-2603",
+      "index": 126,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "lc/LongCat-Flash-Omni-2603",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "longcat/LongCat-Flash-Omni-2603",
+      "id": "custom:local20128-longcat-longcat-flash-omni-2603",
+      "index": 127,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "longcat/LongCat-Flash-Omni-2603",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pol/openai",
+      "id": "custom:local20128-pol-openai",
+      "index": 128,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pol/openai",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pollinations/openai",
+      "id": "custom:local20128-pollinations-openai",
+      "index": 129,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pollinations/openai",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pol/claude",
+      "id": "custom:local20128-pol-claude",
+      "index": 130,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pol/claude",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pollinations/claude",
+      "id": "custom:local20128-pollinations-claude",
+      "index": 131,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pollinations/claude",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pol/gemini",
+      "id": "custom:local20128-pol-gemini",
+      "index": 132,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pol/gemini",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pollinations/gemini",
+      "id": "custom:local20128-pollinations-gemini",
+      "index": 133,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pollinations/gemini",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pol/deepseek",
+      "id": "custom:local20128-pol-deepseek",
+      "index": 134,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pol/deepseek",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pollinations/deepseek",
+      "id": "custom:local20128-pollinations-deepseek",
+      "index": 135,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pollinations/deepseek",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pol/llama",
+      "id": "custom:local20128-pol-llama",
+      "index": 136,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pol/llama",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pollinations/llama",
+      "id": "custom:local20128-pollinations-llama",
+      "index": 137,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pollinations/llama",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pol/mistral",
+      "id": "custom:local20128-pol-mistral",
+      "index": 138,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pol/mistral",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "pollinations/mistral",
+      "id": "custom:local20128-pollinations-mistral",
+      "index": 139,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "pollinations/mistral",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cf/@cf/meta/llama-3.3-70b-instruct",
+      "id": "custom:local20128-cf-cf-meta-llama-3-3-70b-instruct",
+      "index": 140,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cf/@cf/meta/llama-3.3-70b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cloudflare-ai/@cf/meta/llama-3.3-70b-instruct",
+      "id": "custom:local20128-cloudflare-ai-cf-meta-llama-3-3-70b-instruct",
+      "index": 141,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cloudflare-ai/@cf/meta/llama-3.3-70b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cf/@cf/meta/llama-3.1-8b-instruct",
+      "id": "custom:local20128-cf-cf-meta-llama-3-1-8b-instruct",
+      "index": 142,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cf/@cf/meta/llama-3.1-8b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cloudflare-ai/@cf/meta/llama-3.1-8b-instruct",
+      "id": "custom:local20128-cloudflare-ai-cf-meta-llama-3-1-8b-instruct",
+      "index": 143,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cloudflare-ai/@cf/meta/llama-3.1-8b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cf/@cf/google/gemma-3-12b-it",
+      "id": "custom:local20128-cf-cf-google-gemma-3-12b-it",
+      "index": 144,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cf/@cf/google/gemma-3-12b-it",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cloudflare-ai/@cf/google/gemma-3-12b-it",
+      "id": "custom:local20128-cloudflare-ai-cf-google-gemma-3-12b-it",
+      "index": 145,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cloudflare-ai/@cf/google/gemma-3-12b-it",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cf/@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "id": "custom:local20128-cf-cf-mistral-mistral-7b-instruct-v0-2-lora",
+      "index": 146,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cf/@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cloudflare-ai/@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "id": "custom:local20128-cloudflare-ai-cf-mistral-mistral-7b-instruct-v0-2-lora",
+      "index": 147,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cloudflare-ai/@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cf/@cf/qwen/qwen2.5-coder-15b-instruct",
+      "id": "custom:local20128-cf-cf-qwen-qwen2-5-coder-15b-instruct",
+      "index": 148,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cf/@cf/qwen/qwen2.5-coder-15b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cloudflare-ai/@cf/qwen/qwen2.5-coder-15b-instruct",
+      "id": "custom:local20128-cloudflare-ai-cf-qwen-qwen2-5-coder-15b-instruct",
+      "index": 149,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cloudflare-ai/@cf/qwen/qwen2.5-coder-15b-instruct",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cf/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "id": "custom:local20128-cf-cf-deepseek-ai-deepseek-r1-distill-qwen-32b",
+      "index": 150,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cf/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cloudflare-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "id": "custom:local20128-cloudflare-ai-cf-deepseek-ai-deepseek-r1-distill-qwen-32b",
+      "index": 151,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cloudflare-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/nvidia/nv-embedqa-e5-v5",
+      "id": "custom:local20128-nvidia-nvidia-nv-embedqa-e5-v5",
+      "index": 152,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/nvidia/nv-embedqa-e5-v5",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/nvidia/nv-rerankqa-mistral-4b-v3",
+      "id": "custom:local20128-nvidia-nvidia-nv-rerankqa-mistral-4b-v3",
+      "index": 153,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/nvidia/nv-rerankqa-mistral-4b-v3",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "groq/whisper-large-v3",
+      "id": "custom:local20128-groq-whisper-large-v3",
+      "index": 154,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "groq/whisper-large-v3",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "groq/whisper-large-v3-turbo",
+      "id": "custom:local20128-groq-whisper-large-v3-turbo",
+      "index": 155,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "groq/whisper-large-v3-turbo",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "groq/distil-whisper-large-v3-en",
+      "id": "custom:local20128-groq-distil-whisper-large-v3-en",
+      "index": 156,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "groq/distil-whisper-large-v3-en",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/parakeet-ctc-1.1b-asr",
+      "id": "custom:local20128-nvidia-parakeet-ctc-1-1b-asr",
+      "index": 157,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/parakeet-ctc-1.1b-asr",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qwen/qwen3-asr",
+      "id": "custom:local20128-qwen-qwen3-asr",
+      "index": 158,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qwen/qwen3-asr",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/fastpitch",
+      "id": "custom:local20128-nvidia-fastpitch",
+      "index": 159,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/fastpitch",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "nvidia/tacotron2",
+      "id": "custom:local20128-nvidia-tacotron2",
+      "index": 160,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "nvidia/tacotron2",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "qwen/qwen3-tts",
+      "id": "custom:local20128-qwen-qwen3-tts",
+      "index": 161,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "qwen/qwen3-tts",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-4.1",
+      "id": "custom:local20128-gh-gpt-4-1",
+      "index": 162,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-4.1",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-4o",
+      "id": "custom:local20128-gh-gpt-4o",
+      "index": 163,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-4o",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-4o-mini",
+      "id": "custom:local20128-gh-gpt-4o-mini",
+      "index": 164,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-4o-mini",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-4",
+      "id": "custom:local20128-gh-gpt-4",
+      "index": 165,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-4",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-3.5-turbo",
+      "id": "custom:local20128-gh-gpt-3-5-turbo",
+      "index": 166,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-3.5-turbo",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5",
+      "id": "custom:local20128-gh-gpt-5",
+      "index": 167,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5-mini",
+      "id": "custom:local20128-gh-gpt-5-mini",
+      "index": 168,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5-mini",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5-codex",
+      "id": "custom:local20128-gh-gpt-5-codex",
+      "index": 169,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5.1",
+      "id": "custom:local20128-gh-gpt-5-1",
+      "index": 170,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5.1",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5.1-codex",
+      "id": "custom:local20128-gh-gpt-5-1-codex",
+      "index": 171,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5.1-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5.1-codex-mini",
+      "id": "custom:local20128-gh-gpt-5-1-codex-mini",
+      "index": 172,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5.1-codex-mini",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5.1-codex-max",
+      "id": "custom:local20128-gh-gpt-5-1-codex-max",
+      "index": 173,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5.1-codex-max",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5.2",
+      "id": "custom:local20128-gh-gpt-5-2",
+      "index": 174,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5.2",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gpt-5.2-codex",
+      "id": "custom:local20128-gh-gpt-5-2-codex",
+      "index": 175,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gpt-5.2-codex",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/claude-haiku-4.5",
+      "id": "custom:local20128-gh-claude-haiku-4-5",
+      "index": 176,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/claude-haiku-4.5",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/claude-opus-4.1",
+      "id": "custom:local20128-gh-claude-opus-4-1",
+      "index": 177,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/claude-opus-4.1",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/claude-opus-4.6",
+      "id": "custom:local20128-gh-claude-opus-4-6",
+      "index": 178,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/claude-opus-4.6",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/claude-opus-4-5-20251101",
+      "id": "custom:local20128-gh-claude-opus-4-5-20251101",
+      "index": 179,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/claude-opus-4-5-20251101",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/claude-sonnet-4",
+      "id": "custom:local20128-gh-claude-sonnet-4",
+      "index": 180,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/claude-sonnet-4",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/claude-sonnet-4.5",
+      "id": "custom:local20128-gh-claude-sonnet-4-5",
+      "index": 181,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/claude-sonnet-4.5",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gemini-3.1-pro-preview",
+      "id": "custom:local20128-gh-gemini-3-1-pro-preview",
+      "index": 182,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gemini-3.1-pro-preview",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gemini-2.5-pro",
+      "id": "custom:local20128-gh-gemini-2-5-pro",
+      "index": 183,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gemini-2.5-pro",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/gemini-2.5-flash",
+      "id": "custom:local20128-gh-gemini-2-5-flash",
+      "index": 184,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/gemini-2.5-flash",
+      "noImageSupport": false,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/grok-code-fast-1",
+      "id": "custom:local20128-gh-grok-code-fast-1",
+      "index": 185,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/grok-code-fast-1",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "gh/oswe-vscode-prime",
+      "id": "custom:local20128-gh-oswe-vscode-prime",
+      "index": 186,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "gh/oswe-vscode-prime",
+      "noImageSupport": true,
+      "provider": "generic-chat-completion-api"
+    },
+    {
+      "model": "cc/claude-opus-4-6",
+      "id": "custom:local20128-cc-claude-opus-4-6-max",
+      "index": 187,
+      "baseUrl": "http://localhost:20128/v1",
+      "apiKey": "dummy-omniroute-key",
+      "displayName": "cc/claude-opus-4-6-max",
+      "maxOutputTokens": 128000,
+      "reasoningEffort": "high",
+      "noImageSupport": false,
+      "provider": "anthropic"
     }
   ],
   "sessionDefaultSettings": {
-    "model": "custom:GPT-5.4-High",
-    "reasoningEffort": "none",
+    "model": "custom:local20128-cc-claude-opus-4-6-max",
+    "reasoningEffort": "high",
     "interactionMode": "auto",
     "autonomyLevel": "medium",
     "autonomyMode": "auto-medium"
@@ -842,11 +3302,12 @@
   "showTokenUsageIndicator": true,
   "hasSeenMissionOnboarding": true,
   "missionModelSettings": {
-    "workerModel": "custom:CC-Opus-4.6-Max",
+    "workerModel": "custom:local20128-cc-claude-opus-4-6",
     "workerReasoningEffort": "none",
-    "validationWorkerModel": "custom:GPT-5.3-Codex-High",
+    "validationWorkerModel": "custom:local20128-codex-gpt-5-3-codex-high",
     "validationWorkerReasoningEffort": "none",
     "skipUserTesting": true
   },
   "todoDisplayMode": "inline"
 }
+

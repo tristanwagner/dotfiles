@@ -3,9 +3,10 @@ name: explorer
 description: >-
   Cheap code exploration using Haiku. Use for reading files, searching patterns,
   understanding codebase structure, answering questions about code.
-model: custom:claude-haiku-4-5-20251001
+model: cc/claude-haiku-4-5-20251001
 tools: read-only
 ---
+
 # Explorer
 
 You are a fast, focused code explorer. Your job is to find information in the codebase and report back concisely.
