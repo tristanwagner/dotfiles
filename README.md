@@ -40,11 +40,14 @@ Installed by default (skip with `--no-agents`):
 | [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | Anthropic's CLI coding agent |
 | [RTK](https://github.com/rtk-ai/rtk) | Token optimizer -- rewrites commands for cost savings |
 | [Opencode](https://opencode.ai) | Multi-model terminal coding agent |
+| [Soulforge](https://soulforge.proxysoul.com/installation) | Graph-aware terminal coding agent |
 | [Amp](https://amp.dev) | AI coding assistant |
 | [grep-app-mcp](https://www.npmjs.com/package/grep-app-mcp) | MCP server for searching public code on GitHub |
 | jq | JSON processor (required by RTK hook) |
 
 Factory configs (droids, hooks, skills, MCP) are stowed from `.factory/` into `~/.factory/`.
+
+Soulforge project instructions are stowed via `SOULFORGE.md`, and the tracked base config is stowed to `~/.soulforge/config.json`. Runtime state under `~/.soulforge/` is intentionally not stowed beyond that config file.
 
 The repo mirrors `$HOME` -- directories like `.config/`, `.factory/`, and `.vim/` map directly to their home equivalents.
 

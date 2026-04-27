@@ -24,6 +24,14 @@ _darcs
 ^/fonts(/|$)
 ^/oh-my-zsh(/|$)
 ^/logs(/|$)
+^/.soulforge/plans(/|$)
+^/.soulforge/sessions(/|$)
+^/.soulforge/.*\.db(-shm|-wal)?$
+^/.claude/(transcripts|projects|debug|file-history|plugins|shell-snapshots|todos|cache|backups|paste-cache|telemetry|plans|sessions|statsig|tasks|agent-memory|downloads|session-env|skills)(/|$)
+^/.claude/history\.jsonl$
+^/.claude/hook-approvals\.log$
+^/.claude/.*-cache\.json$
+^/.claude/settings\.(json\.bak|local\.json)$
 ^/install
 ^/brewpkglist
 ^/npmglobalpkglist

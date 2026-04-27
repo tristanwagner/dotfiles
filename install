@@ -154,6 +154,21 @@ install_agent_tools() {
     info "opencode already installed"
   fi
 
+  # Soulforge
+  if ! command -v soulforge &>/dev/null && ! command -v sf &>/dev/null; then
+    info "installing Soulforge"
+    if command -v brew &>/dev/null; then
+      brew tap proxysoul/tap || true
+      brew install soulforge || true
+    elif command -v bun &>/dev/null; then
+      bun install -g soulforge || true
+    else
+      curl -fsSL https://soulforge.proxysoul.com/install | sh || true
+    fi
+  else
+    info "soulforge already installed"
+  fi
+
   # Amp
   if ! command -v amp &>/dev/null; then
     info "installing Amp"

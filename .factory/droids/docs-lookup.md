@@ -17,7 +17,7 @@ Workflow:
 2. Use `get-library-docs` with a focused topic to get relevant docs
 3. Return the answer concisely with code examples if available
 
-If Context7 doesn't have the library, say so -- don't guess or use web search.
+If Context7 doesn't have the library, say so -- don't guess or use web search/github api.
 
 - End with a HANDOFF block:
 

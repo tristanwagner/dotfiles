@@ -1,21 +1,19 @@
 #!/usr/bin/env python3
 """
-Per-file typecheck + lint hook for Droid (PostToolUse on Edit|Create).
-Runs language/project-aware checks on ONLY the edited file:
-  - TypeScript/TSX/JS/JSX: tsc --noEmit scoped to the file's package, filtered to file
-  - All supported files: biome check on just the file
-  - Python: pyright/mypy on just the file (if available)
-  - Go: go vet on just the file (if available)
-
-Feeds errors back to the agent as PostToolUse additionalContext.
+Per-file typecheck + lint hook (PostToolUse on Edit/Write).
+Runs language-aware checks on the edited file:
+  - TypeScript/TSX/JS/JSX: tsc --noEmit scoped to nearest tsconfig, biome check
+  - Python: pyright on the file
+  - Go: go vet on the file
+Feeds errors back as additionalContext.
 """
 import json
 import sys
 import os
 import subprocess
 
+
 def find_package_root(file_path, project_dir):
-    """Walk up from file to find nearest package.json with a tsconfig.json sibling."""
     d = os.path.dirname(file_path)
     while d and d.startswith(project_dir) and d != project_dir:
         if os.path.exists(os.path.join(d, "tsconfig.json")):
@@ -25,8 +23,8 @@ def find_package_root(file_path, project_dir):
         return project_dir
     return None
 
+
 def run_tsc(file_path, pkg_root):
-    """Run tsc --noEmit in the package root, filter output to just this file."""
     try:
         result = subprocess.run(
             ["npx", "tsc", "--noEmit", "--pretty", "false"],
@@ -48,8 +46,8 @@ def run_tsc(file_path, pkg_root):
         pass
     return []
 
+
 def run_biome(file_path, project_dir):
-    """Run biome check on a single file."""
     try:
         result = subprocess.run(
             ["npx", "biome", "check", "--no-errors-on-unmatched", file_path],
@@ -67,8 +65,8 @@ def run_biome(file_path, project_dir):
         pass
     return []
 
+
 def run_pyright(file_path):
-    """Run pyright on a single Python file."""
     try:
         result = subprocess.run(
             ["pyright", file_path],
@@ -85,8 +83,8 @@ def run_pyright(file_path):
         pass
     return []
 
+
 def run_go_vet(file_path):
-    """Run go vet on a single Go file."""
     try:
         result = subprocess.run(
             ["go", "vet", file_path],
@@ -103,7 +101,6 @@ def run_go_vet(file_path):
         pass
     return []
 
-import tempfile
 
 try:
     data = json.load(sys.stdin)
@@ -114,38 +111,16 @@ file_path = data.get("tool_input", {}).get("file_path", "")
 if not file_path or not os.path.exists(file_path):
     sys.exit(0)
 
-project_dir = os.environ.get("FACTORY_PROJECT_DIR", data.get("cwd", ""))
+project_dir = data.get("cwd", os.getcwd())
 ext = os.path.splitext(file_path)[1].lower()
 basename = os.path.basename(file_path)
 
-# Track edited files per session so verify-on-stop.py knows what THIS session
-# touched (vs pre-existing uncommitted changes from prior sessions).
-session_id = data.get("session_id", "")
-if session_id:
-    edits_file = os.path.join(
-        tempfile.gettempdir(), f"droid-session-edits-{session_id}.json"
-    )
-    try:
-        existing = []
-        if os.path.exists(edits_file):
-            with open(edits_file, "r") as f:
-                existing = json.load(f)
-        rel_path = os.path.relpath(file_path, project_dir) if project_dir else file_path
-        if rel_path not in existing:
-            existing.append(rel_path)
-            with open(edits_file, "w") as f:
-                json.dump(existing, f)
-    except (json.JSONDecodeError, IOError, OSError):
-        pass
-
-# Skip non-code files, configs, and generated files
 skip_patterns = [".d.ts", ".min.", "dist/", "node_modules/", ".generated.", "migrations/"]
 if any(p in file_path for p in skip_patterns):
     sys.exit(0)
 
 errors = []
 
-# TypeScript / JavaScript
 if ext in (".ts", ".tsx", ".js", ".jsx"):
     pkg_root = find_package_root(file_path, project_dir)
     if pkg_root:
@@ -159,14 +134,12 @@ if ext in (".ts", ".tsx", ".js", ".jsx"):
         errors.append(f"[BIOME] Lint/format issues in {basename}:")
         errors.extend(f"  {e}" for e in biome_errors[:10])
 
-# Python
 elif ext == ".py":
     py_errors = run_pyright(file_path)
     if py_errors:
         errors.append(f"[PYRIGHT] Type errors in {basename}:")
         errors.extend(f"  {e}" for e in py_errors[:10])
 
-# Go
 elif ext == ".go":
     go_errors = run_go_vet(file_path)
     if go_errors:

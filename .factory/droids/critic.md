@@ -4,6 +4,7 @@ description: >-
   Devil's advocate with deep reasoning. Use to stress-test specs, plans, and
   code before committing. Finds edge cases, holes, and risks.
 model: cc/claude-opus-4-6
+provider: anthropic
 reasoningEffort: high
 maxOutputTokens: 128000
 tools: ["Read", "LS", "Grep", "Glob"]

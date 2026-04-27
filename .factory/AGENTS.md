@@ -95,6 +95,7 @@ Before running checks, re-read the files you changed and verify:
 - Are there obvious edge cases missed?
 - Does this follow the project's existing patterns?
 - Are imports correct and types sound?
+- Do I need to add or update documentation to reflect this change ?
 
 For non-trivial changes (3+ files, new features, architecture changes), invoke the `reflexion` skill for a structured self-critique with complexity triage.
 
@@ -141,6 +142,10 @@ The goal is to produce the best possible result on the first pass, not to minimi
 
 - When a brainstorming or planning session produces a plan, save it to `docs/plans/` or `docs/specs/` so the next session can pick it up.
 - Always reference existing specs/plans before starting implementation: check `docs/specs/` and `docs/plans/` first.
+
+## Time scale
+
+You are not an human, you must not try to make decisions based on "how much time it would take to do X as an human", it's irrelevant and prone to make you cut corners on important matters.
 
 ## Global rules
 

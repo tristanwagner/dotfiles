@@ -3,6 +3,10 @@
 # it means : search in mystery/vehicles for L337, take the whole paragraph (RS="\n\n")
 # and then take only paragraphs that contains Blue and Honda, and print the results
 
+function sfd() {
+  ~/dev/soulforge/dist/bin.sh
+}
+
 function cd() {
   builtin cd "$@" || return
   if [[ -f ".envrc" ]]; then
